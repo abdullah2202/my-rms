@@ -7,7 +7,9 @@ import { PagerService } from '../../services/pager.service';
 import { MatButton } from '@angular/material/button';
 
 
-
+/**
+ * Component
+ */
 @Component({
   selector: 'booking-list',
   templateUrl: './booking-list.component.html',
