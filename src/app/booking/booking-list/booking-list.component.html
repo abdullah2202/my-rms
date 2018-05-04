@@ -1,0 +1,154 @@
+
+
+  <div class="data-toolbar">
+    <button class="btn btn-primary" >Customer</button>
+    <button class="btn btn-primary" >Store</button>
+    <div style="display: inline-flex;">
+      <div class="form-group">
+          <input type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+          <button class="btn btn-success">Save</button>
+      </div> 
+    </div>
+  </div>
+
+  <div class="data-view">
+    <div class="data-table">
+      <div class="data-header">
+        <div class="data-heading-row">
+  
+          <div  class="data-heading data-checkbox">
+              <i  class="material-icons"
+                  *ngIf="selectedRows && selectedRows.length==0"
+                  (click)="checkAll()" 
+              >check_box_outline_blank</i>
+
+              <i  class="material-icons"
+                  *ngIf="isSomeChecked()"
+                  (click)="checkAll()"
+              >indeterminate_check_box</i>
+
+              <i  class="material-icons icon-blue"
+                  *ngIf="selectedRows && bookings && selectedRows.length==bookings.length"
+                  (click)="uncheckAll()"
+              >check_box</i>
+          </div>
+  
+          <div  class="data-heading"
+                [ngStyle]="colPos.BookingID"
+                (click)="sortBy('BookingID')"
+          >
+          Booking ID
+        </div>
+          <div  class="data-heading"
+                [ngStyle]="colPos.UserID">User ID</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Store"
+          >Store</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Customer"  
+          >Customer</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Status"
+          >Status</div>
+        </div>
+      </div>
+  
+      <div class="data-content">
+        <div  class="data-row" 
+              *ngFor="let booking of pagedItems; index as i;"
+              [ngClass]="{'grid':gridView==true, 
+                          'selected':selectedRow===booking.BookingID,
+                          'selected':selectedRows.includes(booking.BookingID)
+                        }"
+              (click)="selectRow(booking.BookingID)"
+              (dblclick)="toggleCheckbox(booking.BookingID)"
+              >
+          <div  class="data-cell data-checkbox"
+                (click)="toggleCheckbox(booking.BookingID)"
+          >
+            <i class="material-icons" *ngIf="!selectedRows.includes(booking.BookingID)">check_box_outline_blank</i>
+            <i class="material-icons icon-blue" *ngIf="selectedRows.includes(booking.BookingID)">check_box</i>
+          </div>
+          <div  class="data-cell" 
+                [ngStyle]="colPos.BookingID"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'BookingID'}"
+                (click)="toggleCheckbox(booking.BookingID)"
+          >{{ booking.BookingID }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.UserID"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'UserID'}"
+                (click)="toggleCheckbox(booking.BookingID)"
+          >{{ booking.Username }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Store"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Store'}"
+                (click)="toggleCheckbox(booking.BookingID)"
+                (dblclick)="editField(booking.BookingID,'StoreID')"
+          >{{ booking.StoreName }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Customer"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Customer'}"
+                (click)="toggleCheckbox(booking.BookingID)"
+          >{{ booking.CustomerName }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Status"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Status'}"
+                (click)="toggleCheckbox(booking.BookingID)"
+          ><i class="booking-status material-icons {{booking.StatusCss}}">lens</i>{{ booking.StatusName }}</div>
+        </div>
+      </div>
+  
+      <div class="data-footer">
+
+        <div class="data-selected-row">
+          <div class="data-footer-cell" *ngIf="selectedRows && bookings">
+            {{selectedRows.length}} Bookings Selected ({{bookings.length}} Total)
+          </div>
+        </div>
+
+
+        <div class="data-pagination">
+          <div class="data-pagination-cell">
+            <a (click)="setPage(1)">&lt;&lt;</a>
+          </div>
+          <div class="data-pagination-cell">
+              <a (click)="setPage(pager.currentPage - 1)">&lt;</a>
+          </div>
+          <div class="data-pagination-cell"
+              *ngFor="let page of pager.pages"
+              [ngClass]="{active:pager.currentPage === page}">
+              <a (click)="setPage(page)">{{page}}</a>
+          </div>
+          <div class="data-pagination-cell">
+              <a (click)="setPage(pager.currentPage + 1)">&gt;</a>
+          </div>
+          <div class="data-pagination-cell">
+              <a (click)="setPage(pager.totalPages)">&gt;&gt;</a>
+          </div>
+
+        </div>
+
+        <div class="data-page-info">
+            <div class="data-footer-cell">
+                Per Page
+              </div>
+              <div class="data-footer-cell">
+                <select class="form-control"
+                        (change)="setItemsPerPage($event.target.value)">
+                  <option *ngFor="let item of itemsPerPage" value={{item}}>
+                    {{item}}
+                  </option>
+                </select>
+              </div>
+              <div class="data-footer-cell">
+                ({{pager.totalPages}} Pages Total) 
+              </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+   

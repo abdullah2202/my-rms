@@ -1,0 +1,60 @@
+<div class="app-view">
+  <header id="header">
+
+    <div id="header-logo">
+      <span class="header-logo-brand">
+        RMS
+      </span>
+    </div>
+
+    <div id="header-search">
+      <div class="">
+        <input class="form-control" type="text"/>
+      </div>
+    </div>
+
+    <div id="user-controls">
+      <button class="btn btn-primary">User</button>
+    </div>
+
+  </header>
+        
+  <div class="main">
+
+  
+
+  <div class="wrapper">
+    
+  
+    <div class="side-menu">
+        <div class="side-menu-item" routerLink="/">
+            <div class="side-menu-item-text">Dashboard</div>
+        </div>
+      <div class="side-menu-item" routerLink="/bookings">
+        <div class="side-menu-item-text">Bookings</div>
+      </div>
+      <div class="side-menu-item">
+          <div class="side-menu-item-text" routerLink="/">Customers</div>
+      </div>
+      <div class="side-menu-item">
+          <div class="side-menu-item-text">Bookings</div>
+      </div>
+      <div class="side-menu-item">
+          <div class="side-menu-item-text">Bookings</div>
+      </div>
+    </div>
+  
+    <!-- Place Router Code Here -->
+    <router-outlet></router-outlet>
+
+
+  </div>
+     
+    
+
+
+
+  </div>
+  <div id="footer">Footer</div>
+
+</div>
