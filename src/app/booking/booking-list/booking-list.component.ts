@@ -27,6 +27,7 @@ export class BookingListComponent implements OnInit {
   pager: any = {};
   pagedItems: any[];
 
+  //Used for pagination
   itemsPerPage = [25,50,100,250,500];
   itemsPerPageSelected = 25;
 

@@ -10,16 +10,23 @@ import { ApiService } from './services/api.service';
 import { PagerService } from './services/pager.service';
 
 import { BookingService } from './booking/booking.service';
+
 import { BookingModule } from './booking/booking.module';
+import { CustomerModule } from './customer/customer.module';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomerListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BookingModule,
+    CustomerModule,
     AppRoutesModule,
     HttpClientModule
   ],
