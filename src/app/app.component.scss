@@ -87,18 +87,23 @@
     cursor: pointer;
     padding: 10px;
     outline: none;
+    color: rgba(0,0,0,0.74);
 }
 
 .side-menu-item:hover{
     background-color: rgb(232,232,232);
 }
 
+.side-menu-item.active{
+    color: rgba(255,255,255,1);
+    background-color: #0069d9;
+}
+
 .side-menu-item-text{
     padding-left: 20px;
     margin: 0 auto;
-    font-weight: 500;
-    color: rgba(0,0,0,0.74);
-    font-size: 13px;
+    font-weight: 400;
+    font-size: 14px;
     outline: none;
 }
 

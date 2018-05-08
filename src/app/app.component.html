@@ -27,14 +27,18 @@
     
   
     <div class="side-menu">
-        <div class="side-menu-item" routerLink="">
+        <div class="side-menu-item" 
+              routerLink="/" 
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >
             <div class="side-menu-item-text">Dashboard</div>
         </div>
-      <div class="side-menu-item" routerLink="/bookings">
+      <div class="side-menu-item" routerLink="/bookings" routerLinkActive="active">
         <div class="side-menu-item-text">Bookings</div>
       </div>
-      <div class="side-menu-item">
-          <div class="side-menu-item-text" routerLink="/customers">Customers</div>
+      <div class="side-menu-item" routerLink="/customers" routerLinkActive="active">
+          <div class="side-menu-item-text">Customers</div>
       </div>
       <div class="side-menu-item">
           <div class="side-menu-item-text">Bookings</div>

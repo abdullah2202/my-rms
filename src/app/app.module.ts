@@ -13,14 +13,14 @@ import { BookingService } from './booking/booking.service';
 
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+//import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerListComponent,
+//    CustomerListComponent,
     DashboardComponent
   ],
   imports: [
