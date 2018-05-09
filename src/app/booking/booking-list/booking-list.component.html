@@ -37,7 +37,7 @@
   
           <div  class="data-heading"
                 [ngStyle]="colPos.BookingID"
-                (click)="sortBy('BookingID')"
+                (click)="setPage(page,!sortAsc,'BookingID')"
           >
           Booking ID
         </div>
@@ -57,7 +57,7 @@
   
       <div class="data-content">
         <div  class="data-row" 
-              *ngFor="let booking of bookings | async"
+              *ngFor="let booking of pagedItems"
               [ngClass]="{'grid':gridView==true, 
                           'selected':selectedRow===booking.BookingID,
                           'selected':selectedRows.includes(booking.BookingID)

@@ -18,7 +18,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BookingListComponent implements OnInit {
 
-  bookings: Observable<IBooking[]>;
+  bookings: IBooking[];
   errorMessage: string;
 
   selectedRow: string = '';
@@ -27,6 +27,11 @@ export class BookingListComponent implements OnInit {
 
   pager: any = {};
   pagedItems: any[];
+  currentPage: number = 1;
+
+  //Sort Ascending
+  sortAsc = false;
+  sortField = 'BookingID';
 
   //Used for pagination
   itemsPerPage = [25,50,100,250,500];
@@ -58,8 +63,8 @@ export class BookingListComponent implements OnInit {
   ngOnInit(): void {
 
 /** Observable with async method */
-    this.bookings = this.bookingService.getBookings();
-
+//    this.bookings = this.bookingService.getBookings();
+    this.getBookings();
 
   } 
 
@@ -73,18 +78,23 @@ export class BookingListComponent implements OnInit {
   }
 
 
-  setPage(page: number) {
-    /*
-    if (page < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
+  setPage(page: number = 1, sortAsc: boolean = false, sortField: string = 'bookingID') {
+    
+    this.currentPage = page;
+
+    //Sort Data First
+    this.sortBy(sortField);
+
+    if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
         return;
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.bookings.length, page, this.itemsPerPageSelected);
+    this.pager = this.pagerService.getPager(this.bookings.length, this.currentPage, this.itemsPerPageSelected);
 
     // get current page of items
     this.pagedItems = this.bookings.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    */
+    
   }
 
   setItemsPerPage(itemPPId: number){
@@ -143,23 +153,25 @@ export class BookingListComponent implements OnInit {
 
   sortBy(fieldName: string){
     
+    this.sortAsc = !this.sortAsc;
+
     switch(fieldName){
 
       case "BookingID" : 
-        this.bookings = this.bookings.map(
-          (data) => {
-            data.sort((a,b) => {
-              var x = a.BookingID.toLowerCase();
-              var y = b.BookingID.toLowerCase();
-              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-            });
-            return data;
+        this.bookings.sort((a,b) => {
+          if(!this.sortAsc){
+            var y = a.BookingID.toLowerCase();
+            var x = b.BookingID.toLowerCase();
+          }else{
+            var x = a.BookingID.toLowerCase();
+            var y = b.BookingID.toLowerCase();
           }
-        );
+          return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        });
       break;
    
     }
-
+    
   }
 
 
