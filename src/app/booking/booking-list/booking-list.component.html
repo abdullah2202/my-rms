@@ -37,24 +37,30 @@
   
           <div  class="data-heading"
                 [ngStyle]="colPos.BookingID"
-                (click)="setPage(page,!sortAsc,'BookingID')"
-          >
-          Booking ID
-        </div>
+                (click)="sortBy('BookingID')">
+                Booking ID
+          </div>
           <div  class="data-heading"
-                [ngStyle]="colPos.UserID">User ID</div>
+                [ngStyle]="colPos.UserID"
+                (click)="sortBy('Username')">
+                User ID</div>
           <div class="data-heading"
                 [ngStyle]="colPos.Store"
-          >Store</div>
+                (click)="sortBy('StoreName')">
+                Store</div>
           <div class="data-heading"
-                [ngStyle]="colPos.Customer"  
-          >Customer</div>
+                [ngStyle]="colPos.Customer"
+                (click)="sortBy('CustomerName')">
+                Customer</div>
           <div class="data-heading"
                 [ngStyle]="colPos.Status"
-          >Status</div>
+                (click)="sortBy('StatusName')">
+                Status</div>
         </div>
       </div>
   
+
+
       <div class="data-content">
         <div  class="data-row" 
               *ngFor="let booking of pagedItems"
@@ -100,6 +106,9 @@
         </div>
       </div>
   
+
+
+
       <div class="data-footer">
 
         <div class="data-selected-row">

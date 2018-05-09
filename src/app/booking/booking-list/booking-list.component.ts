@@ -4,8 +4,6 @@ import { IBooking } from '../booking';
 import { BookingService } from '../booking.service';
 
 import { PagerService } from '../../services/pager.service';
-import { MatButton } from '@angular/material/button';
-import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -62,8 +60,6 @@ export class BookingListComponent implements OnInit {
 
   ngOnInit(): void {
 
-/** Observable with async method */
-//    this.bookings = this.bookingService.getBookings();
     this.getBookings();
 
   } 
@@ -78,12 +74,9 @@ export class BookingListComponent implements OnInit {
   }
 
 
-  setPage(page: number = 1, sortAsc: boolean = false, sortField: string = 'bookingID') {
+  setPage(page: number = 1) {
     
     this.currentPage = page;
-
-    //Sort Data First
-    this.sortBy(sortField);
 
     if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
         return;
@@ -108,7 +101,7 @@ export class BookingListComponent implements OnInit {
   }
 
   selectCell(cell: string){
-  //  this.selectedCell = cell;
+    this.selectedCell = cell;
   }
 
   toggleCheckbox(i: string){
@@ -123,20 +116,17 @@ export class BookingListComponent implements OnInit {
 
   // Check all items in display - Called fro checkbox in header
   checkAll(){
-    /*
     this.uncheckAll();
     for(var i=0;i<this.bookings.length;i++){
         this.selectedRows.push(this.bookings[i].BookingID);
     }
-    */
   }
 
   uncheckAll(){
-//    this.selectedRows.splice(0,this.selectedRows.length);
+    this.selectedRows.splice(0,this.selectedRows.length);
   }
 
   isSomeChecked(){
-    /*
     if(
       this.selectedRows.length>0 &&
       this.selectedRows.length!=this.bookings.length
@@ -145,32 +135,30 @@ export class BookingListComponent implements OnInit {
     }else{
       return false;
     }
-    */
   }
 
 
 
 
-  sortBy(fieldName: string){
+  sortBy(fieldName: string = 'BookingID'){
     
+    // Invert sorting direction variable
     this.sortAsc = !this.sortAsc;
 
-    switch(fieldName){
+    // Sort the array
+    this.bookings.sort((a,b) => {
+      var x = a[fieldName].toLowerCase();
+      var y = b[fieldName].toLowerCase();
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
 
-      case "BookingID" : 
-        this.bookings.sort((a,b) => {
-          if(!this.sortAsc){
-            var y = a.BookingID.toLowerCase();
-            var x = b.BookingID.toLowerCase();
-          }else{
-            var x = a.BookingID.toLowerCase();
-            var y = b.BookingID.toLowerCase();
-          }
-          return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-        });
-      break;
-   
+    // Invert sorting direction
+    if(!this.sortAsc){
+      this.bookings.reverse();
     }
+
+    // Refresh the view
+    this.setPage(this.currentPage);
     
   }
 
