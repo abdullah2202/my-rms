@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map'
 import { ApiService } from '../services/api.service';
 
 import { IBooking } from './booking';
+import { resolveDefinition } from '@angular/core/src/view/util';
 
 @Injectable()
 export class BookingService {
@@ -19,24 +20,35 @@ export class BookingService {
 
   private BookingSource = new BehaviorSubject<IBooking[]>(this.initBookingList());
   currentBookingList = this.BookingSource.asObservable();
+
+
   
   constructor(
     private http: HttpClient,
     private api: ApiService
   ) { } 
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log('Service.ngOnInit()');
+  }
+
   getNewBookings(){
-    this.api.getAll(this.baseUrl).map(res => {
-      
-    });
+    this.api.getAll(this.baseUrl)
+      .subscribe(
+        (booking) => {
+          this.BookingSource.next(booking);
+        }
+      );
   }
 
   getBookings(): Observable<any> {
     return this.api.getAll(this.baseUrl)
         .map(res => {
-          console.log(res);
-          return res;
-        });
+           return res.data;
+        })
+        ;
   }
 
   initBookingList(): IBooking[]{

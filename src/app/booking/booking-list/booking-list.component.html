@@ -57,7 +57,7 @@
   
       <div class="data-content">
         <div  class="data-row" 
-              *ngFor="let booking of pagedItems; index as i;"
+              *ngFor="let booking of bookings | async"
               [ngClass]="{'grid':gridView==true, 
                           'selected':selectedRow===booking.BookingID,
                           'selected':selectedRows.includes(booking.BookingID)

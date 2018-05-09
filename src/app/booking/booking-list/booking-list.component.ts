@@ -5,6 +5,7 @@ import { BookingService } from '../booking.service';
 
 import { PagerService } from '../../services/pager.service';
 import { MatButton } from '@angular/material/button';
+import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -17,7 +18,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class BookingListComponent implements OnInit {
 
-  bookings: IBooking[];
+  bookings: Observable<IBooking[]>;
   errorMessage: string;
 
   selectedRow: string = '';
@@ -55,13 +56,39 @@ export class BookingListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+/** Observable only method */
+/*
     this.bookingService.getBookings()
       .subscribe(bookings => {
         this.bookings = bookings.data;
         this.setPage(1);
       },
       error => this.errorMessage = <any>error);
-  }
+*/
+
+/** Observable with async method */
+    this.bookings = this.bookingService.getBookings();
+
+
+
+/** Behaviour Subject Below  */
+
+
+//    this.bookingService.getNewBookings();
+/*
+    this.bookingService.currentBookingList
+        .subscribe(bookings => {
+          
+          console.log('booking-list.ngOnInit()');
+          console.log(bookings);
+          this.bookings = bookings['data'];
+//          this.setPage(1);
+        });
+*/
+
+
+  } 
 
   getBookings(pageNum? : number){
     this.bookingService.getBookings()
@@ -74,6 +101,7 @@ export class BookingListComponent implements OnInit {
 
 
   setPage(page: number) {
+    /*
     if (page < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
         return;
     }
@@ -83,6 +111,7 @@ export class BookingListComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.bookings.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    */
   }
 
   setItemsPerPage(itemPPId: number){
@@ -111,17 +140,20 @@ export class BookingListComponent implements OnInit {
 
   // Check all items in display - Called fro checkbox in header
   checkAll(){
+    /*
     this.uncheckAll();
     for(var i=0;i<this.bookings.length;i++){
         this.selectedRows.push(this.bookings[i].BookingID);
     }
+    */
   }
 
   uncheckAll(){
-    this.selectedRows.splice(0,this.selectedRows.length);
+//    this.selectedRows.splice(0,this.selectedRows.length);
   }
 
   isSomeChecked(){
+    /*
     if(
       this.selectedRows.length>0 &&
       this.selectedRows.length!=this.bookings.length
@@ -130,13 +162,14 @@ export class BookingListComponent implements OnInit {
     }else{
       return false;
     }
+    */
   }
 
 
 
 
   sortBy(fieldName: string){
-    
+    /*
     switch(fieldName){
       case "BookingID" : 
         this.bookings.sort((a,b) => {
@@ -146,6 +179,7 @@ export class BookingListComponent implements OnInit {
         });
         
     }
+    */
 
     console.log(this.bookings);
   }
