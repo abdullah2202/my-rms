@@ -57,35 +57,8 @@ export class BookingListComponent implements OnInit {
 
   ngOnInit(): void {
 
-/** Observable only method */
-/*
-    this.bookingService.getBookings()
-      .subscribe(bookings => {
-        this.bookings = bookings.data;
-        this.setPage(1);
-      },
-      error => this.errorMessage = <any>error);
-*/
-
 /** Observable with async method */
     this.bookings = this.bookingService.getBookings();
-
-
-
-/** Behaviour Subject Below  */
-
-
-//    this.bookingService.getNewBookings();
-/*
-    this.bookingService.currentBookingList
-        .subscribe(bookings => {
-          
-          console.log('booking-list.ngOnInit()');
-          console.log(bookings);
-          this.bookings = bookings['data'];
-//          this.setPage(1);
-        });
-*/
 
 
   } 
@@ -169,19 +142,24 @@ export class BookingListComponent implements OnInit {
 
 
   sortBy(fieldName: string){
-    /*
+    
     switch(fieldName){
-      case "BookingID" : 
-        this.bookings.sort((a,b) => {
-          var x = a.BookingID.toLowerCase();
-          var y = b.BookingID.toLowerCase();
-          return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-        });
-        
-    }
-    */
 
-    console.log(this.bookings);
+      case "BookingID" : 
+        this.bookings = this.bookings.map(
+          (data) => {
+            data.sort((a,b) => {
+              var x = a.BookingID.toLowerCase();
+              var y = b.BookingID.toLowerCase();
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            });
+            return data;
+          }
+        );
+      break;
+   
+    }
+
   }
 
 

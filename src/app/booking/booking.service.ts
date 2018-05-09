@@ -34,6 +34,9 @@ export class BookingService {
     console.log('Service.ngOnInit()');
   }
 
+  /**
+   * BehaviourSubject Method - UNUSED
+   */
   getNewBookings(){
     this.api.getAll(this.baseUrl)
       .subscribe(
@@ -46,7 +49,7 @@ export class BookingService {
   getBookings(): Observable<any> {
     return this.api.getAll(this.baseUrl)
         .map(res => {
-           return res.data;
+          return res.data;
         })
         ;
   }
