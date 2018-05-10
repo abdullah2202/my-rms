@@ -14,7 +14,7 @@ import { ICustomer } from './customer';
 @Injectable()
 export class CustomerService {
 
-  private baseUrl = "customer";
+  private baseUrl = "customers";
 
   
   constructor(

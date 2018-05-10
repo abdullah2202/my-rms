@@ -12,6 +12,7 @@ import { PagerService } from './services/pager.service';
 
 // Individual Services
 import { BookingService } from './booking/booking.service';
+import { CustomerService } from './customer/customer.service';
 
 // Modules
 import { BookingModule } from './booking/booking.module';
@@ -22,7 +23,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
-//    CustomerListComponent,
     DashboardComponent
   ],
   imports: [
@@ -35,6 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   providers: [
     ApiService,
     BookingService,
+    CustomerService,
     PagerService
   ],
   bootstrap: [AppComponent]

@@ -19,7 +19,6 @@ export class BookingListComponent implements OnInit {
   bookings: IBooking[];
   errorMessage: string;
 
-  selectedRow: string = '';
   selectedRows = [];
   selectedCell: string = '';
 
@@ -93,11 +92,6 @@ export class BookingListComponent implements OnInit {
   setItemsPerPage(itemPPId: number){
     this.itemsPerPageSelected = itemPPId;
     this.setPage(1);
-  }
-
-  
-  selectRow(row: string){
-    this.selectedRow = row;
   }
 
   selectCell(cell: string){

@@ -2,6 +2,9 @@
 //$font: Roboto, Helvetica, sans-serif;
 //$font-color: rgba(0,0,0,0.85);
 
+// Import table view, used by Booking List etc
+@import 'styles/table-view.scss';
+
 .app-view{
     display: flex;
     flex-direction: column;

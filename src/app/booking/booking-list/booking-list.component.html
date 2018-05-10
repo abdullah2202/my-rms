@@ -65,43 +65,34 @@
         <div  class="data-row" 
               *ngFor="let booking of pagedItems"
               [ngClass]="{'grid':gridView==true, 
-                          'selected':selectedRow===booking.BookingID,
                           'selected':selectedRows.includes(booking.BookingID)
                         }"
-              (click)="selectRow(booking.BookingID)"
-              (dblclick)="toggleCheckbox(booking.BookingID)"
+              (click)="toggleCheckbox(booking.BookingID)"
               >
-          <div  class="data-cell data-checkbox"
-                (click)="toggleCheckbox(booking.BookingID)"
-          >
+          <div  class="data-cell data-checkbox">
             <i class="material-icons" *ngIf="!selectedRows.includes(booking.BookingID)">check_box_outline_blank</i>
             <i class="material-icons icon-blue" *ngIf="selectedRows.includes(booking.BookingID)">check_box</i>
           </div>
           <div  class="data-cell" 
                 [ngStyle]="colPos.BookingID"
                 [ngClass]="{'selected':selectedCell===booking.BookingID+'BookingID'}"
-                (click)="toggleCheckbox(booking.BookingID)"
           >{{ booking.BookingID }}</div>
           <div class="data-cell"
                 [ngStyle]="colPos.UserID"
                 [ngClass]="{'selected':selectedCell===booking.BookingID+'UserID'}"
-                (click)="toggleCheckbox(booking.BookingID)"
           >{{ booking.Username }}</div>
           <div class="data-cell"
                 [ngStyle]="colPos.Store"
                 [ngClass]="{'selected':selectedCell===booking.BookingID+'Store'}"
-                (click)="toggleCheckbox(booking.BookingID)"
                 (dblclick)="editField(booking.BookingID,'StoreID')"
           >{{ booking.StoreName }}</div>
           <div class="data-cell"
                 [ngStyle]="colPos.Customer"
                 [ngClass]="{'selected':selectedCell===booking.BookingID+'Customer'}"
-                (click)="toggleCheckbox(booking.BookingID)"
           >{{ booking.CustomerName }}</div>
           <div class="data-cell"
                 [ngStyle]="colPos.Status"
                 [ngClass]="{'selected':selectedCell===booking.BookingID+'Status'}"
-                (click)="toggleCheckbox(booking.BookingID)"
           ><i class="booking-status material-icons {{booking.StatusCss}}">lens</i>{{ booking.StatusName }}</div>
         </div>
       </div>
