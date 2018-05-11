@@ -40,10 +40,10 @@ export class CustomerListComponent implements OnInit {
 
   colPos = {
     'CustomerID':{
-      width: '150px'
+      width: '100px'
     },
     'Name':{
-      width: '150px'
+      width: '200px'
     },
     'Store':{
       width: '150px'
@@ -71,6 +71,7 @@ export class CustomerListComponent implements OnInit {
     this.customerService.getCustomers()
       .subscribe(customers => {
         this.customers = customers;
+        this.setPage(1);
       },
       error => this.errorMessage = <any>error
       );

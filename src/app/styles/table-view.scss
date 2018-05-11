@@ -2,10 +2,13 @@
     @return ($sp / 14) * 1rem;
 }
 
+.main-content{
+    padding-left: 10px;
+}
 
 .data-toolbar{
-    padding: 10px;
-    display: none;
+    padding: 10px 10px 5px;
+    
 }
 
 .data-view{
@@ -15,19 +18,24 @@
 
 .data-table{
     margin-right: 50px;
-    overflow: scroll;
-    max-height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: calc(100vh - 153px);
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
+.data-header{
+    flex: 0 0 auto;
+}
 
 .data-content{
     margin: 0;
     width: 100%;
     padding: 0;
     overflow-y: scroll;
-    max-height: 600px;
-    height: 600px;
+    flex: 1 1 auto;
 }
 
 .data-heading-row{
@@ -60,7 +68,7 @@
 .data-footer{
     height: 56px;
     border-top: 1px solid #e0e0e0;
-    position: relative;
+    flex: 0 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -149,7 +157,9 @@
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
-
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .data-cell.selected{

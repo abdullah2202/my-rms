@@ -1,4 +1,5 @@
 
+<div class="main-content">
 
   <div class="data-toolbar">
     <button class="btn btn-primary" >Customer</button>
@@ -64,9 +65,7 @@
       <div class="data-content">
         <div  class="data-row" 
               *ngFor="let customer of pagedItems"
-              [ngClass]="{'grid':gridView==true, 
-                          'selected':selectedRows.includes(customer.CustomerID)
-                        }"
+              [ngClass]="{'selected':selectedRows.includes(customer.CustomerID)}"
               (click)="toggleCheckbox(customer.CustomerID)"
               >
           <div  class="data-cell data-checkbox">
@@ -149,5 +148,6 @@
     </div>
 
   </div>
-
+  
+</div>
    

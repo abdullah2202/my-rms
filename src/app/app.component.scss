@@ -18,14 +18,15 @@
 /* Header */
 #header{
     z-index: 60;
-    background-color: #fff;
+    background-color: #fff;/*
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 
                 0 1px 10px 0 rgba(0,0,0,0.12), 
-                0 2px 4px -1px rgba(0,0,0,0.2);
+                0 2px 4px -1px rgba(0,0,0,0.2);*/
     display: flex;
     flex: 0 0 auto;
     padding: 20px;
     justify-content: space-between;
+    border-bottom: 1px solid rgb(232,232,232);
 }
 
 #header-logo{
@@ -79,6 +80,8 @@
     position: relative;
     padding-top: 30px;
     padding-right: 30px;
+    background-color: #fff;
+    border-right: 1px solid rgb(232,232,232);
 }
 
 .side-menu-item{
@@ -114,9 +117,8 @@
 
 
 
-
-
 #footer{
     width: 100%;
     flex: 0 0 auto;
+    display: none;
 }
