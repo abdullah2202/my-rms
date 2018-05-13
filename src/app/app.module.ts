@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+//Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialAppModule } from './material.module';
+
 import { AppComponent } from './app.component';
 
 import { AppRoutesModule } from './/app-routes.module';
@@ -27,10 +31,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     BookingModule,
     CustomerModule,
     AppRoutesModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialAppModule
   ],
   providers: [
     ApiService,
