@@ -31,7 +31,7 @@
               >indeterminate_check_box</i>
 
               <i  class="material-icons icon-blue"
-                  *ngIf="selectedRows && customer && selectedRows.length==customers.length"
+                  *ngIf="selectedRows && customers && selectedRows.length==customers.length"
                   (click)="uncheckAll()"
               >check_box</i>
           </div>
@@ -43,11 +43,11 @@
           </div>
           <div  class="data-heading"
                 [ngStyle]="colPos.Name"
-                (click)="sortBy('Username')">
+                (click)="sortBy('Name')">
                 Name</div>
           <div class="data-heading"
                 [ngStyle]="colPos.StoreID"
-                (click)="sortBy('StoreID')">
+                (click)="sortBy('StoreName')">
                 Store</div>
           <div class="data-heading"
                 [ngStyle]="colPos.Address1"
@@ -148,6 +148,6 @@
     </div>
 
   </div>
-  
+
 </div>
    
