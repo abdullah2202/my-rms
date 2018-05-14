@@ -3,8 +3,8 @@
 //$font-color: rgba(0,0,0,0.85);
 
 // Import table view, used by Booking List etc
-@import 'styles/table-view.scss';
 
+ 
 .app-view{
     display: flex;
     flex-direction: column;
@@ -37,12 +37,36 @@
 
 #header-search{
     display: inline-flex;
-    flex: 1 1 auto;
-    padding-left: 100px;
+    flex: 0 0 auto;
+    width: 600px;
+    height: 44px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
-#header-search input{
-    width: 600px;
+#header-search:hover{
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.header-search-wrapper{
+    padding: 6px 16px 0;
+    width: 100%;
+}
+
+.header-search-wrapper input{
+    outline: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    height: 34px;
+    line-height: 34px;
+    font: 16px arial,sans-serif;
+    border: 0px;
+    width: 100%;
 }
 
 #user-control{

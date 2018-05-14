@@ -3,12 +3,20 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import {  MatButtonModule } from '@angular/material';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+const modules = [
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule
+];
 
 @NgModule({
-  imports: [MatButtonModule, MatToolbarModule],
-  exports: [MatButtonModule, MatToolbarModule]
+  imports: [...modules],
+  exports: [...modules]
 })
 export class MaterialAppModule { 
 

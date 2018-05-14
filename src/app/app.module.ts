@@ -31,12 +31,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
+    MaterialAppModule,
     BrowserAnimationsModule,
     BookingModule,
     CustomerModule,
     AppRoutesModule,
-    HttpClientModule,
-    MaterialAppModule
+    HttpClientModule
   ],
   providers: [
     ApiService,
