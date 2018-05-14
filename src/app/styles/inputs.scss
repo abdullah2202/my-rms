@@ -20,6 +20,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     padding: 0 10px;
     height: 30px;
     width: 100%;
+    max-width: 300px;
+    min-width: 150px;
 }
 
 .gst-input:hover{

@@ -97,23 +97,34 @@ export class BookingListComponent implements OnInit {
   }
 
   filterResults(filter: any){
-    console.log(filter);
     if(filter){
       this.bookings = this.allBookings;
       this.bookings = this.bookings.filter((booking: IBooking) => {
         let match = true;
-
-        match = match && filter ?
-          booking.CustomerName.toLocaleLowerCase().indexOf(filter.toLocaleLowerCase()) > -1 : match;
-        if(match){
-          console.log('Match: ' + booking.CustomerName);
+        let fields = [
+          'BookingID',
+          'Username',
+          'CustomerName',
+          'StoreName',
+          'StatusName'
+        ];
+        for(var i = 0; i < fields.length; i++){
+          match = this.checkMatch(filter, booking[fields[i]]);
+          if(match){break;}
         }
         return match;
       });
+
       this.setPage(1);
     }else{
       this.resetFilter();
     }
+  }
+
+  checkMatch(filter: any, check: any){
+    return check.toLocaleLowerCase().indexOf(
+      filter.toLocaleLowerCase()
+    ) > -1;
   }
 
   resetFilter(){
