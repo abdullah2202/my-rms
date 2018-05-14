@@ -93,7 +93,8 @@ export class BookingListComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.bookings.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    
+
+
   }
 
   filterResults(filter: any){
@@ -199,7 +200,5 @@ export class BookingListComponent implements OnInit {
     this.setPage(this.currentPage);
     
   }
-
-
 
 }

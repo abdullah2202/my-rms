@@ -207,3 +207,19 @@
 .status-aparts{
     color: #ffc107;
 }
+
+
+
+
+/* No Results Row */
+.no-results{
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    color: rgba(0,0,0,0.87);
+    font-size: 16px;
+}
+
+.no-results .filter-word{
+    color: rgba(0,0,0,0.50);
+}

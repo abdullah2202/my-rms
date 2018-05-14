@@ -30,7 +30,7 @@
               >indeterminate_check_box</i>
 
               <i  class="material-icons icon-blue"
-                  *ngIf="selectedRows && bookings && selectedRows.length==bookings.length"
+                  *ngIf="selectedRows && bookings && selectedRows.length==bookings.length && bookings.length>0"
                   (click)="uncheckAll()"
               >check_box</i>
           </div>
@@ -62,6 +62,11 @@
 
 
       <div class="data-content">
+
+        <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
+          <div class="no-results">No Results for <span class="filter-word">{{filter.value}}</span></div>
+        </div>
+
         <div  class="data-row" 
               *ngFor="let booking of pagedItems"
               [ngClass]="{'grid':gridView==true, 
