@@ -17,6 +17,7 @@ import { PagerService } from '../../services/pager.service';
 export class BookingListComponent implements OnInit {
 
   bookings: IBooking[];
+  allBookings: IBooking[];
   errorMessage: string;
 
   selectedRows = [];
@@ -33,6 +34,9 @@ export class BookingListComponent implements OnInit {
   //Used for pagination
   itemsPerPage = [25,50,100,250,500];
   itemsPerPageSelected = 25;
+
+  //Filters
+  filter: any = {};
 
   colPos = {
     'BookingID':{
@@ -61,12 +65,15 @@ export class BookingListComponent implements OnInit {
 
     this.getBookings();
 
+    this.filter = {};
+
   } 
 
   getBookings(pageNum? : number){
     this.bookingService.getBookings()
       .subscribe(bookings => {
         this.bookings = bookings;
+        this.allBookings = bookings;
         this.setPage(pageNum||1);
       },
       error => this.errorMessage = <any>error);
@@ -87,6 +94,32 @@ export class BookingListComponent implements OnInit {
     // get current page of items
     this.pagedItems = this.bookings.slice(this.pager.startIndex, this.pager.endIndex + 1);
     
+  }
+
+  filterResults(filter: any){
+    console.log(filter);
+    if(filter){
+      this.bookings = this.allBookings;
+      this.bookings = this.bookings.filter((booking: IBooking) => {
+        let match = true;
+
+        match = match && filter ?
+          booking.CustomerName.toLocaleLowerCase().indexOf(filter.toLocaleLowerCase()) > -1 : match;
+        if(match){
+          console.log('Match: ' + booking.CustomerName);
+        }
+        return match;
+      });
+      this.setPage(1);
+    }else{
+      this.resetFilter();
+    }
+  }
+
+  resetFilter(){
+    this.filter = {};
+    this.bookings = this.allBookings;
+    this.setPage(1);
   }
 
   setItemsPerPage(itemPPId: number){

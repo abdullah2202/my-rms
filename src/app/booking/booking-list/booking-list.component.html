@@ -3,7 +3,12 @@
   <div class="data-toolbar">
     <div style="display: inline-flex;">
       <div class="gst-input">
-        <input matInput placeholder="Filter" value="" type="search">
+        <input  placeholder="Filter" 
+                value="" 
+                type="search"
+                #filter
+                (keyup)="filterResults(filter.value)"
+                >
       </div>
     </div>
   </div>
