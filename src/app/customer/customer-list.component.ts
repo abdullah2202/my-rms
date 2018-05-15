@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ICustomer } from '../customer';
-import { CustomerService } from '../customer.service';
-import { PagerService } from '../../services/pager.service';
-import {TableListComponent} from '../../table/table-list.component';
+import { ICustomer } from './customer';
+import { CustomerService } from './customer.service';
+import { PagerService } from '../services/pager.service';
+import {TableListComponent} from '../table/table-list.component';
 
 @Component({
   selector: 'customer-list',
-  templateUrl: '../../table/table-list.component.html',
-  styleUrls: ['../../table/table-list.component.scss']
+  templateUrl: '../table/table-list.component.html',
+  styleUrls: ['../table/table-list.component.scss']
 })
 export class CustomerListComponent extends TableListComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
   allData: ICustomer[];
 
   // Primary field for Data
-  primaryField = 'CustomerID'
+  primaryField = 'CustomerID' 
 
   sortField = 'CustomerID'
 

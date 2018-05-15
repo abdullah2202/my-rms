@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IBooking } from '../booking';
-import { BookingService } from '../booking.service';
-import { PagerService } from '../../services/pager.service';
-import {TableListComponent} from '../../table/table-list.component';
-import { MaterialAppModule } from '../../material.module';
+import { IBooking } from './booking';
+import { BookingService } from './booking.service';
+import { PagerService } from '../services/pager.service';
+import {TableListComponent} from '../table/table-list.component';
+import { MaterialAppModule } from '../material.module';
 
 /**
  * Component
  */
 @Component({
   selector: 'booking-list',
-  templateUrl: '../../table/table-list.component.html',
-  styleUrls: ['../../table/table-list.component.scss']
+  templateUrl: '../table/table-list.component.html',
+  styleUrls: ['../table/table-list.component.scss']
 })
 export class BookingListComponent extends TableListComponent implements OnInit{
 
