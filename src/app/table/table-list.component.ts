@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IBooking } from '../booking';
-import { BookingService } from '../booking.service';
-
-import { PagerService } from '../../services/pager.service';
+import { PagerService } from '../services/pager.service';
 
 import {MatButtonModule} from '@angular/material/button';
 //import { MaterialAppModule } from '../../material.module';
@@ -12,19 +9,19 @@ import {MatButtonModule} from '@angular/material/button';
  * Component
  */
 @Component({
-  selector: 'booking-list',
-  templateUrl: './booking-list.component.html',
-  styleUrls: ['./booking-list.component.scss']
+  selector: 'table-list',
+  templateUrl: './table-list.component.html',
+  styleUrls: ['./table-list.component.scss']
 })
-export class BookingListComponent implements OnInit {
+export class ListComponent implements OnInit {
 
-  data: IBooking[];
-  allData: IBooking[];
+  //Data
+  data: any = [];
+  allData: any = [];
   errorMessage: string;
 
-  primaryField = 'BookingID';
-
-  headers = [];
+  //Headers
+  
 
   selectedRows = [];
   selectedCell: string = '';
@@ -35,7 +32,7 @@ export class BookingListComponent implements OnInit {
 
   //Sort Ascending
   sortAsc = false;
-  sortField = 'BookingID';
+  sortField = '';
 
   //Used for pagination
   itemsPerPage = [25,50,100,250,500];
@@ -43,36 +40,16 @@ export class BookingListComponent implements OnInit {
 
   //Filters
   filter: any = {};
-  filterFields: any = [
-    'BookingID',
-    'Username',
-    'CustomerName',
-    'StoreName',
-    'StatusName'
-  ];
+  filterFields: any = {}
   
   constructor(
-    private bookingService: BookingService,
     private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
 
-    this.getBookings();
-
     this.filter = {};
 
-  } 
-
-  getBookings(pageNum? : number){
-    this.bookingService.getBookings()
-      .subscribe(d => {
-        this.data = d.data;
-        this.allData = d.data;
-        this.headers = d.headers;
-        this.setPage(pageNum||1);
-      },
-      error => this.errorMessage = <any>error);
   }
 
 
@@ -98,6 +75,7 @@ export class BookingListComponent implements OnInit {
       this.data = this.allData;
       this.data = this.data.filter((item) => {
         let match = true;
+        
 
         for(var i = 0; i < this.filterFields.length; i++){
           match = this.checkMatch(filter, item[this.filterFields[i]]);
@@ -134,7 +112,6 @@ export class BookingListComponent implements OnInit {
   }
 
   toggleCheckbox(i: string){
-    console.log(i);
     if(this.selectedRows.includes(i)){
       this.selectedRows.splice(
         this.selectedRows.indexOf(i),1
@@ -148,7 +125,7 @@ export class BookingListComponent implements OnInit {
   checkAll(){
     this.uncheckAll();
     for(var i=0;i<this.data.length;i++){
-        this.selectedRows.push(this.data[i][this.primaryField]);
+        this.selectedRows.push(this.data[i][0]);  //Was BookingID -> now array[0]
     }
   }
 
@@ -170,7 +147,7 @@ export class BookingListComponent implements OnInit {
 
 
 
-  sortBy(fieldName: string = 'BookingID'){
+  sortBy(fieldName: string = ''){
     
     // Invert sorting direction variable
     this.sortAsc = !this.sortAsc;
@@ -191,8 +168,5 @@ export class BookingListComponent implements OnInit {
     this.setPage(this.currentPage);
     
   }
-
-
-  
 
 }

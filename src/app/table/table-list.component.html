@@ -37,20 +37,32 @@
               >indeterminate_check_box</i>
 
               <i  class="material-icons icon-blue"
-                  *ngIf=" selectedRows && 
-                          data && 
-                          selectedRows.length==data.length && 
-                          data.length>0"
+                  *ngIf="selectedRows && data && selectedRows.length==data.length && data.length>0"
                   (click)="uncheckAll()"
               >check_box</i>
           </div>
   
           <div  class="data-heading"
-                *ngFor="let h of headers"
-                [ngStyle]="{'width':h.width}"
-                (click)="sortBy(h.field)">
-                {{h.name}}
+                [ngStyle]="colPos.BookingID"
+                (click)="sortBy('BookingID')">
+                Booking ID
           </div>
+          <div  class="data-heading"
+                [ngStyle]="colPos.UserID"
+                (click)="sortBy('Username')">
+                User ID</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Store"
+                (click)="sortBy('StoreName')">
+                Store</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Customer"
+                (click)="sortBy('CustomerName')">
+                Customer</div>
+          <div class="data-heading"
+                [ngStyle]="colPos.Status"
+                (click)="sortBy('StatusName')">
+                Status</div>
         </div>
       </div>
   
@@ -63,28 +75,37 @@
         </div>
 
         <div  class="data-row" 
-              *ngFor="let d of pagedItems"
-              [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
-              (click)="toggleCheckbox(d[primaryField])"
+              *ngFor="let booking of pagedItems"
+              [ngClass]="{'grid':gridView==true, 
+                          'selected':selectedRows.includes(booking.BookingID)
+                        }"
+              (click)="toggleCheckbox(booking.BookingID)"
               >
-
           <div  class="data-cell data-checkbox">
-            <i  class="material-icons" 
-                *ngIf="!selectedRows.includes(d[primaryField])">check_box_outline_blank</i>
-            <i  class="material-icons icon-blue" 
-                *ngIf="selectedRows.includes(d[primaryField])">check_box</i>
+            <i class="material-icons" *ngIf="!selectedRows.includes(booking.BookingID)">check_box_outline_blank</i>
+            <i class="material-icons icon-blue" *ngIf="selectedRows.includes(booking.BookingID)">check_box</i>
           </div>
-
           <div  class="data-cell" 
-                *ngFor="let h of headers"
-                [ngStyle]="{'width':h.width}"
-                >
-                <div  *ngIf="h.preText" 
-                      [ngClass]="h.preText?d.StatusCss:''"
-                      [innerHTML]="h.preText"></div>
-                {{ d[h.field] }}
-              </div>
-
+                [ngStyle]="colPos.BookingID"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'BookingID'}"
+          >{{ booking.BookingID }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.UserID"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'UserID'}"
+          >{{ booking.Username }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Store"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Store'}"
+                (dblclick)="editField(booking.BookingID,'StoreID')"
+          >{{ booking.StoreName }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Customer"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Customer'}"
+          >{{ booking.CustomerName }}</div>
+          <div class="data-cell"
+                [ngStyle]="colPos.Status"
+                [ngClass]="{'selected':selectedCell===booking.BookingID+'Status'}"
+          ><i class="booking-status material-icons {{booking.StatusCss}}">lens</i>{{ booking.StatusName }}</div>
         </div>
       </div>
   
@@ -94,8 +115,8 @@
       <div class="data-footer">
 
         <div class="data-selected-row">
-          <div class="data-footer-cell" *ngIf="selectedRows && data">
-            {{selectedRows.length}} Rows Selected ({{data.length}} Total)
+          <div class="data-footer-cell" *ngIf="selectedRows && bookings">
+            {{selectedRows.length}} Bookings Selected ({{bookings.length}} Total)
           </div>
         </div>
 

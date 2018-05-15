@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BookingModule } from './booking/booking.module';
+
 
 @Component({
   selector: 'app-root',

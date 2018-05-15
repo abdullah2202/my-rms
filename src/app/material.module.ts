@@ -15,8 +15,20 @@ const modules = [
 ];
 
 @NgModule({
+  /*
   imports: [...modules],
   exports: [...modules]
+  */
+  imports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
+  ]
 })
 export class MaterialAppModule { 
 

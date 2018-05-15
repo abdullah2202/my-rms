@@ -25,6 +25,7 @@ import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

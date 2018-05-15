@@ -7,7 +7,14 @@
 }
 
 .data-toolbar{
-    padding: 10px 0px 5px;
+    padding: 10px 50px 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-toolbar > div {
+    flex: 0 0 auto;
+    
 }
 
 .data-view{
@@ -185,11 +192,10 @@
     display: block;
 }
 
-.booking-status{
+.booking-status, .booking-status-icon{
     vertical-align: middle;
     margin-right: 10px;
     font-size: 13px;
-    line-height: 40px;
 }
 
 .status-processing{
