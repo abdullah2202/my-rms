@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ICustomer } from '../customer';
 import { CustomerService } from '../customer.service';
-
 import { PagerService } from '../../services/pager.service';
-
 import {TableListComponent} from '../../table/table-list.component';
 
 @Component({

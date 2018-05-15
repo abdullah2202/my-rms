@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PagerService } from '../services/pager.service';
-import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialAppModule } from '../material.module';
 
 /**
  * Component
@@ -47,6 +48,9 @@ export class TableListComponent implements OnInit {
     this.filter = {};
   } 
 
+  context(){
+    console.log('Context Menu');
+  }
 
   setPage(page: number = 1) {
     

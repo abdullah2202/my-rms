@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialAppModule } from './material.module';
 
+
 import { AppComponent } from './app.component';
 
 import { AppRoutesModule } from './/app-routes.module';
@@ -23,14 +24,11 @@ import { CustomerService } from './customer/customer.service';
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TableListComponent } from './table/table-list.component';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -40,6 +38,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CustomerModule,
     AppRoutesModule,
     HttpClientModule
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent
   ],
   providers: [
     ApiService,

@@ -12,11 +12,9 @@
         </div>
       </div>
   
-      <div>
-        <button mat-raised-button color="primary">Primary</button>
-        <button mat-mini-fab>Secondary</button>
+      <div class="button-row">
         <button mat-raised-button>Edit</button>
-        <button mat-raised-button>Delete</button>
+        <button mat-raised-button>Settings</button>
       </div>
     </div>
   
@@ -51,6 +49,7 @@
                   (click)="sortBy(h.field)">
                   {{h.name}}
             </div>
+
           </div>
         </div>
     
@@ -64,6 +63,7 @@
                 *ngFor="let d of pagedItems"
                 [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
                 (click)="toggleCheckbox(d[primaryField])"
+                (contextmenu)="context()"
                 >
   
             <div  class="data-cell data-checkbox">
