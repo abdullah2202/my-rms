@@ -71,9 +71,16 @@ export class TableListComponent implements OnInit {
       this.data = this.data.filter((item) => {
         let match = true;
 
+        // Iterate through the filter fields
         for(var i = 0; i < this.filterFields.length; i++){
-          match = this.checkMatch(filter, item[this.filterFields[i]]);
-          if(match){break;}
+
+          // Only check if the field has data in it
+          if(item[this.filterFields[i]].length>0){
+
+            match = this.checkMatch(filter, item[this.filterFields[i]]);
+
+          }
+          if(match){break;} // If there is a match, break the loop
         }
         return match;
       });
@@ -137,9 +144,6 @@ export class TableListComponent implements OnInit {
       return false;
     }
   }
-
-
-
 
   sortBy(fieldName: string = this.primaryField){
     

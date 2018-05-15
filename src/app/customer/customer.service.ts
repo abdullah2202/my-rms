@@ -29,7 +29,7 @@ export class CustomerService {
   getCustomers(): Observable<any> {
     return this.api.getAll(this.baseUrl)
         .map(res => {
-          return res.data;
+          return res;
         })
         ;
   }

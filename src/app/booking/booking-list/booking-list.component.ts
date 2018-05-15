@@ -1,11 +1,9 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { IBooking } from '../booking';
 import { BookingService } from '../booking.service';
 
 import { PagerService } from '../../services/pager.service';
-
-import {MatButtonModule} from '@angular/material/button';
 
 import {TableListComponent} from '../../table/table-list.component';
 
@@ -19,14 +17,17 @@ import {TableListComponent} from '../../table/table-list.component';
 })
 export class BookingListComponent extends TableListComponent implements OnInit{
 
+  // Data
   data: IBooking[];
   allData: IBooking[];
 
+  // Primary field for Data
   primaryField = 'BookingID';
 
+  // Default Sorting field
   sortField = 'BookingID';
 
-  //Filters
+  // Fields to be filtered
   filterFields: any = [
     'BookingID',
     'Username',
