@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { PagerService } from '../services/pager.service';
+
+import { IBooking } from '../booking';
+import { BookingService } from '../booking.service';
+
+import { PagerService } from '../../services/pager.service';
+
 import {MatButtonModule} from '@angular/material/button';
+//import { MaterialAppModule } from '../../material.module';
 
 /**
  * Component
  */
 @Component({
-  selector: 'table-list',
-  templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.scss']
+  selector: 'booking-list',
+  templateUrl: './booking-list.component.html',
+  styleUrls: ['./booking-list.component.scss']
 })
-export class TableListComponent implements OnInit {
+export class BookingListComponent implements OnInit {
 
-  data: any[];
-  allData: any[];
+  data: IBooking[];
+  allData: IBooking[];
   errorMessage: string;
 
-  primaryField = '';
+  primaryField = 'BookingID';
 
   headers = [];
 
@@ -29,7 +35,7 @@ export class TableListComponent implements OnInit {
 
   //Sort Ascending
   sortAsc = false;
-  sortField = this.primaryField;
+  sortField = 'BookingID';
 
   //Used for pagination
   itemsPerPage = [25,50,100,250,500];
@@ -37,15 +43,37 @@ export class TableListComponent implements OnInit {
 
   //Filters
   filter: any = {};
-  filterFields: any = [];
+  filterFields: any = [
+    'BookingID',
+    'Username',
+    'CustomerName',
+    'StoreName',
+    'StatusName'
+  ];
   
   constructor(
-    protected pagerService: PagerService
+    private bookingService: BookingService,
+    private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
+
+    this.getBookings();
+
     this.filter = {};
+
   } 
+
+  getBookings(pageNum? : number){
+    this.bookingService.getBookings()
+      .subscribe(d => {
+        this.data = d.data;
+        this.allData = d.data;
+        this.headers = d.headers;
+        this.setPage(pageNum||1);
+      },
+      error => this.errorMessage = <any>error);
+  }
 
 
   setPage(page: number = 1) {
@@ -106,6 +134,7 @@ export class TableListComponent implements OnInit {
   }
 
   toggleCheckbox(i: string){
+    console.log(i);
     if(this.selectedRows.includes(i)){
       this.selectedRows.splice(
         this.selectedRows.indexOf(i),1
