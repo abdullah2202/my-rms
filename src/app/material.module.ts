@@ -5,18 +5,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-
-const modules = [
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule
-];
-
 @NgModule({
-  /*
-  imports: [...modules],
-  exports: [...modules]
-  */
   imports: [
     MatButtonModule,
     MatFormFieldModule,
