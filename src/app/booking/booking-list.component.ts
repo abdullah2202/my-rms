@@ -3,6 +3,7 @@ import { IBooking } from './booking';
 import { BookingService } from './booking.service';
 import { PagerService } from '../services/pager.service';
 import {TableListComponent} from '../table/table-list.component';
+
 import { MaterialAppModule } from '../material.module';
 
 /**

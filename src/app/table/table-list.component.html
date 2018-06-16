@@ -15,11 +15,17 @@
       <div class="button-row">
         <button mat-raised-button>Edit</button>
         <button mat-raised-button>Settings</button>
+        <button mat-mini-fab>User</button>
       </div>
     </div>
   
+
     <div class="data-view">
       <div class="data-table">
+
+
+
+
         <div class="data-header">
           <div class="data-heading-row">
     
@@ -52,7 +58,11 @@
 
           </div>
         </div>
-    
+
+
+
+
+
         <div class="data-content">
   
           <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
@@ -86,6 +96,8 @@
           </div>
         </div>
   
+
+
         <div class="data-footer">
   
           <div class="data-selected-row">
@@ -116,6 +128,8 @@
   
           </div>
   
+
+
           <div class="data-page-info">
               <div class="data-footer-cell">
                   Per Page
@@ -132,6 +146,7 @@
                   ({{pager.totalPages}} Pages Total) 
                 </div>
           </div>
+
         </div>
       </div>
   
