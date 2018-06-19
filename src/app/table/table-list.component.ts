@@ -170,6 +170,8 @@ export class TableListComponent implements OnInit {
     // Refresh the view
     this.setPage(this.currentPage);
     
+    //TODO: Set icons states, and then display next to header items
+
   }
 
 
