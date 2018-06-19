@@ -78,6 +78,7 @@
                 *ngFor="let d of pagedItems"
                 [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
                 (click)="toggleCheckbox(d[primaryField])"
+                (dblclick)="showDetails(d[primaryField])"
                 (contextmenu)="context()"
                 >
   
