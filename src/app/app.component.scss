@@ -31,15 +31,18 @@
 
 #header-logo{
     display: inline-flex;
-    margin-right: 80px;
+    margin-right: 10px;
     flex: 0 0 auto;
+    min-width: 100px;
 }
 
 #header-search{
     display: inline-flex;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     width: 600px;
     height: 44px;
+    min-width: 100px;
+    margin-right: 10px;
     overflow: hidden;
     background-color: #fff;
     border-radius: 2px;
@@ -70,8 +73,10 @@
 }
 
 #user-control{
-    display: inline-flex;
+    display: flex;
     flex: 0 0 auto;
+    overflow-x: hidden;
+    min-width: 400px;
 }
 
 

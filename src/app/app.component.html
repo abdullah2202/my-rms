@@ -2,9 +2,7 @@
   <header id="header">
 
     <div id="header-logo">
-      <span class="header-logo-brand">
-        RMS
-      </span>
+      <button mat-button>RMS</button>
     </div>
 
     <div id="header-search">
@@ -15,10 +13,24 @@
       </div>
       <div class="header-search-button"></div>
     </div>
+    
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>Security</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Log Out</button>
+    </mat-menu>
 
-    <div id="user-controls">
-      <button mat-mini-fab>User</button>
+    <div id="user-control">
+      <button mat-button>Reports</button>
+      <button mat-button>Lists</button>
+      <button mat-button>Employees</button>
+      <button mat-button>Store</button>
+      <button mat-button>Invoices</button>
+      <button mat-button>Settings</button>
+      <button mat-button [matMenuTriggerFor]="userMenu">User</button>
     </div>
+
+    
 
   </header>
         
