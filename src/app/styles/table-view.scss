@@ -24,10 +24,12 @@
 }
 
 .data-table{
-    margin-right: 50px;
+    margin-right: 10px;
     overflow-x: scroll;
     overflow-y: hidden;
     height: calc(100vh - 153px);
+    min-width: 1024px;
+    width: calc(100vw - 295px);
     background-color: #fff;
     display: flex;
     flex-direction: column;
