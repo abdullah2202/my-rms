@@ -1,7 +1,8 @@
 <div class="main-content">
 
     <div class="data-toolbar">
-      <div>
+
+      <div class="toolbar-left">
         <div class="gst-input">
           <input  placeholder="Filter" 
                   value="" 
@@ -10,12 +11,21 @@
                   (keyup)="filterResults(filter.value)"
                   >
         </div>
+        <div class="data-selection" style="display: none;">
+          <button mat-button>Completed</button>
+          <button mat-button>Processing</button>
+          <button mat-button>Cancelled</button>
+          <button mat-button>Awaiting Parts</button>
+          <button mat-button>Deleted</button>
+          <button mat-button>Drafts</button>
+        </div>
       </div>
   
       <div class="button-row">
         <button mat-icon-button><i class="material-icons">create</i></button>
         <button mat-button>Settings</button>
       </div>
+
     </div>
   
 
