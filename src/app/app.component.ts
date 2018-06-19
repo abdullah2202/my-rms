@@ -12,6 +12,17 @@ import { MaterialAppModule } from './material.module';
 export class AppComponent {
   title = 'app';
 
+  activatedMenuItem = "";
+
+  activateMenuItem(item: string){
+    if(this.activatedMenuItem==item){
+      this.activatedMenuItem = "";
+    }else{
+      this.activatedMenuItem = item;
+    }
+    
+  }
+
   ngOnInit(): void {
     
   }
