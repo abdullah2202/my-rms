@@ -78,9 +78,32 @@
 
         </div>
 
-        <div class="side-menu-item" routerLink="/customers" routerLinkActive="active">
+        <div class="side-menu-item has-sub-menu" 
+             routerLink="/customers" 
+             routerLinkActive="active"
+             (click)="activateMenuItem('Customers')"
+             [ngClass]="{'open':activatedMenuItem=='Customers'}">
             <div class="side-menu-item-text">Customers</div>
         </div>
+
+        <div class="side-menu-sub-menu" 
+             *ngIf="activatedMenuItem=='Customers'"
+             [ngClass]="{'active':activatedMenuItem=='Customers'}">
+
+          <div class="side-menu-item" routerLink="/customers/drafts" routerLinkActive="active">
+            <div class="side-menu-item-text">Drafts</div>
+          </div>
+
+          <div class="side-menu-item" routerLink="/customers/deleted" routerLinkActive="active">
+            <div class="side-menu-item-text">Deleted</div>
+          </div>
+
+          <div class="side-menu-item" routerLink="/customers/outstanding-payments" routerLinkActive="active">
+            <div class="side-menu-item-text">Outstanding Payments</div>
+          </div>
+
+        </div>
+
 
         <div class="side-menu-item">
             <div class="side-menu-item-text">Payments</div>
