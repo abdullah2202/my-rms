@@ -5,7 +5,8 @@ import { CustomerListComponent } from './customer-list.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialAppModule
   ],
   declarations: [CustomerListComponent]
 })

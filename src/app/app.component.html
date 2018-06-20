@@ -21,13 +21,13 @@
     </mat-menu>
 
     <div id="user-control">
-      <button mat-button>Reports</button>
-      <button mat-button>Lists</button>
-      <button mat-button>Employees</button>
-      <button mat-button>Store</button>
-      <button mat-button>Invoices</button>
-      <button mat-button>Settings</button>
-      <button mat-button [matMenuTriggerFor]="userMenu">User</button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Reports"><mat-icon>trending_up</mat-icon></button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="List"><mat-icon>list</mat-icon></button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Employees"><mat-icon>group</mat-icon></button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Store Settings"><mat-icon>store</mat-icon></button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Invoices"><mat-icon>receipt</mat-icon></button>
+      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Settings"><mat-icon>settings</mat-icon></button>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">User</button>
     </div>
 
     

@@ -3,9 +3,8 @@ import { PagerService } from '../services/pager.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialAppModule } from '../material.module';
-
 /**
- * Component
+ * Component 
  */
 @Component({
   selector: 'table-list',

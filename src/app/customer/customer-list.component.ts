@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ICustomer } from './customer';
 import { CustomerService } from './customer.service';
 import { PagerService } from '../services/pager.service';
+import { MaterialAppModule } from '../material.module';
 import {TableListComponent} from '../table/table-list.component';
+
 
 @Component({
   selector: 'customer-list',
