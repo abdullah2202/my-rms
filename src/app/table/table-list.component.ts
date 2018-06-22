@@ -112,6 +112,10 @@ export class TableListComponent implements OnInit {
     this.setPage(1);
   }
 
+  showDetails(id: string){
+    console.log('Primary Field:' + id);
+  }
+
   selectCell(cell: string){
     this.selectedCell = cell;
   }

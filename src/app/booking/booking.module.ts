@@ -4,12 +4,16 @@ import { CommonModule } from '@angular/common';
 import { MaterialAppModule } from '../material.module';
 
 import { BookingListComponent } from './booking-list.component';
+import { BookingDetailComponent } from './booking-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialAppModule
   ],
-  declarations: [BookingListComponent]
+  declarations: [
+    BookingListComponent,
+    BookingDetailComponent
+  ]
 })
 export class BookingModule { }
