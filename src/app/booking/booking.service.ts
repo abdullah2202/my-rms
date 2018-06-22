@@ -20,8 +20,7 @@ export class BookingService {
     return this.api.getAll(this.baseUrl)
         .map(res => {
           return res;
-        })
-        ;
+        });
   }
 
 }
