@@ -13,13 +13,17 @@ import { MaterialAppModule } from '../material.module';
 })
 export class TableListComponent implements OnInit {
 
-  data: any[];
-  allData: any[];
+  data = [{}];
+  allData = [{}];
+  headers = [{}];
+
+  loadingData: boolean = false;
+
   errorMessage: string;
 
   primaryField = '';
 
-  headers = [];
+  
 
   selectedRows = [];
   selectedCell: string = '';
@@ -53,7 +57,7 @@ export class TableListComponent implements OnInit {
   }
 
   setPage(page: number = 1) {
-    
+    this.loadingData = true;
     this.currentPage = page;
 
     if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
@@ -66,7 +70,7 @@ export class TableListComponent implements OnInit {
     // get current page of items
     this.pagedItems = this.data.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
-
+    this.loadingData = false;
   }
 
   filterResults(filter: any){
@@ -112,10 +116,14 @@ export class TableListComponent implements OnInit {
     this.setPage(1);
   }
 
-  showDetails(id: string){
-    console.log('Primary Field:' + id);
-  }
+  // Overwritten - Reloads the data from server/api
+  refreshData(){}
 
+  // Overwritten - Show detail pages for data
+  showDetails(id: string){}
+
+
+  
   selectCell(cell: string){
     this.selectedCell = cell;
   }

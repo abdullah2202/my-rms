@@ -45,7 +45,14 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getBookings();
+    this.bookingService.booking.subscribe(
+      bookings => {
+        this.data = bookings['data'];
+        this.allData = bookings['data'];
+        this.headers = bookings['headers'];
+        this.setPage(1);
+      }
+    );
   } 
 
   //Overwrite Functions
@@ -53,17 +60,20 @@ export class BookingListComponent extends TableListComponent implements OnInit{
     this.router.navigate(['bookings', id]);
   }
 
+  refreshData(){
+    this.bookingService.getBookingsNew();
+  }
 
-
-
-
+  // Not Used - Using Behaviour Subject Now
   getBookings(pageNum? : number){
+    this.loadingData = true;
     this.bookingService.getBookings()
       .subscribe(d => {
         this.data = d.data;
         this.allData = d.data;
         this.headers = d.headers;
         this.setPage(pageNum||1);
+        this.loadingData = false;
       },
       error => this.errorMessage = <any>error);
   }
