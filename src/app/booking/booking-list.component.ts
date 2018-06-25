@@ -61,13 +61,13 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   }
 
   refreshData(){
-    this.bookingService.getBookingsNew();
+    this.bookingService.getBookings();
   }
 
   // Not Used - Using Behaviour Subject Now
   getBookings(pageNum? : number){
     this.loadingData = true;
-    this.bookingService.getBookings()
+    this.bookingService.getBookingsOld()
       .subscribe(d => {
         this.data = d.data;
         this.allData = d.data;

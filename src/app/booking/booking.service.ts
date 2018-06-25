@@ -21,7 +21,7 @@ export class BookingService {
     private api: ApiService
   ) { 
       // Run here to have results when service starts
-      this.getBookingsNew();
+      this.getBookings();
   } 
 
   /** 
@@ -29,7 +29,7 @@ export class BookingService {
    * 
    * Check if data persists without asking server for reload
    */
-  getBookingsNew(){
+  getBookings(){
     //GET OBSERVABLE FROM api service
     this.api.getAll(this.baseUrl)
       .map(res => {
@@ -42,7 +42,7 @@ export class BookingService {
   }
 
   // Not being used, using Behaviour Subject Now
-  getBookings(refresh: boolean = false): Observable<any> {
+  getBookingsOld(refresh: boolean = false): Observable<any> {
     if(refresh || typeof this.bookings === 'undefined' || !this.bookings){
       this.bookings = this.api.getAll(this.baseUrl)
       .map(res => {
