@@ -41,16 +41,6 @@ export class BookingService {
     ;
   }
 
-  // Not being used, using Behaviour Subject Now
-  getBookingsOld(refresh: boolean = false): Observable<any> {
-    if(refresh || typeof this.bookings === 'undefined' || !this.bookings){
-      this.bookings = this.api.getAll(this.baseUrl)
-      .map(res => {
-        return res;
-      });
-    }
-    return this.bookings;
-  }
 
 
 }

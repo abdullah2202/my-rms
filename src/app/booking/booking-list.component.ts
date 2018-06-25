@@ -64,18 +64,4 @@ export class BookingListComponent extends TableListComponent implements OnInit{
     this.bookingService.getBookings();
   }
 
-  // Not Used - Using Behaviour Subject Now
-  getBookings(pageNum? : number){
-    this.loadingData = true;
-    this.bookingService.getBookingsOld()
-      .subscribe(d => {
-        this.data = d.data;
-        this.allData = d.data;
-        this.headers = d.headers;
-        this.setPage(pageNum||1);
-        this.loadingData = false;
-      },
-      error => this.errorMessage = <any>error);
-  }
-
 }

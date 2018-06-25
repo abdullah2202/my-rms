@@ -12,14 +12,28 @@ import { BookingService } from './booking.service';
 export class BookingDetailComponent implements OnInit {
 
 bookingID = '';
+bookings: IBooking[];
+currentBookingID: string;
 
-constructor(private route: ActivatedRoute){
+constructor(
+    private route: ActivatedRoute,
+    private bookingService: BookingService
+){
     this.route.params.subscribe(params => {this.bookingID = params.id});
 }
 
 ngOnInit(){
 
+    // Get all bookings from service
+    this.bookingService.booking.subscribe(
+        bookings => {
+          this.bookings = bookings['data'];
+        }
+    );
 
+    // TODO: also get other details, such as customer information.
+
+    console.log(this.bookings);
 
 }
 
