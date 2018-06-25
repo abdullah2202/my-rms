@@ -33,7 +33,7 @@ ngOnInit(){
 
     // TODO: also get other details, such as customer information.
 
-    console.log(this.bookings);
+//    console.log(this.bookings);
 
 }
 

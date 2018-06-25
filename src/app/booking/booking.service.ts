@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class BookingService {
 
   private baseUrl = "bookings";
-  private bookings: Observable<any>;
+//  private bookings: Observable<any>;
   private bookingSource = new BehaviorSubject({'data':[],'headers':[]});
           booking = this.bookingSource.asObservable();
 
