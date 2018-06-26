@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
 
+import { MaterialAppModule } from '../material.module';
+
+
 @Component({
     selector: 'booking-detail',
     templateUrl: './booking-detail.component.html',
@@ -13,7 +16,9 @@ export class BookingDetailComponent implements OnInit {
 
 bookingID = '';
 bookings: IBooking[];
-currentBookingID: string;
+currentBooking: IBooking;
+
+loadingData = false;
 
 constructor(
     private route: ActivatedRoute,
@@ -23,18 +28,22 @@ constructor(
 }
 
 ngOnInit(){
+    /*
+    this.loadingData = true;
 
-    // Get all bookings from service
     this.bookingService.booking.subscribe(
-        bookings => {
-          this.bookings = bookings['data'];
+        booking => {
+            this.bookingService.getBooking(this.bookingID);
+            this.currentBooking = booking;
+            this.loadingData = false;
         }
-    );
+    );*/
 
-    // TODO: also get other details, such as customer information.
+    console.log(document.location.host);
+}
 
-//    console.log(this.bookings);
-
+loadBooking(id){
+    this.bookingService.getBooking(id);
 }
 
 }

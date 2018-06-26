@@ -45,7 +45,7 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.bookingService.booking.subscribe(
+    this.bookingService.bookingList.subscribe(
       bookings => {
         this.data = bookings['data'];
         this.allData = bookings['data'];

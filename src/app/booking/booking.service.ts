@@ -11,10 +11,16 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class BookingService {
 
   private baseUrl = "bookings";
+  
 //  private bookings: Observable<any>;
-  private bookingSource = new BehaviorSubject({'data':[],'headers':[]});
-          booking = this.bookingSource.asObservable();
 
+  // List of Bookings
+  private bookingListSource = new BehaviorSubject(this.initBookingList());
+          bookingList = this.bookingListSource.asObservable();
+
+  // One selected Booking
+  private bookingSource = new BehaviorSubject(null);
+          booking = this.bookingSource.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -36,11 +42,46 @@ export class BookingService {
         return res;
     })
     .subscribe(bookings => {
-      this.bookingSource.next(bookings);
+      this.bookingListSource.next(bookings);
     })
     ;
   }
 
+  getBooking(id){
+    
+    /*
+    this.bookingList
+    .map(
+      bookings => {
+        return bookings.find(item => item.BookingID == id);
+    })
+    .subscribe(booking => {
+      this.bookingSource.next(booking);
+    })
+    ;*/
+  }
 
+  initBooking(): IBooking{
+    return {
+      BookingID: '',
+      UserID: '',
+      Username: '',
+      StoreID: '',
+      StoreName: '',
+      CustomerID: '',
+      CustomerName: '',
+      StatusID: '',
+      StatusName: '',
+      StatusCss: ''
+    };
+  }
+
+  initBookingList(): IBooking[]{
+    let inits = [
+      this.initBooking(),
+      this.initBooking()
+    ];
+    return inits;
+  }
 
 }

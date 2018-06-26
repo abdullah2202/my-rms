@@ -41,7 +41,8 @@ import { TableListComponent } from './table/table-list.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    TableListComponent
   ],
   providers: [
     ApiService,
