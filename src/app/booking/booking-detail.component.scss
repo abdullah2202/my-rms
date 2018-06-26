@@ -1,23 +1,104 @@
-@keyframes rotating {
-    from {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-    to {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
+.toolbar{
+  width: 100%;
+  padding: 10px;
+  a{
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),
+                0 2px 2px 0 rgba(0,0,0,0.14);
   }
-  .rotating {
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 2s linear infinite;
+}
+
+
+.card-container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+
+  .card{
+    min-width: 300px;
+    overflow: hidden;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),
+                0 2px 2px 0 rgba(0,0,0,0.14),
+                0 1px 5px 0 rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    position: relative;
+    border-radius: 2px;
+    padding: 0;
+    background: #fff;
+    color: rgba(0,0,0,0.87);
+    flex: auto 0 0;
+    margin: 15px 10px;
+
+    .header{
+      font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      outline: none;
+      color: rgba(0,0,0,0.40);
+      padding: 10px 10px 15px 10px;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .content{
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+
+      .row{
+        flex: 0 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .label,.text{
+          flex: 0 0 auto;
+          max-width: 45%;
+          font-size: 16px;
+          padding: 5px 10px;
+        }
+
+        .label{
+          color: rgba(0,0,0,0.57);
+        }
+
+        .text{
+          color: rgba(0,0,0,0.87);
+        }
+      }
+
+      .row:hover{
+        background-color: rgba(0,0,0,0.04);
+      }
+      
+    }
+
+    .action{
+      padding: 15px 10px 10px 10px;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+
+      
+    }
+
   }
+
+
+}
+
+.w25{
+  width: calc(25% - 40px);
+}
+
+.w50{
+  width: calc(50% - 40px);
+}
+

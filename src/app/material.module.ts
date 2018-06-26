@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatMenuModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ],
   exports: [
     MatButtonModule,
@@ -23,7 +25,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatMenuModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ]
 })
 export class MaterialAppModule { 
