@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 export class ApiService {
 
   // Split words into characters and assign to variable (Obfuscate) 
-  //private baseUrl: string = "http://localhost:80/api/";
-  private baseUrl: string = "https://www.rmbooker.com/apitest/";
+  private baseUrl: string = "http://localhost:80/api/";
+  //private baseUrl: string = "https://www.rmbooker.com/apitest/";
 
 
   constructor(

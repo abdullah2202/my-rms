@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { catchError, map, find } from 'rxjs/operators';
 
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
@@ -14,9 +16,8 @@ import { MaterialAppModule } from '../material.module';
 })
 export class BookingDetailComponent implements OnInit {
 
+booking: IBooking;
 bookingID = '';
-bookings: IBooking[];
-currentBooking: IBooking;
 
 loadingData = false;
 
@@ -25,25 +26,17 @@ constructor(
     private bookingService: BookingService
 ){
     this.route.params.subscribe(params => {this.bookingID = params.id});
+    this.booking = this.bookingService.initBooking();
 }
 
 ngOnInit(){
-    /*
-    this.loadingData = true;
+    
+    this.bookingService.getBooking(this.bookingID);
 
-    this.bookingService.booking.subscribe(
-        booking => {
-            this.bookingService.getBooking(this.bookingID);
-            this.currentBooking = booking;
-            this.loadingData = false;
-        }
-    );*/
-
-    console.log(document.location.host);
-}
-
-loadBooking(id){
-    this.bookingService.getBooking(id);
+    this.bookingService.bookings.subscribe(data => {
+        this.booking = data[0];
+    });
+    
 }
 
 }

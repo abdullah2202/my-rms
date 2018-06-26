@@ -23,9 +23,11 @@ export class BookingService {
    */
 
   private _bookings: BehaviorSubject<any>;
+  private _headers: BehaviorSubject<any>;
 
   private dataStore: {
-    bookings: IBooking[];
+    bookings: any[];
+    headers: any[];
   }
 
   private initLoaded: boolean = false;
@@ -34,8 +36,9 @@ export class BookingService {
     private http: HttpClient,
     private api: ApiService
   ) { 
-      this.dataStore = { bookings: [] };
+      this.dataStore = { bookings: [] , headers : []};
       this._bookings = <BehaviorSubject<any>>new BehaviorSubject(this.initData());
+      this._headers = <BehaviorSubject<any>>new BehaviorSubject(this.initHeaders());
   } 
 
 
@@ -46,15 +49,23 @@ export class BookingService {
     return this._bookings.asObservable();
   }
 
+  get headers(){
+    return this._headers.asObservable();
+  }
+
   /**
    * Get all bookings from server
    */
   getAll(){
     this.api.getAll(this.baseUrl).subscribe(data => {
-      this.dataStore.bookings = data;
+
+      this.dataStore.bookings = data.data;
+      this.dataStore.headers = data.headers;
 
       // Push a new copy of the bookings list to all Subscribers
       this._bookings.next(Object.assign({}, this.dataStore).bookings);
+      this._headers.next(Object.assign({}, this.dataStore).headers);
+
     }, error => console.log('Could not load Bookings.'));
   }
 
@@ -74,17 +85,32 @@ export class BookingService {
    * 
    * @param id Booking ID 
    */
-  getBooking(id){
+  getBooking(id:string){
+    this.api.getById(this.baseUrl,id).subscribe(data => {
+      let notFound = true;
+      this.dataStore.bookings.forEach((item, index) => {
+        if(item.BookingID === data[0].BookingID){
+          // Store updated version of data
+          this.dataStore.bookings[index] = data[0];
+          notFound = false;
+        }
+      });
+
+      if(notFound){
+        this.dataStore.bookings.push(data[0]);
+        notFound = false;
+      }
+
+      this._bookings.next(Object.assign({}, this.dataStore).bookings);
+
+    }, error => console.log('Could not load booking.'));
   }
 
   /**
    * Initialize default data to display
    */
   initData(){
-    return {
-      'data' : this.initBookingList(),
-      'headers' : this.initHeaders()
-    };
+    return this.initBookingList();
   }
 
   /**

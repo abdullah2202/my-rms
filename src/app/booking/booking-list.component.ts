@@ -61,14 +61,15 @@ export class BookingListComponent extends TableListComponent implements OnInit{
      */
     this.bookingService.initialGetAll();
 
-    this.bookingService.bookings.subscribe(bookings =>{
-      this.data = bookings['data'];
-      this.allData = bookings['data'];
-      this.headers = bookings['headers'];
-      this.setPage(1);
+    this.bookingService.headers.subscribe(headers => {
+      this.headers = headers;
     });
 
-
+    this.bookingService.bookings.subscribe(bookings =>{
+      this.data = bookings;
+      this.allData = bookings;
+      this.setPage(1);
+    });
 
   } 
 
@@ -78,6 +79,7 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   }
 
   refreshData(){
+    this.bookingService.getAll();
   }
 
 }
