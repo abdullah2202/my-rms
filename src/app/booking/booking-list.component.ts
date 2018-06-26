@@ -78,7 +78,6 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   }
 
   refreshData(){
-    this.bookingService.getBookings();
   }
 
 }
