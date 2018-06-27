@@ -1,6 +1,28 @@
 .toolbar{
   width: 100%;
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;
+  .left-buttons,.right-buttons{
+    padding: 10px;
+    flex: 1 0 auto;
+  }
+  .left-buttons{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .right-buttons{
+    padding-right: 35px;
+    display: flex;
+    justify-content: flex-end;
+    button{
+      margin: 0 10px;
+      color: rgba(0,0,0,0.38);
+    }
+    button:hover{
+      color: rgba(0,0,0,0.88);
+    }
+  }
   a{
     text-decoration: none;
     padding: 10px 20px;
@@ -57,20 +79,25 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-content: stretch;
 
         .label,.text{
-          flex: 0 0 auto;
-          max-width: 45%;
           font-size: 16px;
-          padding: 5px 10px;
+          padding: 5px 15px 5px 10px;
+          overflow: hidden;
+          white-space: nowrap;
         }
 
         .label{
-          color: rgba(0,0,0,0.57);
+          flex: 0 0 auto;
+          width: 30%;
+          color: rgba(0,0,0,0.57);          
         }
 
         .text{
+          flex: 1 0 auto;
           color: rgba(0,0,0,0.87);
+          text-overflow: ellipsis;
         }
       }
 
@@ -95,10 +122,22 @@
 }
 
 .w25{
-  width: calc(25% - 40px);
+  width: calc(25% - 20px);
+}
+
+.w33{
+  width: calc(33% - 20px);
 }
 
 .w50{
-  width: calc(50% - 40px);
+  width: calc(50% - 25px);
+}
+
+.w66{
+  width: calc(66% - 20px);
+}
+
+.w75{
+  width: calc(75% - 25px);
 }
 

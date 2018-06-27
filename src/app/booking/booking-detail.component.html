@@ -1,10 +1,41 @@
 <div class="toolbar">
-    <button mat-button color="primary" (click)="goBack()">Back</button>
+    <div class="left-buttons">
+        <button mat-raised-button 
+                color="primary" 
+                (click)="goBack()">Back</button>
+    </div>
+    <div class="right-buttons">
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Save">
+                        <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Print Invoice">
+                        <mat-icon>print</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Delete">
+                        <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Download">
+                        <mat-icon>cloud_download</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Settings">
+                        <mat-icon>settings</mat-icon>
+            </button>
+    </div>
 </div>
 
 <div class="card-container">
 
-    <div class="card w25">
+    <div class="card w33">
         <div class="header">Booking Details</div>
         <div class="content">
             <div class="row">
@@ -28,7 +59,7 @@
     </div>
 
 
-    <div class="card w25">
+    <div class="card w33">
         <div class="header">Booking Status</div>
         <div class="content">
             <div class="row">
@@ -44,7 +75,7 @@
     </div>
 
 
-    <div class="card w25">
+    <div class="card w33">
         <div class="header">Customer Details</div>
         <div class="content">
             <div class="row">
@@ -69,7 +100,7 @@
         </div>
     </div>
 
-    <div class="card w50">
+    <div class="card w66">
         <div class="header">Jobs</div>
         <div class="content">
             <div class="row">
@@ -94,7 +125,7 @@
         </div>
     </div>
 
-    <div class="card w50">
+    <div class="card w33">
         <div class="header">Payments</div>
         <div class="content">
             <div class="row">
