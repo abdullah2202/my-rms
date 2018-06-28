@@ -44,19 +44,22 @@
   
       <div class="side-menu">
 
-          <div class="side-menu-item" 
-                routerLink="/" 
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                >
-              <div class="side-menu-item-text">Dashboard</div>
-          </div>
+        <div class="side-menu-add-button">
+            Add
+        </div>
 
-        <div  class="side-menu-item has-sub-menu" 
-              routerLink="/bookings" 
-              routerLinkActive="active"
-              (click)="activateMenuItem('Bookings')"
-              [ngClass]="{'open':activatedMenuItem=='Bookings'}">
+        <div class="side-menu-item" 
+             routerLink="/" 
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <div class="side-menu-item-text">Dashboard</div>
+        </div>
+
+        <div class="side-menu-item has-sub-menu" 
+             routerLink="/bookings" 
+             routerLinkActive="active"
+             (click)="activateMenuItem('Bookings')"
+             [ngClass]="{'open':activatedMenuItem=='Bookings'}">
           <div class="side-menu-item-text">Bookings</div>
         </div>
 
