@@ -3,7 +3,7 @@ import { IBooking } from './booking';
 import { BookingService } from './booking.service';
 import { PagerService } from '../services/pager.service';
 import { TableListComponent } from '../table/table-list.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
   
 import { MaterialAppModule } from '../material.module';
 
@@ -39,9 +39,13 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   constructor(
     private bookingService: BookingService,
     protected pagerService: PagerService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     super(pagerService);
+    this.route.params.subscribe(params => {
+      console.log(this.route);
+    });
   }
 
   ngOnInit(): void {

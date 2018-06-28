@@ -12,6 +12,7 @@ import { CustomerListComponent } from './customer/customer-list.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'bookings', component: BookingListComponent },
+  { path: 'bookings/processing', component: BookingListComponent, data: {sort: 'processing'} },
   { path: 'bookings/:id', component: BookingDetailComponent },
   { path: 'customers', component: CustomerListComponent }
 ];
