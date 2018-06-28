@@ -21,12 +21,28 @@
                   [ngClass]="{'rotating':loadingData}">
             <mat-icon>cached</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="View Details"><mat-icon>pageview</mat-icon></button>
-          <button mat-icon-button matTooltip="Delete Selected"><mat-icon>delete</mat-icon></button>
-          <button mat-icon-button matTooltip="Edit Selected"><mat-icon>create</mat-icon></button>
-          <button mat-icon-button matTooltip="View Columns"><mat-icon>view_column</mat-icon></button>
-          <button mat-icon-button matTooltip="Export Selected"><mat-icon>get_app</mat-icon></button>
-          <button mat-icon-button matTooltip="View Settings"><mat-icon>settings</mat-icon></button>
+
+          <span *ngIf="selectedRows && selectedRows.length==1">
+            <button mat-icon-button 
+                    matTooltip="View Details"><mat-icon>pageview</mat-icon>
+            </button>
+          </span>
+
+          <span *ngIf="selectedRows && selectedRows.length>0">
+            <button mat-icon-button 
+                    matTooltip="Delete Selected"><mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button  
+                  matTooltip="Export Selected"><mat-icon>get_app</mat-icon>
+            </button>
+          </span>
+
+          <button mat-icon-button 
+                  matTooltip="View Columns"><mat-icon>view_column</mat-icon>
+          </button>
+          <button mat-icon-button  
+                  matTooltip="View Settings"><mat-icon>settings</mat-icon>
+          </button>
       </div>
 
     </div>

@@ -191,19 +191,15 @@
 
 .data-cell{
     font-size: 13px;
-    color: rgba(0,0,0,0.87);
-    font-weight: 400;
+    color: rgba(0,0,0,0.72);
+    font-weight: 500;
     display: inline-flex;
     vertical-align: middle;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1); 
     line-height: 38px;
     border: 1px solid transparent; 
-    position: relative;
-    user-select: none;
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+    position: relative;/*
+    user-select: none;*/
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
