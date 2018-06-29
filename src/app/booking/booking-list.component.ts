@@ -27,6 +27,10 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   // Default Sorting field
   sortField = 'BookingID';
 
+  //Default to Processing in future, for dev show all
+  displaySort = '';
+  displaySortField = 'StatusName';
+
   // Fields to be filtered
   filterFields: any = [
     'BookingID',
@@ -43,12 +47,19 @@ export class BookingListComponent extends TableListComponent implements OnInit{
     private route: ActivatedRoute
   ) {
     super(pagerService);
-    this.route.params.subscribe(params => {
-      console.log(this.route);
+
+    // If a sort field as selected
+    this.route.data.subscribe(d => {
+
+      if(d.sort){
+        this.displaySort = d.sort;
+      }
+
     });
   }
 
   ngOnInit(): void {
+
     this.bookingService.initialGetAll();
 
     this.bookingService.headers.subscribe(headers => {
@@ -61,7 +72,27 @@ export class BookingListComponent extends TableListComponent implements OnInit{
       this.setPage(1);
     });
 
+    this.selectData(this.displaySort);
+
   } 
+
+  /**
+   * Select the type of bookings to display
+   * 
+   * In production set this to default as processing
+   * 
+   * @param sort: string - the type of data to filter by
+   * 
+   */
+  selectData(sort: string){
+    if(sort && sort.length>0){
+      this.filterResults(sort,this.displaySortField,true);
+    }else{
+      // Default - uncomment in production
+//      this.displaySort = 'processing';
+//      this.selectData(this.displaySort);
+    } 
+  }
 
   //Overwrite Functions
   showDetails(id: string){

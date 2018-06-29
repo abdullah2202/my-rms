@@ -80,7 +80,9 @@
             <div  class="data-heading"
                   *ngFor="let h of headers"
                   [ngStyle]="{'width':h.width}"
-                  (click)="sortBy(h.field)">
+                  (click)="sortBy(h.field)"
+                  [ngClass]="{'sort-icon':sortField==h.field,'desc':!sortAsc}"
+                  >
                   {{h.name}}
             </div>
 

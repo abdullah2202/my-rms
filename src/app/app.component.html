@@ -67,16 +67,41 @@
              *ngIf="activatedMenuItem=='Bookings'"
              [ngClass]="{'active':activatedMenuItem=='Bookings'}">
 
-          <div class="side-menu-item" routerLink="/bookings/processing" routerLinkActive="active">
+          <div class="side-menu-item" 
+               routerLink="/bookings" 
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }">
+            <div class="side-menu-item-text">All</div>
+          </div>
+
+          <div class="side-menu-item" 
+               routerLink="/bookings/processing" 
+               routerLinkActive="active">
             <div class="side-menu-item-text">Processing</div>
           </div>
 
-          <div class="side-menu-item" routerLink="/bookings/completed" routerLinkActive="active">
+          <div class="side-menu-item" 
+               routerLink="/bookings/completed" 
+               routerLinkActive="active">
             <div class="side-menu-item-text">Completed</div>
           </div>
 
-          <div class="side-menu-item" routerLink="/bookings/awaiting-action" routerLinkActive="active">
+          <div class="side-menu-item" 
+               routerLink="/bookings/cancelled" 
+               routerLinkActive="active">
+            <div class="side-menu-item-text">Cancelled</div>
+          </div>
+
+          <div class="side-menu-item" 
+               routerLink="/bookings/awaiting-action" 
+               routerLinkActive="active">
             <div class="side-menu-item-text">Awaiting Action</div>
+          </div>
+
+          <div class="side-menu-item" 
+               routerLink="/bookings/awaiting-parts" 
+               routerLinkActive="active">
+            <div class="side-menu-item-text">Awaiting Parts</div>
           </div>
 
         </div>
