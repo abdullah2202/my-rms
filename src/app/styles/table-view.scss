@@ -93,9 +93,56 @@
 
 .data-heading{
     position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .heading-wrapper{
+        display: flex;
+
+        .heading-text{
+            overflow: hidden;
+            max-height: 56px;
+        }
+
+        .sort-icon{
+            flex: 0 0 auto;
+            max-height: 18px;
+            min-width: 18px;
+        }
+    }
+
+    .resize-bar{
+        flex: 0 0 auto;
+        position: relative;
+        height: 56px;
+        width: 20px;
+        top: 3px;
+        right: 0;
+        cursor: col-resize;
+    }
+
+    .resize-bar:after{
+        content: "";
+        border-left: 1px solid rgba(0,0,0,0.03);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        top: 0;
+        bottom: 0;
+        transition: all 200ms cubic-bezier(0.25, 0.8, 0.25, 1.0);
+    }
+
+    .resize-bar:hover:after{
+        border-right: 1px solid rgba(0,0,0,0.34);
+    }
+
 }
 
-.sort-icon:after{
+.data-heading:hover{
+    color: rgba(0,0,0,0.55);
+}
+
+.sorted .heading-wrapper .sort-icon{
     content: '';
     background: no-repeat 0 0 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkBAMAAAATLoWrAAAAIVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt0UjBAAAAC3RSTlMAVywvAzg/Q1RGJXvAx/IAAAB0SURBVCjPYxg4oCg0JIQcMIRYp8CEWBdAhQwlHaBCgVIwYwRLIEKsgjDdzILiDmChQEEDBphOwRKgEFCRMJCDUKYoxJIIUoRQlqIo5AZWhFAmZigMVYRQ1igBVYRQBgRQRQhlMEUIZQhFCGVwRQhlcEX0BwBR/g5aDRRongAAAABJRU5ErkJggg==');
     background-size: 100%;
@@ -106,7 +153,7 @@
     transition: all 200ms cubic-bezier(0.25, 0.8, 0.25, 1.0);
 }
 
-.desc:after{
+.desc .heading-wrapper .sort-icon{
     transform: rotate(180deg);
 }
 
@@ -118,8 +165,14 @@
     display: inline-flex;
     vertical-align: middle;
     padding: 0;
-    border: 1px solid transparent;
+    overflow: hidden;
     cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 
@@ -221,7 +274,6 @@
     vertical-align: middle;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1); 
     line-height: 38px;
-    border: 1px solid transparent; 
     position: relative;/*
     user-select: none;*/
     white-space: nowrap; 

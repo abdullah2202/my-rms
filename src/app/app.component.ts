@@ -10,20 +10,28 @@ import { MaterialAppModule } from './material.module';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
 
-  activatedMenuItem = "";
 
-  activateMenuItem(item: string){
-    if(this.activatedMenuItem==item){
-      this.activatedMenuItem = "";
-    }else{
-      this.activatedMenuItem = item;
-    }
-    
+title = 'RMS APP';
+activatedMenuItem = "";
+
+/**
+ * Toggles visibility of activated sub menu
+ * @param item 
+ */
+activateMenuItem(item: string){
+  if(this.activatedMenuItem==item){
+    this.activatedMenuItem = "";
+  }else{
+    this.activatedMenuItem = item;
   }
+  
+}
 
-  ngOnInit(): void {
-    
-  }
+ngOnInit(): void {
+  
+}
+
+
+
 }

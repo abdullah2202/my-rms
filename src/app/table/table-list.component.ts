@@ -260,6 +260,13 @@ export class TableListComponent implements OnInit {
   }
 
   /**
+   * Reduces the header file by 20px;
+   */
+  headerSize(width){
+    return width - 20;
+  }
+
+  /**
    * 
    * Sorts the results into ascending or descending 
    * 

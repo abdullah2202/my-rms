@@ -1,188 +1,199 @@
 <div class="main-content">
 
-    <div class="data-toolbar">
+<!-- Toolbar -->
+<div class="data-toolbar">
 
-      <div class="toolbar-left">
-        <div class="gst-input">
-          <input  placeholder="Filter" 
-                  value="" 
-                  type="search"
-                  #filter
-                  (keyup)="filterResults(filter.value)"
-                  >
+  <!-- Toolbar Left Align -->
+  <div class="toolbar-left">
+    <div class="gst-input">
+      <input  placeholder="Filter" 
+              value="" 
+              type="search"
+              #filter
+              (keyup)="filterResults(filter.value)"
+              >
+    </div>
+
+  <!-- END Toolbar Left Align -->
+  </div>
+
+
+  <!-- Toolbar Right Align -->
+  <div class="button-row">
+      <button mat-icon-button 
+              matTooltip="Refresh" 
+              (click)="refreshData()"
+              [ngClass]="{'rotating':loadingData}">
+        <mat-icon>cached</mat-icon>
+      </button>
+
+      <span *ngIf="selectedRows && selectedRows.length==1">
+        <button mat-icon-button 
+                matTooltip="View Details"><mat-icon>pageview</mat-icon>
+        </button>
+      </span>
+
+      <span *ngIf="selectedRows && selectedRows.length>0">
+        <button mat-icon-button 
+                matTooltip="Delete Selected"><mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button  
+              matTooltip="Export Selected"><mat-icon>get_app</mat-icon>
+        </button>
+      </span>
+
+      <button mat-icon-button 
+              matTooltip="Select Columns"><mat-icon>view_column</mat-icon>
+      </button>
+      <button mat-icon-button  
+              matTooltip="View Settings"><mat-icon>settings</mat-icon>
+      </button>
+
+  <!-- End Button Row / Right Align -->
+  </div>
+
+<!-- End Toolbar -->
+</div>
+
+<!-- View / Content -->
+<div class="data-view">
+  <div class="data-table">
+
+
+    <div class="data-header">
+      <div class="data-heading-row">
+
+        <div  class="data-heading data-checkbox">
+            <i  class="material-icons"
+                *ngIf="selectedRows && selectedRows.length==0"
+                (click)="checkAll()" 
+            >check_box_outline_blank</i>
+
+            <i  class="material-icons"
+                *ngIf="isSomeChecked()"
+                (click)="checkAll()"
+            >indeterminate_check_box</i>
+
+            <i  class="material-icons icon-blue"
+                *ngIf=" selectedRows && 
+                        data && 
+                        selectedRows.length==data.length && 
+                        data.length>0"
+                (click)="uncheckAll()"
+            >check_box</i>
+        </div>
+
+        <div  class="data-heading"
+              *ngFor="let h of headers"
+              [ngStyle]="{'width': h.width}"
+              (click)="sortBy(h.field)"
+              [ngClass]="{'sorted':sortField==h.field,'desc':!sortAsc}"
+              >
+              <div class="heading-wrapper">
+                <div class="heading-text">{{h.name}}</div>
+                <div class="sort-icon"></div>
+              </div>
+              <div class="resize-bar"></div>
         </div>
 
       </div>
-  
-      <div class="button-row">
-          <button mat-icon-button 
-                  matTooltip="Refresh" 
-                  (click)="refreshData()"
-                  [ngClass]="{'rotating':loadingData}">
-            <mat-icon>cached</mat-icon>
-          </button>
+    </div>
 
-          <span *ngIf="selectedRows && selectedRows.length==1">
-            <button mat-icon-button 
-                    matTooltip="View Details"><mat-icon>pageview</mat-icon>
-            </button>
-          </span>
 
-          <span *ngIf="selectedRows && selectedRows.length>0">
-            <button mat-icon-button 
-                    matTooltip="Delete Selected"><mat-icon>delete</mat-icon>
-            </button>
-            <button mat-icon-button  
-                  matTooltip="Export Selected"><mat-icon>get_app</mat-icon>
-            </button>
-          </span>
 
-          <button mat-icon-button 
-                  matTooltip="Select Columns"><mat-icon>view_column</mat-icon>
-          </button>
-          <button mat-icon-button  
-                  matTooltip="View Settings"><mat-icon>settings</mat-icon>
-          </button>
+
+
+    <div class="data-content">
+
+      <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
+        <div class="no-results">No Results for <span class="filter-word">{{filter.value}}</span></div>
+      </div>
+
+      <div  class="data-row" 
+            *ngFor="let d of pagedItems"
+            [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
+            (click)="toggleCheckbox(d[primaryField])"
+            (dblclick)="showDetails(d[primaryField])"
+            (contextmenu)="context()"
+            >
+
+        <div  class="data-cell data-checkbox">
+          <i  class="material-icons" 
+              *ngIf="!selectedRows.includes(d[primaryField])">check_box_outline_blank</i>
+          <i  class="material-icons icon-blue" 
+              *ngIf="selectedRows.includes(d[primaryField])">check_box</i>
+        </div>
+
+        <div  class="data-cell" 
+              *ngFor="let h of headers"
+              [ngStyle]="{'width':h.width}"
+              >
+              <div  *ngIf="h.preText" 
+                    [ngClass]="h.preText?d.StatusCss:''"
+                    [innerHTML]="h.preText"></div>
+              {{ d[h.field] }}
+            </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="data-footer">
+
+      <div class="data-selected-row">
+        <div class="data-footer-cell" *ngIf="selectedRows && data">
+          {{selectedRows.length}} Rows Selected ({{data.length}} Total)
+        </div>
+      </div>
+
+
+      <div class="data-pagination">
+        <div class="data-pagination-cell">
+          <a (click)="setPage(1)">&lt;&lt;</a>
+        </div>
+        <div class="data-pagination-cell">
+            <a (click)="setPage(pager.currentPage - 1)">&lt;</a>
+        </div>
+        <div class="data-pagination-cell"
+            *ngFor="let page of pager.pages"
+            [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+        </div>
+        <div class="data-pagination-cell">
+            <a (click)="setPage(pager.currentPage + 1)">&gt;</a>
+        </div>
+        <div class="data-pagination-cell">
+            <a (click)="setPage(pager.totalPages)">&gt;&gt;</a>
+        </div>
+
+      </div>
+
+
+
+      <div class="data-page-info">
+          <div class="data-footer-cell">
+              Per Page
+            </div>
+            <div class="data-footer-cell">
+              <select class="form-control"
+                      (change)="setItemsPerPage($event.target.value)">
+                <option *ngFor="let item of itemsPerPage" value={{item}}>
+                  {{item}}
+                </option>
+              </select>
+            </div>
+            <div class="data-footer-cell">
+              ({{pager.totalPages}} Pages Total) 
+            </div>
       </div>
 
     </div>
-  
+  </div>
 
-    <div class="data-view">
-      <div class="data-table">
-
+</div>
 
 
+</div>
 
-        <div class="data-header">
-          <div class="data-heading-row">
-    
-            <div  class="data-heading data-checkbox">
-                <i  class="material-icons"
-                    *ngIf="selectedRows && selectedRows.length==0"
-                    (click)="checkAll()" 
-                >check_box_outline_blank</i>
-  
-                <i  class="material-icons"
-                    *ngIf="isSomeChecked()"
-                    (click)="checkAll()"
-                >indeterminate_check_box</i>
-  
-                <i  class="material-icons icon-blue"
-                    *ngIf=" selectedRows && 
-                            data && 
-                            selectedRows.length==data.length && 
-                            data.length>0"
-                    (click)="uncheckAll()"
-                >check_box</i>
-            </div>
-    
-            <div  class="data-heading"
-                  *ngFor="let h of headers"
-                  [ngStyle]="{'width':h.width}"
-                  (click)="sortBy(h.field)"
-                  [ngClass]="{'sort-icon':sortField==h.field,'desc':!sortAsc}"
-                  >
-                  {{h.name}}
-            </div>
-
-          </div>
-        </div>
-
-
-
-
-
-        <div class="data-content">
-  
-          <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
-            <div class="no-results">No Results for <span class="filter-word">{{filter.value}}</span></div>
-          </div>
-  
-          <div  class="data-row" 
-                *ngFor="let d of pagedItems"
-                [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
-                (click)="toggleCheckbox(d[primaryField])"
-                (dblclick)="showDetails(d[primaryField])"
-                (contextmenu)="context()"
-                >
-  
-            <div  class="data-cell data-checkbox">
-              <i  class="material-icons" 
-                  *ngIf="!selectedRows.includes(d[primaryField])">check_box_outline_blank</i>
-              <i  class="material-icons icon-blue" 
-                  *ngIf="selectedRows.includes(d[primaryField])">check_box</i>
-            </div>
-  
-            <div  class="data-cell" 
-                  *ngFor="let h of headers"
-                  [ngStyle]="{'width':h.width}"
-                  >
-                  <div  *ngIf="h.preText" 
-                        [ngClass]="h.preText?d.StatusCss:''"
-                        [innerHTML]="h.preText"></div>
-                  {{ d[h.field] }}
-                </div>
-  
-          </div>
-        </div>
-  
-
-
-        <div class="data-footer">
-  
-          <div class="data-selected-row">
-            <div class="data-footer-cell" *ngIf="selectedRows && data">
-              {{selectedRows.length}} Rows Selected ({{data.length}} Total)
-            </div>
-          </div>
-  
-  
-          <div class="data-pagination">
-            <div class="data-pagination-cell">
-              <a (click)="setPage(1)">&lt;&lt;</a>
-            </div>
-            <div class="data-pagination-cell">
-                <a (click)="setPage(pager.currentPage - 1)">&lt;</a>
-            </div>
-            <div class="data-pagination-cell"
-                *ngFor="let page of pager.pages"
-                [ngClass]="{active:pager.currentPage === page}">
-                <a (click)="setPage(page)">{{page}}</a>
-            </div>
-            <div class="data-pagination-cell">
-                <a (click)="setPage(pager.currentPage + 1)">&gt;</a>
-            </div>
-            <div class="data-pagination-cell">
-                <a (click)="setPage(pager.totalPages)">&gt;&gt;</a>
-            </div>
-  
-          </div>
-  
-
-
-          <div class="data-page-info">
-              <div class="data-footer-cell">
-                  Per Page
-                </div>
-                <div class="data-footer-cell">
-                  <select class="form-control"
-                          (change)="setItemsPerPage($event.target.value)">
-                    <option *ngFor="let item of itemsPerPage" value={{item}}>
-                      {{item}}
-                    </option>
-                  </select>
-                </div>
-                <div class="data-footer-cell">
-                  ({{pager.totalPages}} Pages Total) 
-                </div>
-          </div>
-
-        </div>
-      </div>
-  
-    </div>
-  
-    </div>
-    
      

@@ -1,170 +1,235 @@
 <div class="app-view">
-  <header id="header">
 
-    <div id="header-logo">
-      <button mat-button>RMS</button>
+
+<header id="header">
+
+<div id="header-logo">
+  <button mat-button>RMS</button>
+</div>
+
+
+<div id="header-search">
+  <div class="header-search-wrapper">
+    <div style="position: relative;">
+      <input placeholder="Search" type="search" class="header-search-input"/>
     </div>
-
-    <div id="header-search">
-      <div class="header-search-wrapper">
-        <div style="position: relative;">
-          <input placeholder="Search" type="search" class="header-search-input"/>
-        </div>
-      </div>
-      <div class="header-search-button"></div>
-    </div>
-    
-    <mat-menu #userMenu="matMenu">
-        <button mat-menu-item>Security</button>
-        <button mat-menu-item>Settings</button>
-        <button mat-menu-item>Log Out</button>
-    </mat-menu>
-
-    <div id="user-control">
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Reports"><mat-icon>trending_up</mat-icon></button>
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="List"><mat-icon>list</mat-icon></button>
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Employees"><mat-icon>group</mat-icon></button>
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Store Settings"><mat-icon>store</mat-icon></button>
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Invoices"><mat-icon>receipt</mat-icon></button>
-      <button mat-icon-button matTooltipClass="header-tooltip" matTooltip="Settings"><mat-icon>settings</mat-icon></button>
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">User</button>
-    </div>
-
-    
-
-  </header>
-        
-  <div class="main">
- 
-  
-
-  <div class="wrapper">
-    
-    <div class="left-wrapper">
-  
-      <div class="side-menu">
-
-        <div class="side-menu-add-button">
-            Add
-        </div>
-
-        <div class="side-menu-item" 
-             routerLink="/" 
-             routerLinkActive="active"
-             [routerLinkActiveOptions]="{ exact: true }">
-            <div class="side-menu-item-text">Dashboard</div>
-        </div>
-
-        <div class="side-menu-item has-sub-menu" 
-             routerLink="/bookings" 
-             routerLinkActive="active"
-             (click)="activateMenuItem('Bookings')"
-             [ngClass]="{'open':activatedMenuItem=='Bookings'}">
-          <div class="side-menu-item-text">Bookings</div>
-        </div>
-
-        <div class="side-menu-sub-menu" 
-             *ngIf="activatedMenuItem=='Bookings'"
-             [ngClass]="{'active':activatedMenuItem=='Bookings'}">
-
-          <div class="side-menu-item" 
-               routerLink="/bookings" 
-               routerLinkActive="active"
-               [routerLinkActiveOptions]="{ exact: true }">
-            <div class="side-menu-item-text">All</div>
-          </div>
-
-          <div class="side-menu-item" 
-               routerLink="/bookings/processing" 
-               routerLinkActive="active">
-            <div class="side-menu-item-text">Processing</div>
-          </div>
-
-          <div class="side-menu-item" 
-               routerLink="/bookings/completed" 
-               routerLinkActive="active">
-            <div class="side-menu-item-text">Completed</div>
-          </div>
-
-          <div class="side-menu-item" 
-               routerLink="/bookings/cancelled" 
-               routerLinkActive="active">
-            <div class="side-menu-item-text">Cancelled</div>
-          </div>
-
-          <div class="side-menu-item" 
-               routerLink="/bookings/awaiting-action" 
-               routerLinkActive="active">
-            <div class="side-menu-item-text">Awaiting Action</div>
-          </div>
-
-          <div class="side-menu-item" 
-               routerLink="/bookings/awaiting-parts" 
-               routerLinkActive="active">
-            <div class="side-menu-item-text">Awaiting Parts</div>
-          </div>
-
-        </div>
-
-        <div class="side-menu-item has-sub-menu" 
-             routerLink="/customers" 
-             routerLinkActive="active"
-             (click)="activateMenuItem('Customers')"
-             [ngClass]="{'open':activatedMenuItem=='Customers'}">
-            <div class="side-menu-item-text">Customers</div>
-        </div>
-
-        <div class="side-menu-sub-menu" 
-             *ngIf="activatedMenuItem=='Customers'"
-             [ngClass]="{'active':activatedMenuItem=='Customers'}">
-
-          <div class="side-menu-item" routerLink="/customers/drafts" routerLinkActive="active">
-            <div class="side-menu-item-text">Drafts</div>
-          </div>
-
-          <div class="side-menu-item" routerLink="/customers/deleted" routerLinkActive="active">
-            <div class="side-menu-item-text">Deleted</div>
-          </div>
-
-          <div class="side-menu-item" routerLink="/customers/outstanding-payments" routerLinkActive="active">
-            <div class="side-menu-item-text">Outstanding Payments</div>
-          </div>
-
-        </div>
-
-
-        <div class="side-menu-item">
-            <div class="side-menu-item-text">Payments</div>
-        </div>
-
-        <div class="side-menu-item">
-            <div class="side-menu-item-text">Bookings</div>
-        </div>
-
-      </div>
-
-      <div class="app-info">
-        <span>RMS App Version 0.1 (18.06.19)</span>
-      </div>
-
-    </div>
-  
-    <div class="right-wrapper">
-
-      <!-- Place Router Code Here -->
-      <router-outlet></router-outlet>
-      
-    </div>
-    
-
-
   </div>
-     
-    
+  <div class="header-search-button"></div>
+</div>
+
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item>Security</button>
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Log Out</button>
+</mat-menu>
+
+
+<div id="user-control">
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="Reports">
+          <mat-icon>trending_up</mat-icon>
+  </button>
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="List">
+          <mat-icon>list</mat-icon>
+  </button>
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="Employees">
+          <mat-icon>group</mat-icon>
+  </button>
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="Store Settings">
+          <mat-icon>store</mat-icon>
+  </button>
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="Invoices">
+          <mat-icon>receipt</mat-icon>
+  </button>
+  <button mat-icon-button 
+          matTooltipClass="header-tooltip" 
+          matTooltip="Settings">
+          <mat-icon>settings</mat-icon>
+  </button>
+  <button mat-icon-button 
+          [matMenuTriggerFor]="userMenu">
+          User
+  </button>
+</div>
+  
+</header>
 
 
 
-  </div>
-  <div id="footer">Footer</div>
 
+<div class="main">
+
+<div class="wrapper">
+
+<div class="left-wrapper">
+
+<div class="side-menu">
+  
+
+<!-- Add New Booking Button -->
+<div class="side-menu-add-button">
+    Add
+</div>
+
+<!-- Dashboard -->
+<div class="side-menu-item" 
+      routerLink="/" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+    <div class="side-menu-item-text">Dashboard</div>
+</div>
+
+<!-- Bookings -->
+<div class="side-menu-item has-sub-menu" 
+      routerLink="/bookings" 
+      routerLinkActive="active"
+      (click)="activateMenuItem('Bookings')"
+      [ngClass]="{'open':activatedMenuItem=='Bookings'}">
+  <div class="side-menu-item-text">Bookings</div>
+</div>
+
+<!-- Bookings Sub Menu -->
+<div class="side-menu-sub-menu" 
+      *ngIf="activatedMenuItem=='Bookings'"
+      [ngClass]="{'active':activatedMenuItem=='Bookings'}">
+
+<!-- All Bookings -->
+<div class="side-menu-item" 
+      routerLink="/bookings" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+  <div class="side-menu-item-text">All</div>
+</div>
+
+<!-- Bookings Processing -->
+<div class="side-menu-item" 
+      routerLink="/bookings/processing" 
+      routerLinkActive="active">
+  <div class="side-menu-item-text">Processing</div>
+</div>
+
+<!-- Bookings Completed -->
+<div class="side-menu-item" 
+      routerLink="/bookings/completed" 
+      routerLinkActive="active">
+  <div class="side-menu-item-text">Completed</div>
+</div>
+
+<!-- Bookings Cancelled -->
+<div class="side-menu-item" 
+      routerLink="/bookings/cancelled" 
+      routerLinkActive="active">
+  <div class="side-menu-item-text">Cancelled</div>
+</div>
+
+<!-- Bookings Awaiting Action -->
+<div class="side-menu-item" 
+      routerLink="/bookings/awaiting-action" 
+      routerLinkActive="active">
+  <div class="side-menu-item-text">Awaiting Action</div>
+</div>
+
+<!-- Bookings Awaiting Parts -->
+<div class="side-menu-item" 
+      routerLink="/bookings/awaiting-parts" 
+      routerLinkActive="active">
+  <div class="side-menu-item-text">Awaiting Parts</div>
+</div>
+
+</div><!-- End Bookings Sub Menu -->
+
+
+
+<!-- Customers -->
+<div class="side-menu-item has-sub-menu" 
+      routerLink="/customers" 
+      routerLinkActive="active"
+      (click)="activateMenuItem('Customers')"
+      [ngClass]="{'open':activatedMenuItem=='Customers'}">
+    <div class="side-menu-item-text">Customers</div>
+</div>
+
+<!-- Customers Sub Menu -->
+<div class="side-menu-sub-menu" 
+      *ngIf="activatedMenuItem=='Customers'"
+      [ngClass]="{'active':activatedMenuItem=='Customers'}">
+
+<!-- All Customers -->
+<div class="side-menu-item" 
+     routerLink="/customers" 
+     routerLinkActive="active">
+  <div class="side-menu-item-text">All</div>
+</div>
+
+<!-- Deleted Customers -->
+<div class="side-menu-item" 
+     routerLink="/customers/deleted" 
+     routerLinkActive="active">
+  <div class="side-menu-item-text">Deleted</div>
+</div>
+
+<!-- Customers with Outstanding Payments -->
+<div class="side-menu-item" 
+     routerLink="/customers/outstanding-payments" 
+     routerLinkActive="active">
+  <div class="side-menu-item-text">Outstanding Payments</div>
+</div>
+
+</div><!-- End Customers Sub Menu -->
+
+
+<div class="side-menu-item">
+    <div class="side-menu-item-text">Payments</div>
+</div>
+
+<div class="side-menu-item">
+    <div class="side-menu-item-text">Bookings</div>
+</div>
+
+
+<!-- End Side menu -->
+</div>
+
+
+<div class="app-info">
+  <span>RMS App Version 0.1 (18.06.19)</span>
+</div>
+
+
+<!-- End Left Wrapper -->
+</div>
+
+
+<!-- Right Wrapper -->
+<div class="right-wrapper">
+
+  <!-- Place Router Code Here -->
+  <router-outlet></router-outlet>
+
+<!-- End Right Wrapper -->
+</div>
+  
+
+<!-- End Wrapper -->
+</div>
+
+
+<!-- End Main -->
+</div>
+
+
+<!-- Footer -->
+<div id="footer">Footer</div>
+
+<!-- End App View -->
 </div>

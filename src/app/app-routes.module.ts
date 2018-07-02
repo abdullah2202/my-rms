@@ -11,12 +11,12 @@ import { CustomerListComponent } from './customer/customer-list.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'bookings', component: BookingListComponent },
   { path: 'bookings/completed', component: BookingListComponent, data: {sort: 'completed'} },
   { path: 'bookings/cancelled', component: BookingListComponent, data: {sort: 'cancelled'} },
   { path: 'bookings/processing', component: BookingListComponent, data: {sort: 'processing'} },
   { path: 'bookings/awaiting-action', component: BookingListComponent, data: {sort: 'awaiting action'} },
   { path: 'bookings/awaiting-parts', component: BookingListComponent, data: {sort: 'awaiting parts'} },
+  { path: 'bookings', component: BookingListComponent },
   { path: 'bookings/:id', component: BookingDetailComponent },
   { path: 'customers', component: CustomerListComponent }
 ];
