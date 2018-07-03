@@ -320,28 +320,19 @@ export class TableListComponent implements OnInit {
    */
   headerSizeMove(event: MouseEvent){
     if(this.isMouseDown){
- 
-      // console.log(event);
-      // console.log(event.target['offsetLeft']);
-      // let test = event.target['offsetLeft'] + 20;
-      // console.log('width: '+test+'px');
-
       //Min Width = 100px
       if(
         (this.headers[this.columnArrayLoc]['width']+event.movementX) > this.minColWidth
       ){
         this.headers[this.columnArrayLoc]['width']+=event.movementX;
-      //  console.log(event.clientX);
       }else{
         this.isMouseDown = false;
-      //  console.log('Min: '+ this.headers[this.columnArrayLoc]['width']+event.movementX);
       }
       
     }
   }
 
   /**
-   * 
    * @param event Called when mouse leaves header row
    */
   headerMouseLeave(){
