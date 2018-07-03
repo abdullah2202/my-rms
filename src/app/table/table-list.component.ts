@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PagerService } from '../services/pager.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MaterialAppModule } from '../material.module';
 /**
  * Component 
  */
@@ -83,8 +80,8 @@ export class TableListComponent implements OnInit {
    * Called when context menu is called on table
    * 
    */
-  context(){
-    console.log('Context Menu');
+  context(e: MouseEvent){
+    console.log(e);
   }
 
   /**
