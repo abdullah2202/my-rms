@@ -50,28 +50,33 @@ export class BookingListComponent extends TableListComponent implements OnInit{
 
     // If a sort field as selected
     this.route.data.subscribe(d => {
-
       if(d.sort){
         this.displaySort = d.sort;
       }
-
     });
   }
 
   ngOnInit(): void {
 
+    // Get Initial Data - Stops from accessing server everytime
+    // component loads
     this.bookingService.initialGetAll();
 
+    // Get Headers from service
     this.bookingService.headers.subscribe(headers => {
       this.headers = headers;
     });
 
+    // Get Data from service
     this.bookingService.bookings.subscribe(bookings =>{
       this.data = bookings;
       this.allData = bookings;
+
+      // Set to page 1
       this.setPage(1);
     });
 
+    // Sort the data (Processig, Completed etc)
     this.selectData(this.displaySort);
 
   } 

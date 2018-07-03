@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PagerService } from '../services/pager.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,21 +13,48 @@ import { MaterialAppModule } from '../material.module';
 })
 export class TableListComponent implements OnInit {
 
+  // Data which is used and filtered
   data = [{}];
+
+  // All data, unfiltered
   allData = [{}];
+
+  // Headers
   headers = [{}];
 
+  // Array of widths of columns
+  columnWidths = [{}];
+
+  /**
+   * Variables for Mouse Handling and Dragging
+   * for changing column widths
+   */
+  isMouseDown: boolean = false;
+  columnArrayLoc = 0;
+  minColWidth = 100;
+
+  // True if loading is happening
   loadingData: boolean = false;
 
+  // An Error message to display somehwere - not implemented yet
   errorMessage: string;
 
+  // Primary field for data beign displayed
   primaryField = '';  
 
+  // Array of selected rows
   selectedRows = [];
+
+  // Cell ID of selected Cell - Not implemented
   selectedCell: string = '';
 
+  // Pagination Object
   pager: any = {};
+
+  // Array of paged results
   pagedItems: any[];
+
+  // Current displayed page
   currentPage: number = 1;
 
   //Sort Ascending
@@ -260,10 +287,74 @@ export class TableListComponent implements OnInit {
   }
 
   /**
-   * Reduces the header file by 20px;
+   * Mouse Down on Column Width Change
    */
-  headerSize(width){
-    return width - 20;
+  headerSizeDown(event: MouseEvent, headerID){
+    if(!this.isMouseDown){
+      this.isMouseDown = true;
+
+      // Saves the array location so array search isn't on movement of mouse
+      for(var i = 0; i < this.headers.length; i++){
+        if(this.headers[i]['id']===headerID){
+          this.columnArrayLoc = i;
+          break;
+        }
+      }
+    }else{
+      this.isMouseDown = false;
+    }
+  }
+
+  /**
+   * Mouse Up on Column Width Change
+   */
+  headerSizeUp(){
+    if(this.isMouseDown){
+      this.isMouseDown = false;
+    }
+  }
+
+ /**
+   * Called When Mouse is moving
+   * @param event Mouse Event from element
+   */
+  headerSizeMove(event: MouseEvent){
+    if(this.isMouseDown){
+ 
+      // console.log(event);
+      // console.log(event.target['offsetLeft']);
+      // let test = event.target['offsetLeft'] + 20;
+      // console.log('width: '+test+'px');
+
+      //Min Width = 100px
+      if(
+        (this.headers[this.columnArrayLoc]['width']+event.movementX) > this.minColWidth
+      ){
+        this.headers[this.columnArrayLoc]['width']+=event.movementX;
+      //  console.log(event.clientX);
+      }else{
+        this.isMouseDown = false;
+      //  console.log('Min: '+ this.headers[this.columnArrayLoc]['width']+event.movementX);
+      }
+      
+    }
+  }
+
+  /**
+   * 
+   * @param event Called when mouse leaves header row
+   */
+  headerMouseLeave(){
+    this.isMouseDown = false;
+  }
+
+  /**
+   * Check mouse movement in header if mouse button is down or up
+   */
+  checkMouse(event: MouseEvent){
+    if(event.buttons<1){
+      this.isMouseDown = false;
+    }
   }
 
   /**
@@ -294,8 +385,7 @@ export class TableListComponent implements OnInit {
 
     // Refresh the view
     this.setPage(this.currentPage);
-    
-    //TODO: Set icons states, and then display next to header items
+  
 
   }
 

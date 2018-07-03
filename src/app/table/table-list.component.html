@@ -59,21 +59,30 @@
 <div class="data-view">
   <div class="data-table">
 
-
+    <!-- Header -->
     <div class="data-header">
-      <div class="data-heading-row">
+      <div class="data-heading-row"
+           (mousemove)="headerSizeMove($event)"
+           (mouseleave)="headerMouseLeave()"
+           (mousemove)="checkMouse($event)"
+           >
 
+        <!-- CheckBox Heading -->
         <div  class="data-heading data-checkbox">
+
+            <!-- None Selected -->
             <i  class="material-icons"
                 *ngIf="selectedRows && selectedRows.length==0"
                 (click)="checkAll()" 
             >check_box_outline_blank</i>
 
+            <!-- Some Selected -->
             <i  class="material-icons"
                 *ngIf="isSomeChecked()"
                 (click)="checkAll()"
             >indeterminate_check_box</i>
 
+            <!-- All Selected -->
             <i  class="material-icons icon-blue"
                 *ngIf=" selectedRows && 
                         data && 
@@ -83,17 +92,24 @@
             >check_box</i>
         </div>
 
+        <!-- Header Items for Data -->
         <div  class="data-heading"
               *ngFor="let h of headers"
-              [ngStyle]="{'width': h.width}"
-              (click)="sortBy(h.field)"
+              [ngStyle]="{'width': h.width +'px'}"
               [ngClass]="{'sorted':sortField==h.field,'desc':!sortAsc}"
               >
-              <div class="heading-wrapper">
+              <div class="heading-wrapper"
+                   (click)="sortBy(h.field)"
+              >
                 <div class="heading-text">{{h.name}}</div>
                 <div class="sort-icon"></div>
               </div>
-              <div class="resize-bar"></div>
+
+              <!-- Resize Bar -->
+              <div class="resize-bar"
+                   (mousedown)="headerSizeDown($event,h.id)"
+                   (mouseup)="headerSizeUp()"
+              ></div>
         </div>
 
       </div>
@@ -126,12 +142,16 @@
 
         <div  class="data-cell" 
               *ngFor="let h of headers"
-              [ngStyle]="{'width':h.width}"
+              [ngStyle]="{'width':h.width +'px'}"
               >
               <div  *ngIf="h.preText" 
-                    [ngClass]="h.preText?d.StatusCss:''"
+                    [ngClass]="h.preText?d.PreTextCss:''"
                     [innerHTML]="h.preText"></div>
-              {{ d[h.field] }}
+              <div class="cell-text"
+                   [ngStyle]="{'max-width':h.width+'px'}"
+              >
+                {{ d[h.field] }}
+              </div>
             </div>
 
       </div>
