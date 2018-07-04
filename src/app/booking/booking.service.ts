@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { catchError, map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ApiService } from '../services/api.service';
 import { IBooking } from './booking';
@@ -33,7 +29,6 @@ export class BookingService {
   private initLoaded: boolean = false;
 
   constructor(
-    private http: HttpClient,
     private api: ApiService
   ) { 
       this.dataStore = { bookings: [] , headers : []};

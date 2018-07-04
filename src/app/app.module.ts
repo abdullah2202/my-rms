@@ -25,7 +25,7 @@ import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableListComponent } from './table/table-list.component';
-
+import { ContextMenuComponent } from './context/context-menu.component';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { TableListComponent } from './table/table-list.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    TableListComponent
+    TableListComponent,
+    ContextMenuComponent
   ],
   providers: [
     ApiService,

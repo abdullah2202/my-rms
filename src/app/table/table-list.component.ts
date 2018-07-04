@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PagerService } from '../services/pager.service';
+import { ContextMenuComponent } from '../context/context-menu.component';
 /**
  * Component 
  */
 @Component({
+  providers: [ContextMenuComponent],
   selector: 'table-list',
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.scss']
@@ -69,7 +71,8 @@ export class TableListComponent implements OnInit {
   displaySortField: any = ''; // Initial loading filter fields
   
   constructor(
-    protected pagerService: PagerService
+    protected pagerService: PagerService,
+    protected contextMenu: ContextMenuComponent
   ) { }
 
   ngOnInit(): void {
@@ -81,7 +84,7 @@ export class TableListComponent implements OnInit {
    * 
    */
   context(e: MouseEvent){
-    console.log(e);
+    this.contextMenu.openMenu(e);
   }
 
   /**

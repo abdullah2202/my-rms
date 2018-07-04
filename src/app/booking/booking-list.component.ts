@@ -4,13 +4,13 @@ import { BookingService } from './booking.service';
 import { PagerService } from '../services/pager.service';
 import { TableListComponent } from '../table/table-list.component';
 import { ActivatedRoute, Router } from '@angular/router';
-  
-import { MaterialAppModule } from '../material.module';
+import { ContextMenuComponent } from '../context/context-menu.component';
 
 /**
  * Component
  */
 @Component({
+  providers: [ContextMenuComponent],
   selector: 'booking-list',
   templateUrl: '../table/table-list.component.html',
   styleUrls: ['../table/table-list.component.scss']
@@ -43,10 +43,11 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   constructor(
     private bookingService: BookingService,
     protected pagerService: PagerService,
+    protected contextMenu: ContextMenuComponent,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    super(pagerService);
+    super(pagerService, contextMenu);
 
     // If a sort field as selected
     this.route.data.subscribe(d => {
