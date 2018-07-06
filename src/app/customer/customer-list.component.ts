@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICustomer } from './customer';
 import { CustomerService } from './customer.service';
 import { PagerService } from '../services/pager.service';
-import { ContextMenuComponent } from '../context/context-menu.component';
+// import { ContextMenuComponent } from '../context/context-menu.component';
 import {TableListComponent} from '../table/table-list.component';
 
 
@@ -30,10 +30,12 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
 
   constructor(
     private customerService: CustomerService,
-    protected pagerService: PagerService,
-    protected contextMenu: ContextMenuComponent
+    protected pagerService: PagerService
+    // protected contextMenu: ContextMenuComponent
   ) { 
-    super(pagerService, contextMenu)
+    super(pagerService
+      // , contextMenu
+    ); 
   }
 
   ngOnInit() {

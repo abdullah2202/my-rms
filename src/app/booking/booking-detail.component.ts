@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { catchError, map, find } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
 
-import { MaterialAppModule } from '../material.module';
 
 
 @Component({

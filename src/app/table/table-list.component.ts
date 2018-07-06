@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PagerService } from '../services/pager.service';
-import { ContextMenuComponent } from '../context/context-menu.component';
+// import { ContextMenuComponent } from '../context/context-menu.component';
 /**
  * Component 
  */
 @Component({
-  providers: [ContextMenuComponent],
+  // providers: [ContextMenuComponent],
   selector: 'table-list',
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.scss']
@@ -31,6 +31,13 @@ export class TableListComponent implements OnInit {
   isMouseDown: boolean = false;
   columnArrayLoc = 0;
   minColWidth = 100;
+
+  /**
+   * Variables for Context Menu
+   */
+  contextMenuX = 0;
+  contextMenuY = 0;
+  contextmenu = false;
 
   // True if loading is happening
   loadingData: boolean = false;
@@ -71,8 +78,8 @@ export class TableListComponent implements OnInit {
   displaySortField: any = ''; // Initial loading filter fields
   
   constructor(
-    protected pagerService: PagerService,
-    protected contextMenu: ContextMenuComponent
+    protected pagerService: PagerService
+    // protected contextMenu: ContextMenuComponent
   ) { }
 
   ngOnInit(): void {
@@ -84,7 +91,10 @@ export class TableListComponent implements OnInit {
    * 
    */
   context(e: MouseEvent){
-    this.contextMenu.openMenu(e);
+    /* this.contextMenuX = e.clientX;
+    this.contextMenuY = e.clientY;
+    this.contextmenu = true; */
+    // this.contextMenu.openMenu(e);
   }
 
   /**

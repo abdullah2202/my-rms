@@ -268,7 +268,13 @@
 }
 
 .data-row.selected{
-    background-color: #f5f5f5;
+    // background-color: #f5f5f5;
+    background-color: #e8f0fe;
+}
+
+.data-row.selected .data-cell{
+    color: #3f84e6;
+    fill: rgba(0,0,0,0.54);
 }
 
 .data-cell{

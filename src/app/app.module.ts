@@ -19,13 +19,14 @@ import { PagerService } from './services/pager.service';
 // Individual Services
 import { BookingService } from './booking/booking.service';
 import { CustomerService } from './customer/customer.service';
+// import { ContextMenuService } from './services/context.service';
 
 // Modules
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableListComponent } from './table/table-list.component';
-import { ContextMenuComponent } from './context/context-menu.component';
+// import { ContextMenuComponent } from './context/context-menu.component';
 
 
 @NgModule({
@@ -42,14 +43,15 @@ import { ContextMenuComponent } from './context/context-menu.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    TableListComponent,
-    ContextMenuComponent
+    TableListComponent
+    // ContextMenuComponent
   ],
   providers: [
     ApiService,
     BookingService,
     CustomerService,
     PagerService
+    // ContextMenuService
   ],
   bootstrap: [AppComponent]
 })
