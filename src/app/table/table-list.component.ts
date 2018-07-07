@@ -35,9 +35,9 @@ export class TableListComponent implements OnInit {
   /**
    * Variables for Context Menu
    */
-  contextMenuX = 0;
+/*   contextMenuX = 0;
   contextMenuY = 0;
-  contextmenu = false;
+  contextmenu = false; */
 
   // True if loading is happening
   loadingData: boolean = false;

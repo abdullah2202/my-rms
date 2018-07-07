@@ -127,7 +127,6 @@
             [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
             (click)="toggleCheckbox(d[primaryField])"
             (dblclick)="showDetails(d[primaryField])"
-            (contextmenu)="context($event)"
             >
 
         <div  class="data-cell data-checkbox">
@@ -153,9 +152,7 @@
 
       </div>
 
-      <!-- <div *ngIf="contextmenu==true">
-        <app-context-menu [x]="contextMenuX" [y]="contextMenuY"></app-context-menu>
-      </div> -->
+      
 
     </div>
 

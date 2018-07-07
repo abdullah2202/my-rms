@@ -81,24 +81,54 @@ export class BookingService {
    * @param id Booking ID 
    */
   getBooking(id:string){
-    this.api.getById(this.baseUrl,id).subscribe(data => {
-      let notFound = true;
-      this.dataStore.bookings.forEach((item, index) => {
-        if(item.BookingID === data[0].BookingID){
-          // Store updated version of data
-          this.dataStore.bookings[index] = data[0];
+
+    // Already have booking in cache
+    let alreadyHave = true;
+
+    // Check local data store for booking
+    this.dataStore.bookings.forEach((item) => {
+
+      // If current item Booking == Booking ID
+      if(item.BookingID === id){
+        alreadyHave = false;
+      }
+    });
+
+    // If local data store does not have booking download
+    if(alreadyHave){
+
+      this.api.getById(this.baseUrl,id).subscribe(data => {
+
+        // If Booking does not exists in current list
+        let notFound = true;
+
+        this.dataStore.bookings.forEach((item, index) => {
+
+          if(item.BookingID === data[0].BookingID){
+
+            // Store updated version of data
+            this.dataStore.bookings[index] = data[0];
+
+            notFound = false;
+          }
+        });
+
+        // If record does not exists in current list
+        if(notFound){
+
+          this.dataStore.bookings.push(data[0]);
+
           notFound = false;
         }
-      });
 
-      if(notFound){
-        this.dataStore.bookings.push(data[0]);
-        notFound = false;
-      }
+        this._bookings.next(Object.assign({}, this.dataStore).bookings);
 
-      this._bookings.next(Object.assign({}, this.dataStore).bookings);
+      }, error => console.log('Could not load booking. Error: ' + error));
 
-    }, error => console.log('Could not load booking.'));
+    }
+
+
+
   }
 
   /**

@@ -30,8 +30,10 @@ constructor(
 
 ngOnInit(){
     
+    // Get booking from service
     this.bookingService.getBooking(this.bookingID);
 
+    
     this.bookingService.bookings.subscribe(data => {
         data.forEach((item, index) => {
             if(this.bookingID == item.BookingID){
@@ -42,7 +44,9 @@ ngOnInit(){
     
 }
 
-
+/**
+ * Back Button - Go back to listings
+ */
 goBack(){
     this.router.navigate(['bookings']);
 }

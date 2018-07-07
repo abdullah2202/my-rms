@@ -27,7 +27,7 @@ import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableListComponent } from './table/table-list.component';
 // import { ContextMenuComponent } from './context/context-menu.component';
-
+ 
 
 @NgModule({
   imports: [
