@@ -9,6 +9,7 @@
 # dependencies
 /node_modules
 /~.
+/angular_material_schematics-zmHgGp
 
 # IDEs and editors
 /.idea
