@@ -15,6 +15,7 @@ import { AppRoutesModule } from './/app-routes.module';
 import { ApiService } from './services/api.service';
 import { PagerService } from './services/pager.service';
 import { SettingsService } from './services/settings.service';
+import { ContextMenuService } from './_context/context-menu.service';
 
 // Individual Services
 import { BookingService } from './booking/booking.service';
@@ -51,8 +52,8 @@ import { TableListComponent } from './table/table-list.component';
     BookingService,
     CustomerService,
     PagerService,
-    SettingsService
-    // ContextMenuService
+    SettingsService,
+    ContextMenuService
   ],
   bootstrap: [AppComponent]
 })
