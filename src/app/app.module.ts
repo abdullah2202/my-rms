@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialAppModule } from './material.module';
 
-
 import { AppComponent } from './app.component';
 
 import { AppRoutesModule } from './/app-routes.module';
@@ -15,6 +14,7 @@ import { AppRoutesModule } from './/app-routes.module';
 // Common Services
 import { ApiService } from './services/api.service';
 import { PagerService } from './services/pager.service';
+import { SettingsService } from './services/settings.service';
 
 // Individual Services
 import { BookingService } from './booking/booking.service';
@@ -50,7 +50,8 @@ import { TableListComponent } from './table/table-list.component';
     ApiService,
     BookingService,
     CustomerService,
-    PagerService
+    PagerService,
+    SettingsService
     // ContextMenuService
   ],
   bootstrap: [AppComponent]
