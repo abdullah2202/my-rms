@@ -28,6 +28,9 @@ import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableListComponent } from './table/table-list.component';
 // import { ContextMenuComponent } from './context/context-menu.component';
+
+// Directive
+import { ContextMenuDirective } from './_context/context-menu.directive';
  
 
 @NgModule({
@@ -44,7 +47,8 @@ import { TableListComponent } from './table/table-list.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    TableListComponent
+    TableListComponent,
+    ContextMenuDirective
     // ContextMenuComponent
   ],
   providers: [
