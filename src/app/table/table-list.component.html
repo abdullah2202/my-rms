@@ -123,6 +123,7 @@
       </div>
 
       <div  class="data-row" 
+            contextmenu
             *ngFor="let d of pagedItems"
             [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
             (click)="toggleCheckbox(d[primaryField])"
@@ -145,7 +146,6 @@
                     [innerHTML]="h.preText"></div>
               <div class="cell-text"
                    [ngStyle]="{'max-width':h.width+'px'}"
-              testcontextmenu
               >
                 {{ d[h.field] }}
               </div>

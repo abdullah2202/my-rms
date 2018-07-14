@@ -30,7 +30,8 @@ import { TableListComponent } from './table/table-list.component';
 // import { ContextMenuComponent } from './context/context-menu.component';
 
 // Directive
-import { ContextMenuDirective } from './_context/context-menu.directive';
+import { DirectivesModule } from './_directives/directives.module';
+// import { ContextMenuDirective } from './_directives/context-menu.directive';
  
 
 @NgModule({
@@ -42,14 +43,14 @@ import { ContextMenuDirective } from './_context/context-menu.directive';
     BookingModule,
     CustomerModule,
     AppRoutesModule,
-    HttpClientModule
+    HttpClientModule,
+    DirectivesModule 
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    TableListComponent,
-    ContextMenuDirective
-    // ContextMenuComponent
+    TableListComponent
+    // ,ContextMenuDirective
   ],
   providers: [
     ApiService,

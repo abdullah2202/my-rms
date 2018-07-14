@@ -1,7 +1,7 @@
 import { Directive, HostListener, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[testcontextmenu]'
+  selector: '[contextmenu]'
 })
 export class ContextMenuDirective {
 
@@ -10,16 +10,15 @@ export class ContextMenuDirective {
   }
 
   
-    /* @HostListener('contextmenu',['$event'])
+    @HostListener('contextmenu',['$event'])
     public onContextMenu(event: MouseEvent){
 
         console.log('Context Menu Triggered'); 
         console.log(event);
 
-
         event.preventDefault();
         event.stopPropagation();
-    } */
+    }
 
 
 }
