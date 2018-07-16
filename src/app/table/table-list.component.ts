@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PagerService } from '../services/pager.service';
+
+// import { ContextMenuComponent } from '../_context/context-menu.component';
 // import { ContextMenuComponent } from '../context/context-menu.component';
 /**
  * Component 
@@ -38,6 +40,7 @@ export class TableListComponent implements OnInit {
 /*   contextMenuX = 0;
   contextMenuY = 0;
   contextmenu = false; */
+  contextMenuSubject = '';
 
   // True if loading is happening
   loadingData: boolean = false;

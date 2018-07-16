@@ -123,7 +123,7 @@
       </div>
 
       <div  class="data-row" 
-            contextmenu
+            contextmenu [contextMenuSubject]='contextMenuSubject'
             *ngFor="let d of pagedItems"
             [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
             (click)="toggleCheckbox(d[primaryField])"
@@ -216,4 +216,7 @@
 
 </div>
 
+<app-contextmenu>
+
+</app-contextmenu>
      

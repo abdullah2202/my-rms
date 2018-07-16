@@ -23,15 +23,14 @@ import { CustomerService } from './customer/customer.service';
 // import { ContextMenuService } from './services/context.service';
 
 // Modules
+import { ContextMenuModule } from './_context/context-menu.module';
+import { TableListComponent } from './table/table-list.component';
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TableListComponent } from './table/table-list.component';
-// import { ContextMenuComponent } from './context/context-menu.component';
 
 // Directive
 import { DirectivesModule } from './_directives/directives.module';
-// import { ContextMenuDirective } from './_directives/context-menu.directive';
  
 
 @NgModule({
@@ -44,13 +43,13 @@ import { DirectivesModule } from './_directives/directives.module';
     CustomerModule,
     AppRoutesModule,
     HttpClientModule,
-    DirectivesModule 
+    DirectivesModule,
+    ContextMenuModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
     TableListComponent
-    // ,ContextMenuDirective
   ],
   providers: [
     ApiService,

@@ -27,6 +27,9 @@ export class BookingListComponent extends TableListComponent implements OnInit{
   // Default Sorting field
   sortField = 'BookingID';
 
+  // Context Menu Array Selector
+  contextMenuSubject = 'bookings';
+
   //Default to Processing in future, for dev show all
   displaySort = '';
   displaySortField = 'StatusName';

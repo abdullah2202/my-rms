@@ -5,6 +5,7 @@ import { MaterialAppModule } from '../material.module';
 
 // Directive
 import { DirectivesModule } from '../_directives/directives.module';
+import { ContextMenuModule } from '../_context/context-menu.module';
 
 import { BookingListComponent } from './booking-list.component';
 import { BookingDetailComponent } from './booking-detail.component';
@@ -14,7 +15,8 @@ import { BookingDetailComponent } from './booking-detail.component';
   imports: [
     CommonModule,
     MaterialAppModule,
-    DirectivesModule
+    DirectivesModule,
+    ContextMenuModule
   ],
   declarations: [
     BookingListComponent,

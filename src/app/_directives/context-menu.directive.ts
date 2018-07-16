@@ -1,23 +1,28 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
+import { ContextMenuService } from '../_context/context-menu.service';
 
 @Directive({
   selector: '[contextmenu]'
 })
 export class ContextMenuDirective {
+  @Input() public contextMenuSubject: any;
 
-  constructor(el: ElementRef) { 
-    el.nativeElement.style.background = 'red';
+  constructor(private contextMenuService: ContextMenuService) { 
+    
   }
 
   
     @HostListener('contextmenu',['$event'])
     public onContextMenu(event: MouseEvent){
 
-        console.log('Context Menu Triggered'); 
-        console.log(event);
+      // Trigger subject change on service
+      this.contextMenuService.show.next({
+        contextMenuSubject: this.contextMenuSubject,
+        event
+      });
 
-        event.preventDefault();
-        event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
     }
 
 
