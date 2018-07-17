@@ -9,6 +9,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   imports: [
@@ -20,7 +23,12 @@ import { MatNativeDateModule } from '@angular/material';
     MatTooltipModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule,
+    MatSelectModule
+  ],
+  declarations:[
+    
   ],
   exports: [
     MatButtonModule,
@@ -31,7 +39,9 @@ import { MatNativeDateModule } from '@angular/material';
     MatTooltipModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class MaterialAppModule { 
