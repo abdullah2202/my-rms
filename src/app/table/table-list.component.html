@@ -141,9 +141,11 @@
               *ngFor="let h of headers"
               [ngStyle]="{'width':h.width +'px'}"
               >
+              
               <div  *ngIf="h.preText" 
                     [ngClass]="h.preText?d.PreTextCss:''"
                     [innerHTML]="h.preText"></div>
+
               <div class="cell-text"
                    [ngStyle]="{'max-width':h.width+'px'}"
               >

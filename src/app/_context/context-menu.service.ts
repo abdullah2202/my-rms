@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
 
 export interface IContextClickEvent{
     // Context Menu
-    // Conext Subject?
     contextMenuSubject?: string;
     event?: MouseEvent | KeyboardEvent;
 }
