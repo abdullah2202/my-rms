@@ -139,7 +139,7 @@ export class TableListComponent implements OnInit {
    * @param field Field to filter keywords, used by routing (completed, processing)
    * @param reloadData Boolean set to true if loading AllData as filtered
    */
-  filterResults(filter: any, field: any, reloadData:boolean = false){
+  filterResults(filter: any, field: any = null, reloadData:boolean = false){
 
     // Set data to sorted and filtered list first
     if(this.displaySort.length>0 && this.displaySortField.length>0 && reloadData){
