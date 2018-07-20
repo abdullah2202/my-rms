@@ -72,22 +72,19 @@
 
             <!-- None Selected -->
             <i  class="material-icons"
-                *ngIf="selectedRows && selectedRows.length==0"
+                *ngIf="_isSelected=='none'"
                 (click)="checkAll()" 
             >check_box_outline_blank</i>
 
             <!-- Some Selected -->
             <i  class="material-icons"
-                *ngIf="isSomeChecked()"
+                *ngIf="_isSelected=='some'"
                 (click)="checkAll()"
             >indeterminate_check_box</i>
 
             <!-- All Selected -->
             <i  class="material-icons icon-blue"
-                *ngIf=" selectedRows && 
-                        data && 
-                        selectedRows.length==data.length && 
-                        data.length>0"
+                *ngIf="_isSelected=='all'"
                 (click)="uncheckAll()"
             >check_box</i>
         </div>
@@ -115,26 +112,29 @@
       </div>
     </div>
 
+    <div class="content-loading" *ngIf="loadingData">
+      <img src="../../assets/loading.svg" />
+    </div>
 
-    <div class="data-content">
-
+    <!-- Content -->
+    <div class="data-content" *ngIf="!loadingData">
       <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
         <div class="no-results">No Results for <span class="filter-word">{{filter.value}}</span></div>
       </div>
 
-      <div  class="data-row" 
+      <div  class="data-row"
             contextmenu [contextMenuSubject]='contextMenuSubject'
             *ngFor="let d of pagedItems"
-            [ngClass]="{ 'selected':selectedRows.includes(d[primaryField]) }"
+            [ngClass]="{ 'selected':d.selected }"
             (click)="toggleCheckbox(d[primaryField])"
             (dblclick)="showDetails(d[primaryField])"
             >
 
         <div  class="data-cell data-checkbox">
           <i  class="material-icons" 
-              *ngIf="!selectedRows.includes(d[primaryField])">check_box_outline_blank</i>
+              *ngIf="d && !d.selected">check_box_outline_blank</i>
           <i  class="material-icons icon-blue" 
-              *ngIf="selectedRows.includes(d[primaryField])">check_box</i>
+              *ngIf="d && d.selected">check_box</i>
         </div>
 
         <div  class="data-cell" 
@@ -158,14 +158,14 @@
       
 
     </div>
-
+    <!-- End Content -->
 
 
     <div class="data-footer">
 
       <div class="data-selected-row">
-        <div class="data-footer-cell" *ngIf="selectedRows && data">
-          {{selectedRows.length}} Rows Selected ({{data.length}} Total)
+        <div class="data-footer-cell">
+          {{_numSelected}} Rows Selected ({{_totalRows}} Total)
         </div>
       </div>
 

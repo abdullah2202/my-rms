@@ -13,7 +13,6 @@ import { PagerService } from '../services/pager.service';
   styleUrls: ['./table-list.component.scss']
 })
 export class TableListComponent implements OnInit {
-
   // Data which is used and filtered
   data = [{}];
 
@@ -51,8 +50,9 @@ export class TableListComponent implements OnInit {
   // Primary field for data beign displayed
   primaryField = '';  
 
-  // Array of selected rows
-  selectedRows = [];
+  _isSelected = 'none';
+  _numSelected = 0;
+  _totalRows = 0;
 
   // Cell ID of selected Cell - Not implemented
   selectedCell: string = '';
@@ -83,7 +83,9 @@ export class TableListComponent implements OnInit {
   constructor(
     protected pagerService: PagerService
     // protected contextMenu: ContextMenuComponent
-  ) { }
+  ) {
+    this.loadingData = true;
+   }
 
   ngOnInit(): void {
     this.filter = {};
@@ -111,9 +113,8 @@ export class TableListComponent implements OnInit {
    * @param page Page number to load a paticular page
    */
   setPage(page: number = 1) {
-    this.loadingData = true;
     this.currentPage = page;
-
+    this._totalRows = this.data.length;
     // Error checking
     if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
         return;
@@ -259,44 +260,50 @@ export class TableListComponent implements OnInit {
    * @param i ID of row
    */
   toggleCheckbox(i: string){
-    if(this.selectedRows.includes(i)){
-      this.selectedRows.splice(
-        this.selectedRows.indexOf(i),1
-      );
-    }else{
-      this.selectedRows.push(i);
+    var key = this.checkForID(i);
+
+    if(key){
+      if(this.data[key]['selected']){
+        this._numSelected--;
+      }else{
+        this._numSelected++;
+      }
+      this.data[key]['selected'] = !this.data[key]['selected'];
     }
+
+    if(this._numSelected<this._totalRows &&
+       this._numSelected>0)this._isSelected = 'some';
+    if(this._numSelected==this._totalRows) this._isSelected = 'all';
+    if(this._numSelected==0) this._isSelected = 'none';
+  }
+
+  checkForID(i: string){
+    for(var key in this.data){
+      if(this.data[key][this.primaryField]==i) return key;
+    }
+    return false;
   }
 
   /**
    * Selects and checks the checkboxes for all results
    */
   checkAll(){
-    this.uncheckAll();
-    for(var i=0;i<this.data.length;i++){
-        this.selectedRows.push(this.data[i][this.primaryField]);
+    for(var key in this.data){
+      this.data[key]['selected']=true;
     }
+    this._isSelected = 'all';
+    this._numSelected=this._totalRows;
   }
 
   /**
    * Unchecks all the checkboxes
    */
   uncheckAll(){
-    this.selectedRows.splice(0,this.selectedRows.length);
-  }
-
-  /**
-   * Checks if some checkboxes are checked but not all
-   */
-  isSomeChecked(){
-    if(
-      this.selectedRows.length>0 &&
-      this.selectedRows.length!=this.data.length
-    ){
-      return true;
-    }else{
-      return false;
+    for(var key in this.data){
+      this.data[key]['selected']=false;
     }
+    this._isSelected = 'none';
+    this._numSelected=0;
   }
 
   /**

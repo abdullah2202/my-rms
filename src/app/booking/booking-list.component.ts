@@ -54,6 +54,7 @@ export class BookingListComponent extends TableListComponent implements OnInit{
       // ,contextMenu
     );
 
+    this.loadingData = true;
     // If a sort field as selected
     this.route.data.subscribe(d => {
       if(d.sort){
@@ -64,6 +65,7 @@ export class BookingListComponent extends TableListComponent implements OnInit{
 
   ngOnInit(): void {
 
+    this.loadingData = true;
     // Get Initial Data - Stops from accessing server everytime
     // component loads
     this.bookingService.initialGetAll();
