@@ -71,7 +71,7 @@ export class TableListComponent implements OnInit {
   sortField = this.primaryField;
 
   //Used for pagination
-  itemsPerPage = [25,50,100,250,500];
+  itemsPerPage = [25,50, 100];
   itemsPerPageSelected = 25;
 
   //Filters
@@ -115,6 +115,7 @@ export class TableListComponent implements OnInit {
   setPage(page: number = 1) {
     this.currentPage = page;
     this._totalRows = this.data.length;
+
     // Error checking
     if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
         return;
@@ -127,6 +128,17 @@ export class TableListComponent implements OnInit {
     this.pagedItems = this.data.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
     this.loadingData = false;
+  }
+
+  /**
+   * 
+   * Sets the number of items to display on each page
+   * 
+   * @param itemPPId ID of items per page select
+   */
+  setItemsPerPage(itemPPId: number){
+    this.itemsPerPageSelected = itemPPId;
+    this.setPage(1);
   }
 
   /**
@@ -226,16 +238,7 @@ export class TableListComponent implements OnInit {
     this.setPage(1);
   }
 
-  /**
-   * 
-   * Sets the number of items to display on each page
-   * 
-   * @param itemPPId ID of items per page select
-   */
-  setItemsPerPage(itemPPId: number){
-    this.itemsPerPageSelected = itemPPId;
-    this.setPage(1);
-  }
+ 
 
   // Overwritten - Refreshes the data from server/api
   refreshData(){}

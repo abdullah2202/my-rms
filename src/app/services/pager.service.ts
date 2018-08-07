@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PagerService {
+
     /**
      * 
      * @param totalItems Total Items
@@ -16,7 +17,7 @@ export class PagerService {
         let startPage: number, endPage: number;
 
 
-        if (totalPages <= pageSize) {
+        if (totalPages <= 10) {
             // less than 10 total pages so show all
             startPage = 1;
             endPage = totalPages;
