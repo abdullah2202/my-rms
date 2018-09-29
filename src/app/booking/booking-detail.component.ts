@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 // Dialogs
 import { Dialog } from '../_dialogs/dialog.component';
@@ -16,13 +16,15 @@ import { Dialog } from '../_dialogs/dialog.component';
 })
 export class BookingDetailComponent implements OnInit {
 
-// Booking Object TODO: Create empty when creating new
+// Booking Object TODO: Create empty Object when creating new Booking
 booking: IBooking;
 bookingID = '';
 
 // Boolean for when data is loading
 loadingData = false;
 
+
+dialogConfig = new MatDialogConfig();
 
 constructor(
     private route: ActivatedRoute,
@@ -37,7 +39,7 @@ constructor(
 ngOnInit(){
     
     // Get booking from service
-    this.bookingService.getBooking(this.bookingID);
+    this.bookingService.getBooking(this.bookingID);     // ?? Redundent ?? 
 
     this.bookingService.bookings.subscribe(data => {
         data.forEach((item, index) => {
@@ -46,20 +48,26 @@ ngOnInit(){
             }
         });
     });
-    
+
+    // Dialog Configuration Defaults
+    this.dialogConfig.width = '60vw';
+    this.dialogConfig.data = {};
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+
 }
 
 /**
  * Test Open Dialog
  */
 openDialog(){
-    const dialogRef = this.dialog.open(Dialog, {
-        width: '60vw',
-        data: {}
-    });
+    
+    this.dialogConfig.data = {id: 123, title: 'Test Dialog'};
 
-    dialogRef.afterClosed().subscribe(result => {
-        console.log('Result: ', result);
+    const dialogRef = this.dialog.open(Dialog, this.dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+        console.log('Result: ', data);
     });
 }
 
