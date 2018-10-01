@@ -26,12 +26,15 @@ import { TableListComponent } from './table/table-list.component';
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DialogModule } from './_dialogs/dialog.module';
 
+//Dialogs
+import { DialogModule } from './_dialogs/dialog.module';
 
 // Directive
 import { DirectivesModule } from './_directives/directives.module';
+
 import { Dialog } from './_dialogs/dialog.component';
+import { CustomerEdit } from './_dialogs/customeredit.component';
 
  
 
@@ -62,7 +65,10 @@ import { Dialog } from './_dialogs/dialog.component';
     SettingsService,
     ContextMenuService
   ],
-  entryComponents: [Dialog],
+  entryComponents: [
+    Dialog, 
+    CustomerEdit
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

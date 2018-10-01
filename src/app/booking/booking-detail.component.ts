@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 
 // Dialogs
 import { Dialog } from '../_dialogs/dialog.component';
+import { CustomerEdit } from '../_dialogs/customeredit.component';
 
 @Component({
     selector: 'booking-detail',
@@ -65,6 +66,19 @@ openDialog(){
     this.dialogConfig.data = {id: 123, title: 'Test Dialog'};
 
     const dialogRef = this.dialog.open(Dialog, this.dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+        console.log('Result: ', data);
+    });
+}
+
+/**
+ * Customer Detail Edit Dialog
+ */
+openCustomerEditDialog(){
+    this.dialogConfig.data = {id: 123, title: 'Edit Customer'};
+
+    const dialogRef = this.dialog.open(CustomerEdit, this.dialogConfig);
 
     dialogRef.afterClosed().subscribe(data => {
         console.log('Result: ', data);

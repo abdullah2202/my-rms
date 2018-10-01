@@ -43,7 +43,7 @@
 <!-- Car Content -->
 <div class="card-container">
 
-    <!-- Booing Details -->
+    <!-- Booking Details -->
     <div class="card w33">
         <div class="header">Booking Details</div>
         <div class="content">
@@ -117,6 +117,7 @@
         </div>
     </div>
 
+    <!-- Customer Details -->
     <div class="card w33">
         <div class="header">Customer Details</div>
         <div class="content">
@@ -138,7 +139,8 @@
             </div>
         </div>
         <div class="action">
-            <button mat-raised-button>Edit</button>
+            <button mat-raised-button
+                    (click)="openCustomerEditDialog()">Edit</button>
         </div>
     </div>
 

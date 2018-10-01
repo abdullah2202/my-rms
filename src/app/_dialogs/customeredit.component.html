@@ -1,0 +1,35 @@
+
+<h2 mat-dialog-title>Edit Customer</h2>
+
+<mat-dialog-content>
+
+    
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Name" value="">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Address" value="">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Telephone">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Textarea"></textarea>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button (click)="save()">Select</button>
+</mat-dialog-actions>
