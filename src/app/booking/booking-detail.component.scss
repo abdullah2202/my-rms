@@ -96,8 +96,10 @@
         .label,.text{
           font-size: 16px;
           padding: 5px 15px 5px 10px;
+          // padding: 0;
           overflow: hidden;
           white-space: nowrap;
+          line-height: 20px;
         }
 
         .label{
@@ -111,6 +113,16 @@
           color: rgba(0,0,0,0.87);
           text-overflow: ellipsis;
          
+         
+
+          input.datepicker{
+            border: 0;
+            font-size: 16px;
+            background: transparent;
+            color: rgba(0,0,0,0.87);
+            flex: 1 0 auto;
+            width: 6rem;
+          }
 
        /*    .mat-raised-button.small-font{
             line-height: 23px;

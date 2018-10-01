@@ -58,19 +58,35 @@
             <div class="row">
                 <div class="label">Booked In</div>
                 <div class="text">
-                    <div (click)="openDialog()" 
-                         matTooltip="Click to change">
-                            01/01/1970
-                    </div>
+                    <!-- TODO: Change date format to UK -->
+                    <input [matDatepicker]="dpbookedin" 
+                           class="datepicker" 
+                           placeholder="01/01/1970"/>
+                    <mat-datepicker-toggle [for]="dpbookedin" class="small-icon">
+                        <mat-icon   matDatepickerToggleIcon
+                                    class="small-icon"
+                        >
+                            keyboard_arrow_down
+                        </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #dpbookedin></mat-datepicker>
                 </div>
             </div>
             <div class="row">
                 <div class="label">Expected</div>
                 <div class="text">
-                    <div (click)="openDialog()" 
-                         matTooltip="Click to change">
-                            01/01/1970
-                   </div>
+                    <!-- TODO: Change date format to UK -->
+                    <input [matDatepicker]="dpduedate" 
+                           class="datepicker" 
+                           placeholder="01/01/1970"/>
+                    <mat-datepicker-toggle [for]="dpduedate" class="small-icon">
+                        <mat-icon   matDatepickerToggleIcon
+                                    class="small-icon"
+                        >
+                            keyboard_arrow_down
+                        </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #dpduedate></mat-datepicker>
                 </div>
             </div>
         </div>

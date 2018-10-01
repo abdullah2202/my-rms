@@ -47,3 +47,9 @@ button{
     outline: none;
 }
 
+/* Material Icon Buttons */
+.small-icon > .mat-icon-button{
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+}
