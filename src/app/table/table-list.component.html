@@ -146,11 +146,22 @@
                     [ngClass]="h.preText?d.PreTextCss:''"
                     [innerHTML]="h.preText"></div>
 
+              <!-- If not Date -->
               <div class="cell-text"
                    [ngStyle]="{'max-width':h.width+'px'}"
+                   *ngIf="!h.isDate"
               >
                 {{ d[h.field] }}
               </div>
+
+              <!-- Is Date -->
+              <div class="cell-text"
+                   [ngStyle]="{'max-width':h.width+'px'}"
+                   *ngIf="h.isDate"
+              >
+                {{ d[h.field] | date: 'dd/MM/y' }}
+              </div>
+
             </div>
 
       </div>

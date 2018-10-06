@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
-// import { SettingsService } - Service for getting settings and lists
+// import { SettingsService } - TODO: Service for getting settings and lists
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 // Dialogs
@@ -48,11 +48,10 @@ ngOnInit(){
             if(this.bookingID == item.BookingID){
                 this.booking = data[index];
                 
-                // console.log(new Date(this.booking.BookedDate*1000));
                 this.booking.BookedDate = this.parseDate(this.booking.BookedDate);
                 this.booking.DueDate = this.parseDate(this.booking.DueDate);
 
-                // console.log(this.booking);
+                console.log(this.booking);
             }
         });
     });
@@ -69,7 +68,7 @@ ngOnInit(){
 }
 
 parseDate(date){
-    return new Date(date * 1000);
+    return new Date(date);
 }
 
 /**
