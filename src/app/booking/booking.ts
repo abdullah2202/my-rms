@@ -16,10 +16,17 @@ export interface IBooking {
 
     CustomerID: string;
     CustomerName: string;
+    CustomerTelephone: string;
+    CustomerEmail: string;
 
     StatusID: string;
     StatusName: string;
     StatusCss: string;
+
+    Collected: string;
+
+    BookedDate: Date;
+    DueDate: Date;
 /*
     DateBooked: number;
     ExpectedDate: number;

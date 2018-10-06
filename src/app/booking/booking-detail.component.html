@@ -61,7 +61,8 @@
                     <!-- TODO: Change date format to UK -->
                     <input [matDatepicker]="dpbookedin" 
                            class="datepicker" 
-                           placeholder="01/01/1970"/>
+                           placeholder="01/01/1970"
+                           [(value)]="booking.BookedDate"/>
                     <mat-datepicker-toggle [for]="dpbookedin" class="small-icon">
                         <mat-icon   matDatepickerToggleIcon
                                     class="small-icon"
@@ -72,13 +73,15 @@
                     <mat-datepicker #dpbookedin></mat-datepicker>
                 </div>
             </div>
-            <div class="row">
+
+            <div class="row"> <!-- Due Date of Booking -->
                 <div class="label">Expected</div>
                 <div class="text">
-                    <!-- TODO: Change date format to UK -->
                     <input [matDatepicker]="dpduedate" 
                            class="datepicker" 
-                           placeholder="01/01/1970"/>
+                           placeholder="01/01/1970"
+                           [(value)]="booking.DueDate"
+                           />
                     <mat-datepicker-toggle [for]="dpduedate" class="small-icon">
                         <mat-icon   matDatepickerToggleIcon
                                     class="small-icon"
@@ -86,35 +89,41 @@
                             keyboard_arrow_down
                         </mat-icon>
                     </mat-datepicker-toggle>
+                    <!-- Add touchUi when browsing on Mobile device -->
                     <mat-datepicker #dpduedate></mat-datepicker>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label">Collected</div>
+                <!-- <div class="text">No</div> -->
+                <div class="text no-padding">
+                    <mat-form-field class="small-select">
+                        <mat-select name="booking_collected" [(value)]="booking.Collected">
+                            <!-- TODO: have this populate with array from setting service -->
+                            <mat-option value="1">Yes</mat-option>
+                            <mat-option value="0">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">Status</div>
+                <div class="text no-padding">
+                    <mat-form-field class="small-select">
+                        <mat-select name="booking_status" [(value)]="booking.StatusID">
+                            <!-- TODO: Have this populate with array from setting service -->
+                            <mat-option value="4">Awaiting Action</mat-option>
+                            <mat-option value="5">Awaiting Parts</mat-option>
+                            <mat-option value="3">Cancelled</mat-option>
+                            <mat-option value="2">Completed</mat-option>
+                            <mat-option value="1">Processing</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </div>
         </div>
         <div class="action"></div>
-    </div>
-
-
-    <!-- Booking Status -->
-    <div class="card w33">
-        <div class="header">Booking Status</div>
-        <div class="content">
-            <div class="row">
-                <div class="label">Collected</div>
-                <div class="text">No</div>
-            </div>
-            <div class="row">
-                <div class="label">Status</div>
-                <div class="text">{{booking.StatusName}}</div>
-            </div>
-        </div>
-        <div class="action">
-            <button mat-raised-button>Mark As Collected</button>
-            <button mat-raised-button 
-                    [matMenuTriggerFor]="changeStatusMenu">
-                    <span>Change Status</span>
-                    <mat-icon>arrow_drop_down</mat-icon>
-                </button>
-        </div>
     </div>
 
     <!-- Customer Details -->
@@ -131,41 +140,16 @@
             </div>
             <div class="row">
                 <div class="label">Telephone</div>
-                <div class="text">0123 455 6789</div>
+                <div class="text">{{booking.CustomerTelephone}}</div>
             </div>
             <div class="row">
                 <div class="label">Email</div>
-                <div class="text">1@somthing.com</div>
+                <div class="text">{{booking.CustomerEmail}}</div>
             </div>
         </div>
         <div class="action">
             <button mat-raised-button
                     (click)="openCustomerEditDialog()">Edit</button>
-        </div>
-    </div>
-
-    <div class="card w66">
-        <div class="header">Jobs</div>
-        <div class="content">
-            <div class="row">
-                <div class="label">Customer ID</div>
-                <div class="text">{{booking.CustomerID}}</div>
-            </div>
-            <div class="row">
-                <div class="label">Name</div>
-                <div class="text">{{booking.CustomerName}}</div>
-            </div>
-            <div class="row">
-                <div class="label">Telephone</div>
-                <div class="text">0123 455 6789</div>
-            </div>
-            <div class="row">
-                <div class="label">Email</div>
-                <div class="text">1@somthing.com</div>
-            </div>
-        </div>
-        <div class="action">
-            <button mat-raised-button>Edit</button>
         </div>
     </div>
 
@@ -193,6 +177,34 @@
             <button mat-raised-button color="primary">Edit</button>
         </div>
     </div>
+
+
+    <div class="card w66">
+        <div class="header">Jobs</div>
+        <div class="content">
+            <div class="row">
+                <div class="label">Customer ID</div>
+                <div class="text">{{booking.CustomerID}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Name</div>
+                <div class="text">{{booking.CustomerName}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Telephone</div>
+                <div class="text">0123 455 6789</div>
+            </div>
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="text">1@somthing.com</div>
+            </div>
+        </div>
+        <div class="action">
+            <button mat-raised-button>Edit</button>
+        </div>
+    </div>
+
+    
 
 </div>
 

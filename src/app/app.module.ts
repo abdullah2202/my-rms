@@ -35,6 +35,7 @@ import { DirectivesModule } from './_directives/directives.module';
 
 import { Dialog } from './_dialogs/dialog.component';
 import { CustomerEdit } from './_dialogs/customeredit.component';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
  
 
@@ -63,7 +64,8 @@ import { CustomerEdit } from './_dialogs/customeredit.component';
     CustomerService,
     PagerService,
     SettingsService,
-    ContextMenuService
+    ContextMenuService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
   entryComponents: [
     Dialog, 

@@ -108,12 +108,14 @@
           color: rgba(0,0,0,0.57);          
         }
 
+        .text.no-padding{
+          padding: 0;
+        }
+
         .text{
           flex: 1 0 auto;
           color: rgba(0,0,0,0.87);
           text-overflow: ellipsis;
-         
-         
 
           input.datepicker{
             border: 0;

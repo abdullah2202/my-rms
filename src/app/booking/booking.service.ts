@@ -165,9 +165,14 @@ export class BookingService {
       StoreName: '',
       CustomerID: '',
       CustomerName: '',
+      CustomerTelephone: '',
+      CustomerEmail: '',
       StatusID: '',
       StatusName: '',
-      StatusCss: ''
+      StatusCss: '',
+      Collected: '',
+      BookedDate: new Date(),
+      DueDate: new Date()
     };
   }
 

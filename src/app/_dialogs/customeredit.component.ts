@@ -14,8 +14,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
     constructor(
       public dialogRef: MatDialogRef<CustomerEdit>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
-        this.id = data.id;
-        this.title = data.title;
+        // this.id = data.id;
+        // this.title = data.title;
+        console.log(data);
       }
   
     onNoClick(): void {

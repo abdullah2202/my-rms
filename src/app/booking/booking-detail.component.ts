@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { IBooking } from './booking'
 import { BookingService } from './booking.service';
+// import { SettingsService } - Service for getting settings and lists
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 // Dialogs
@@ -46,6 +47,12 @@ ngOnInit(){
         data.forEach((item, index) => {
             if(this.bookingID == item.BookingID){
                 this.booking = data[index];
+                
+                // console.log(new Date(this.booking.BookedDate*1000));
+                this.booking.BookedDate = this.parseDate(this.booking.BookedDate);
+                this.booking.DueDate = this.parseDate(this.booking.DueDate);
+
+                // console.log(this.booking);
             }
         });
     });
@@ -56,6 +63,13 @@ ngOnInit(){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
 
+
+
+
+}
+
+parseDate(date){
+    return new Date(date * 1000);
 }
 
 /**
@@ -76,10 +90,13 @@ openDialog(){
  * Customer Detail Edit Dialog
  */
 openCustomerEditDialog(){
-    this.dialogConfig.data = {id: 123, title: 'Edit Customer'};
+
+    // Send customer ID to dialog class
+    this.dialogConfig.data = {customerID: this.booking.CustomerID};
 
     const dialogRef = this.dialog.open(CustomerEdit, this.dialogConfig);
 
+    // Get changed data and apply to field and update booking record
     dialogRef.afterClosed().subscribe(data => {
         console.log('Result: ', data);
     });
