@@ -90,6 +90,8 @@ openDialog(){
 
 /**
  * Customer Detail Edit Dialog
+ * 
+ * Send Customer ID to Dialog and let dialog pull details
  */
 openCustomerEditDialog(){
 
