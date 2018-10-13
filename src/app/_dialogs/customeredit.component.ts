@@ -24,7 +24,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
     }
 
     save(): void {
-      this.dialogRef.close({id:123,title:'sample',id2:this.id,title2:this.title});
+      this.dialogRef.close({});
     }
   
   }

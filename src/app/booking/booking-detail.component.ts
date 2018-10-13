@@ -28,6 +28,8 @@ loadingData = false;
 
 dialogConfig = new MatDialogConfig();
 
+isChanged = false;
+
 constructor(
     private route: ActivatedRoute,
     private bookingService: BookingService,
@@ -62,13 +64,14 @@ ngOnInit(){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
 
-
-
-
 }
 
 parseDate(date){
     return new Date(date);
+}
+
+canDeactivate() {
+    return this.isChanged;
 }
 
 /**

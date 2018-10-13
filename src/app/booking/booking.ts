@@ -28,14 +28,9 @@ export interface IBooking {
     BookedDate: Date;
     DueDate: Date;
 /*
-    DateBooked: number;
-    ExpectedDate: number;
     CollectionDate: number;
-
-    Collected: number;
     Deleted: number;
     Submit: number;
-
     Timestamp: number;
 */
 }
