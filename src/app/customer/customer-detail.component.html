@@ -1,0 +1,152 @@
+<div class="toolbar">
+    <div class="left-buttons">
+
+        <!-- <button mat-raised-button 
+                color="primary" 
+                (click)="goBack()">Back</button> -->
+        <button mat-icon-button 
+                matTooltipClass="header-tooltip"
+                matTooltip="Back"
+        (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+
+    </div>
+    <div class="right-buttons">
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Save">
+                        <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Print Invoice">
+                        <mat-icon>print</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Delete">
+                        <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Download">
+                        <mat-icon>cloud_download</mat-icon>
+            </button>
+            <button mat-icon-button 
+                    matTooltipClass="header-tooltip" 
+                    matTooltip="Settings">
+                        <mat-icon>settings</mat-icon>
+            </button>
+    </div>
+</div>
+
+
+<!-- Card Content -->
+<div class="card-container">
+
+    <!-- Basic Customer Details -->
+    <div class="card w33">
+        <div class="header">Basic Details</div>
+        <div class="content">
+            <div class="row">
+                <div class="label">Customer ID</div>
+                <div class="text">{{customer.CustomerID}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Name</div>
+                <div class="text">{{customer.Name}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Telephone</div>
+                <div class="text">{{customer.Telephone}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="text">{{customer.Email}}</div>
+            </div>
+            <div class="row">
+                <div class="label">Last Visit</div>
+                <div class="text">10/10/2018</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card w33">
+        <div class="header">Contact Details</div>
+        <div class="content">
+            <div class="row">
+                <div class="label">Address 1</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Address 2</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">City</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Post Code</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Country</div>
+                <div class="text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Details -->
+    <div class="card w33">
+        <div class="header">Communication</div>
+        <div class="content">
+            <div class="row">
+                <div class="label">Customer ID</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Name</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Telephone</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="text"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="card w100">
+        <div class="header">Jobs</div>
+        <div class="content">
+            <div class="row">
+                <div class="label">Customer ID</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Name</div>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="label">Telephone</div>
+                <div class="text">0123 455 6789</div>
+            </div>
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="text">1@somthing.com</div>
+            </div>
+        </div>
+        <div class="action">
+            <button mat-raised-button>Edit</button>
+        </div>
+    </div>
+
+    
+
+</div>
