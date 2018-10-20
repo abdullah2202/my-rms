@@ -7,7 +7,10 @@
 
 export interface ICustomer {
     CustomerID?: string;
+
+    // Store?: IStore; // TODO: Add store Object?
     StoreID?: string;
+    StoreName? : string;
 
     Name: string;
 

@@ -48,6 +48,7 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
     });
 
     this.customerService.customers.subscribe(customers => {
+      console.log(customers);
       this.data = customers;
       this.allData = customers;
 
