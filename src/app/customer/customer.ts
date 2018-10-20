@@ -6,23 +6,23 @@
  */
 
 export interface ICustomer {
-    CustomerID: string;
-    StoreID: string;
+    CustomerID?: string;
+    StoreID?: string;
 
     Name: string;
 
-    Address1: string;
-    Address2: string;
-    City: string;
-    Postcode: string;
-    Country: string;
+    Address1?: string;
+    Address2?: string;
+    City?: string;
+    Postcode?: string;
+    Country?: string;
 
-    Telephone: string;
-    Email: string;
+    Telephone?: string;
+    Email?: string;
 
-    Timestamp: string;
+    Timestamp?: string;
 
-    Deleted: string;
-    Notes: string;
+    Deleted?: string;
+    Notes?: string;
     
 }

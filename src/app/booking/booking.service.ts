@@ -49,7 +49,7 @@ export class BookingService {
   }
 
   /**
-   * Get all bookings from server
+   * Get all bookings from server - refresh data
    */
   getAll(){
     this.api.getAll(this.baseUrl).subscribe(data => {
@@ -83,20 +83,21 @@ export class BookingService {
   getBooking(id:string){
 
     // Already have booking in cache
-    let alreadyHave = true;
+    let alreadyHave = false;
 
     // Check local data store for booking
     this.dataStore.bookings.forEach((item) => {
 
       // If current item Booking == Booking ID
       if(item.BookingID === id){
-        alreadyHave = false;
+        alreadyHave = true;
       }
     });
 
     // If local data store does not have booking download
-    if(alreadyHave){
+    if(!alreadyHave){
 
+      // Get record from server using API
       this.api.getById(this.baseUrl,id).subscribe(data => {
 
         // If Booking does not exists in current list
@@ -121,6 +122,7 @@ export class BookingService {
           notFound = false;
         }
 
+        // Push new observable
         this._bookings.next(Object.assign({}, this.dataStore).bookings);
 
       }, error => console.log('Could not load booking. Error: ' + error));
