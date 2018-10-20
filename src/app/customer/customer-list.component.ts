@@ -39,7 +39,6 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
   }
 
   ngOnInit() {
-    // this.getCustomers();
 
     this.customerService.initialGetAll();
 
@@ -57,19 +56,6 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
 
     
 
-  }
-
-
-  getCustomers(pageNum? : number){
-    this.customerService.getCustomers()
-      .subscribe(d => {
-        this.data = d.data;
-        this.allData = d.data;
-        this.headers = d.headers;
-        this.setPage(1);
-      },
-      error => this.errorMessage = <any>error
-      );
   }
 
 }

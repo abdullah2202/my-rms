@@ -142,16 +142,6 @@ export class CustomerService {
 
   }
 
-
-  // Remove this?
-  getCustomers(): Observable<any> {
-    return this.api.getAll(this.baseUrl)
-        .map(res => {
-          return res;
-        })
-        ;
-  }
-
   /**
    * Initialize default data to display
    */
