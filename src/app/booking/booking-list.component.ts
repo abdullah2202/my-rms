@@ -107,7 +107,10 @@ export class BookingListComponent extends TableListComponent implements OnInit{
     } 
   }
 
-  //Overwrite Functions
+  /**
+   * Overwrite Functions
+   */
+
   showDetails(id: string){
     this.router.navigate(['bookings', id]);
   }

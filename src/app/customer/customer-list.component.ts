@@ -39,7 +39,24 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
   }
 
   ngOnInit() {
-    this.getCustomers();
+    // this.getCustomers();
+
+    this.customerService.initialGetAll();
+
+    // Set headers from service
+    this.customerService.headers.subscribe(headers => {
+      this.headers = headers;
+    });
+
+    this.customerService.customers.subscribe(customers => {
+      this.data = customers;
+      this.allData = customers;
+
+      this.setPage(1);
+    });
+
+    
+
   }
 
 
