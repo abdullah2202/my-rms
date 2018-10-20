@@ -7,7 +7,7 @@ import { BookingListComponent } from './booking/booking-list.component';
 import { BookingDetailComponent } from './booking/booking-detail.component';
 
 import { CustomerListComponent } from './customer/customer-list.component';
-
+import { CustomerDetailComponent } from './customer/customer-detail.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'bookings/awaiting-parts', component: BookingListComponent, data: {sort: 'awaiting parts'} },
   { path: 'bookings', component: BookingListComponent },
   { path: 'bookings/:id', component: BookingDetailComponent },
-  { path: 'customers', component: CustomerListComponent }
+  { path: 'customers', component: CustomerListComponent },
+  { path: 'customers/:id', component: CustomerDetailComponent }
+
 ];
 
 @NgModule({

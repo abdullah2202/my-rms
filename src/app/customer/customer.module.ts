@@ -7,6 +7,7 @@ import { DirectivesModule } from '../_directives/directives.module';
 import { ContextMenuModule } from '../_context/context-menu.module';
 
 import { CustomerListComponent } from './customer-list.component';
+import { CustomerDetailComponent } from './customer-detail.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { CustomerListComponent } from './customer-list.component';
     DirectivesModule,
     ContextMenuModule
   ],
-  declarations: [CustomerListComponent]
+  declarations: [
+    CustomerListComponent,
+    CustomerDetailComponent
+  ]
 })
 export class CustomerModule { }

@@ -4,7 +4,7 @@ import { CustomerService } from './customer.service';
 import { PagerService } from '../services/pager.service';
 // import { ContextMenuComponent } from '../context/context-menu.component';
 import {TableListComponent} from '../table/table-list.component';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'customer-list',
@@ -30,12 +30,17 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
 
   constructor(
     private customerService: CustomerService,
-    protected pagerService: PagerService
+    protected pagerService: PagerService,
     // protected contextMenu: ContextMenuComponent
+    private router: Router,
+    private route: ActivatedRoute
   ) { 
     super(pagerService
-      // , contextMenu
-    ); 
+      // , contextMenu  
+    );
+    
+    
+
   }
 
   ngOnInit() {
@@ -58,5 +63,19 @@ export class CustomerListComponent extends TableListComponent implements OnInit 
     
 
   }
+
+
+  /**
+   * Overwrite Functions
+   */
+
+  showDetails(id: string){
+    this.router.navigate(['customers', id]);
+  }
+
+  refreshData(){
+    this.customerService.getAll();
+  }
+
 
 }
