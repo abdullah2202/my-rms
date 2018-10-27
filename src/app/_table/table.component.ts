@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PagerService } from '../services/pager.service';
+import { MatGridTileHeaderCssMatStyler } from '@angular/material';
 
 /**
  * Component 
@@ -9,19 +10,19 @@ import { PagerService } from '../services/pager.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-// export class TableComponent implements OnInit {
+
+
 export class Table {
 
+  // Data to be input
   @Input('data') data: any;
-
-  // Data which is used and filtered
-  //data = [{}];
+  @Input('headers') headers: any;
 
   // All data, unfiltered
   allData = [{}];
 
   // Headers
-  headers = [{}];
+//   headers = [{}];
 
   // Array of widths of columns
   columnWidths = [{}];
@@ -92,6 +93,7 @@ export class Table {
   ngOnInit(): void {
     // this.filter = {};
     console.log(this.data);
+    console.log(this.headers);
   } 
 
   /**

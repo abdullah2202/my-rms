@@ -1,5 +1,28 @@
 <div class="table-wrapper">
-    <div class="table-header"></div>
-    <div class="table-body"></div>
+
+    <!-- Header -->
+    <div class="table-header">
+        <div *ngFor="let h of headers" 
+             class="table-header-cell"
+             [ngStyle]="{'width': h.width+'%'}"
+             >
+            {{h.name}}
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="table-body">
+        <div *ngFor="let d of data" class="body-row">
+            <div *ngFor="let h of headers" 
+                 class="body-row-cell"
+                 [ngStyle]="{'width': h.width+'%'}"
+                 >
+                {{d[h.field]}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <div class="table-footer"></div>
+
 </div>

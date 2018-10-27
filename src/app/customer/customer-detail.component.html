@@ -100,7 +100,9 @@
     <div class="card w33">
         <div class="header">Communication</div>
         <div class="content">
-            <app-table [data]="someData"></app-table>
+            <button (click)="testAdd()">Add</button>
+            <app-table  [data]="customerCommsData" 
+                        [headers]="customerCommsHeaders"></app-table>
         </div>
     </div> 
 
@@ -110,22 +112,12 @@
     <div class="card w100">
         <div class="header">Jobs</div>
         <div class="content">
-            <div class="row">
-                <div class="label">Customer ID</div>
-                <div class="text"></div>
-            </div>
-            <div class="row">
-                <div class="label">Name</div>
-                <div class="text"></div>
-            </div>
-            <div class="row">
-                <div class="label">Telephone</div>
-                <div class="text">0123 455 6789</div>
-            </div>
-            <div class="row">
-                <div class="label">Email</div>
-                <div class="text">1@somthing.com</div>
-            </div>
+            
+            <app-table
+                [data]="jobsData"
+                [headers]="jobsHeaders"
+            ></app-table>
+
         </div>
         <div class="action">
             <button mat-raised-button>Edit</button>
