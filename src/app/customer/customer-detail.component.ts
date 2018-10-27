@@ -10,12 +10,16 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 // Dialogs
 import { Dialog } from '../_dialogs/dialog.component';
 
+import { Table } from '../_table/table.component';
+
 @Component({
     selector: 'customer-detail',
     templateUrl: './customer-detail.component.html',
     styleUrls: ['./customer-detail.component.scss']
 })
 export class CustomerDetailComponent implements OnInit {
+
+someData: string = 'Some data to be placed here';
 
 // Customer Object TODO: Create empty Object when creating new Customer
 customer: ICustomer;

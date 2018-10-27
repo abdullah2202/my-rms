@@ -26,6 +26,7 @@ import { TableListComponent } from './table/table-list.component';
 import { BookingModule } from './booking/booking.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TableModule } from './_table/table.module';
 
 //Dialogs
 import { DialogModule } from './_dialogs/dialog.module';
@@ -37,7 +38,7 @@ import { Dialog } from './_dialogs/dialog.component';
 import { CustomerEdit } from './_dialogs/customeredit.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 
- 
+
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     HttpClientModule,
     DirectivesModule,
     ContextMenuModule,
-    DialogModule
+    DialogModule,
+    TableModule
   ],
   declarations: [
     AppComponent,

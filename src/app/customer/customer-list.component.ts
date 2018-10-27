@@ -4,6 +4,7 @@ import { CustomerService } from './customer.service';
 import { PagerService } from '../services/pager.service';
 // import { ContextMenuComponent } from '../context/context-menu.component';
 import {TableListComponent} from '../table/table-list.component';
+
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
