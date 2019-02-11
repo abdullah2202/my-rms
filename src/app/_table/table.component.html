@@ -1,12 +1,22 @@
 <div class="table-wrapper">
 
+    <!-- Toolber -->
+    <div class="table-toolbar">
+        <button>Cols</button>
+    </div>
+
     <!-- Header -->
     <div class="table-header">
         <div *ngFor="let h of headers" 
              class="table-header-cell"
              [ngStyle]="{'width': h.width+'%'}"
              >
-            {{h.name}}
+             <div class="header-wrapper">
+                 <div class="header-text">
+                    {{h.name}}
+                 </div>
+                 <div class="header-sort-icon"></div>
+             </div>
         </div>
     </div>
 

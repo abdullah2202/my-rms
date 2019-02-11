@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { BehaviorSubject } from 'rxjs';
 
 import { ApiService } from '../services/api.service';
 import { IBooking } from './booking';

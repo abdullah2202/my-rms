@@ -17,9 +17,11 @@ import { Dialog } from '../_dialogs/dialog.component';
 })
 export class CustomerDetailComponent implements OnInit {
 
+// Customer Comms Table
 customerCommsData = [];
 customerCommsHeaders = [];
 
+// Jobs Table
 jobsData = [];
 jobsHeaders = [];
 
@@ -70,10 +72,10 @@ ngOnInit(){
     this.testAdd();
 
 
-    this.jobsHeaders.push({name:'Job ID',field:'jobID',width:'15'});
-    this.jobsHeaders.push({name:'Model',field:'model',width:'20'});
-    this.jobsHeaders.push({name:'Serial',field:'serial',width:'30'});
-    this.jobsHeaders.push({name:'Problem',field:'problem',width:'35'});
+    this.jobsHeaders.push({name:'Job ID',field:'jobID',width:'10',isShown:true});
+    this.jobsHeaders.push({name:'Model',field:'model',width:'20',isShown:true});
+    this.jobsHeaders.push({name:'Serial',field:'serial',width:'30',isShown:true});
+    this.jobsHeaders.push({name:'Problem',field:'problem',width:'35',isShown:true});
 
     this.jobsData.push({jobID:'0001',model:'Apple iPhone XS',serial:'3543231231',problem:'LCD'});
     this.jobsData.push({jobID:'0002',model:'Apple iPhone 6',serial:'3543231231',problem:'LCD'});

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PagerService } from '../services/pager.service';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material';
 
 /**
  * Component 
@@ -20,9 +19,6 @@ export class Table {
 
   // All data, unfiltered
   allData = [{}];
-
-  // Headers
-//   headers = [{}];
 
   // Array of widths of columns
   columnWidths = [{}];
@@ -107,44 +103,6 @@ export class Table {
     // this.contextMenu.openMenu(e);
   }
 
-  /**
-   * 
-   * Renders the page with pagination
-   * Uses the pagination service
-   * 
-   * POSSIBLE BUG - With a large number of pages visible and navigating, 
-   *                all pages are visible at once, taking up all space in pagination footer
-   * 
-   * @param page Page number to load a paticular page
-   */
-  setPage(page: number = 1) {
-    this.currentPage = page;
-    this._totalRows = this.data.length;
-
-    // Error checking
-    if (this.currentPage < 1 || (this.pager.totalPages > 0 && page > this.pager.totalPages)) {
-        return;
-    }
-
-    // Get pager object from service
-    this.pager = this.pagerService.getPager(this.data.length, this.currentPage, this.itemsPerPageSelected);
-
-    // Get current page of items
-    this.pagedItems = this.data.slice(this.pager.startIndex, this.pager.endIndex + 1);
-
-    this.loadingData = false;
-  }
-
-  /**
-   * 
-   * Sets the number of items to display on each page
-   * 
-   * @param itemPPId ID of items per page select
-   */
-  setItemsPerPage(itemPPId: number){
-    this.itemsPerPageSelected = itemPPId;
-    this.setPage(1);
-  }
 
   /**
    * 
@@ -205,9 +163,6 @@ export class Table {
       if(reloadData){
         this.allData = this.data;
       }
-
-      //Set to page 1 of results
-      this.setPage(1);
     }else{
 
       // If no filter has been set, reset filter status
@@ -239,8 +194,6 @@ export class Table {
     // Reset data to base data
     this.data = this.allData;
 
-    // Set page back to 1
-    this.setPage(1);
   }
 
  
@@ -401,9 +354,6 @@ export class Table {
     if(!this.sortAsc){
       this.data.reverse();
     }
-
-    // Refresh the view
-    this.setPage(this.currentPage);
   
 
   }
