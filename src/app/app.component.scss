@@ -16,14 +16,102 @@ $box-shadow-opacity: 0;
 
  
 .app-view{
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    height: 100vh;
-    min-height: 600px;
+    // display: flex;
+    // flex-direction: column;
+    // overflow: auto;
+    // height: 100vh;
+    // min-height: 600px;
+    height: 100%;
+    overflow:unset;
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+/* #pageWrapper */
+#pageWrapper{
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+  
+#page-wrapper, .navbar{
+    transition: all .4s ease;
 }
 
 
+/* Nav - Left Menu */
+
+/* Nav DIV container */
+.navbar{
+    border-color: #2f4050;
+}
+
+/* Navbar with collapsable div */
+.navbar.navbar-static-collapse{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Background color and box shadow for collapsable div */
+.navbar-static-collapse{
+    background-color: #2f4050;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
+                0 3px 1px -2px rgba(0,0,0,.2), 
+                0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+/* Media query for size and z-index */
+@media (min-width: 760px){
+    .navbar-static-side{
+        z-index: 2001;
+        position: absolute;
+        width: 220px;
+    }
+}
+
+/* Nav UL element */
+.nav{
+    background-color: #2f4050;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/* Header in Nav */
+.nav-header{
+    padding: 33px 25px;
+}
+
+.nav-logo{
+    color: #a7b1c2;
+    font-size: 20px;
+}
+
+
+/* Nav LI element */
+.nav-menu-item{
+    position: relative;
+    display: block;
+    list-style: none;
+}
+
+/* Nav A element */
+.nav>li>a{
+    color: #a7b1c2;
+    font-weight: 600;
+    padding: 14px 20px 14px 25px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbard .nav>li>a:hover{
+    background-color: #293846;
+    color: #fff;
+}
 
 /* Header */
 #header{

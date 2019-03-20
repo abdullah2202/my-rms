@@ -25,14 +25,20 @@ import { CustomerService } from "../customer/customer.service";
         // this.id = data.id;
         // this.title = data.title;
         console.log(data);
+
+
+
       }
   
     onNoClick(): void {
       this.dialogRef.close();
     }
 
+    // When save button is pressed
     save(): void {
-      this.dialogRef.close({});
+
+      // Send data - a:save, c:cid
+      this.dialogRef.close({'id':'1234'});
     }
   
   }
