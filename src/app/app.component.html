@@ -4,7 +4,7 @@
 <!-- Page Wrapper -->
 <div id="pageWrapper">
 
-<!-- Nav Bar on left handside -->
+<!-- Nav Bar on left side -->
 <nav class="navbar navbar-collapse navbar-static-side">
 <ul class="nav">
 <li class="nav-header">
@@ -12,14 +12,109 @@
     RMS
   </div>
 </li>
-<li class="nav-menu-item"><a href="#">Dashboard</a></li>
-<li class="nav-menu-item"><a href="#">Tickets</a></li>
+<li class="nav-menu-item">
+  <a  href="#"
+      routerLink="/" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+  Dashboard</a>
+</li>
+<li class="nav-menu-item">
+  <a  href="#"
+      routerLink="/bookings" 
+      routerLinkActive="active">
+    Bookings</a>
+</li>
 <li class="nav-menu-item"><a href="#">Customers</a></li>
 <li class="nav-menu-item"><a href="#">Invoices</a></li>
 <li class="nav-menu-item"><a href="#">Reports</a></li>
 <li class="nav-menu-item"><a href="#">Payments</a></li>
 </ul>
 </nav>
+<!-- End of Nav Bar on left side -->
+
+
+<!-- Wrapper for main content view on right -->
+<div id="page-wrapper">
+
+<!-- Float Conatiner at the top with bottom border -->
+<div id="top-menu" class="container-floating border-bottom">
+  
+  <!-- Top Menu -->
+  <nav class="navbar-top navbar-static-top">
+
+    <!-- Left column on top nav -->
+    <div class="nav-left-col">
+      <button mat-icon-button 
+              class="btn-shade">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="page-title">Bookings</h1>
+    </div>
+
+    <!-- Right column on top nav -->
+    <div class="nav-right-col">
+
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="Reports"
+              class="btn-shade">
+        <mat-icon>trending_up</mat-icon>
+      </button>
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="List"
+              class="btn-shade">
+        <mat-icon>list</mat-icon>
+      </button>
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="Employees"
+              class="btn-shade">
+        <mat-icon>group</mat-icon>
+      </button>
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="Store Settings"
+              class="btn-shade">
+        <mat-icon>store</mat-icon>
+      </button>
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="Invoices"
+              class="btn-shade">
+        <mat-icon>receipt</mat-icon>
+      </button>
+      <button mat-icon-button 
+              matTooltipClass="header-tooltip" 
+              matTooltip="Settings"
+              class="btn-shade">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+    
+  </nav>
+
+</div>
+<!-- End Floating Container -->
+
+<!-- Main Content container -->
+<div class="">
+
+  <router-outlet></router-outlet>
+
+</div>
+
+
+</div>
+<!-- End Page Wrapper -->
+
+
+
+
+
+
+
 
 <!-- Start Header -->
 <!-- 
@@ -239,7 +334,7 @@
 <!-- <div class="right-wrapper"> -->
 
   <!-- Place Router Code Here -->
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->
 
   <!-- <context-menu></context-menu> -->
   <!-- <app-contextmenu></app-contextmenu> -->
