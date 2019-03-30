@@ -10,20 +10,30 @@ export class AppComponent {
 
 
 title = 'RMS APP';
-activatedMenuItem = "";
+activeMenuItem = "";
+activeSubMenuItem="";
 
 /**
  * Toggles visibility of activated sub menu
  * @param item 
  */
 activateMenuItem(item: string){
-  if(this.activatedMenuItem==item){
-    this.activatedMenuItem = "";
+  if(this.activeMenuItem==item){
+    this.activeMenuItem = "";
   }else{
-    this.activatedMenuItem = item;
+    this.activeMenuItem = item;
   }
-  
 }
+
+activateSubMenuItem(item: string){
+  if(this.activeSubMenuItem==item){
+    this.activeSubMenuItem = "";
+  }else{
+    this.activeSubMenuItem = item;
+  }
+}
+
+
 
 ngOnInit(): void {
   

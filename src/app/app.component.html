@@ -13,19 +13,64 @@
   </div>
 </li>
 <li class="nav-menu-item">
-  <a  href="#"
+  <a
       routerLink="/" 
       routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }">
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="activateMenuItem('')">
   Dashboard</a>
 </li>
-<li class="nav-menu-item">
-  <a  href="#"
-      routerLink="/bookings" 
-      routerLinkActive="active">
-    Bookings</a>
+
+<li class="nav-menu-item has-submenu" 
+    [ngClass]="activeMenuItem=='bookings' ? 'active' : ''">
+  <a (click)="activateMenuItem('bookings')">Bookings</a>
+  <ul class="submenu">
+    <li class="nav-menu-item">
+      <a routerLink="/bookings" 
+         [routerLinkActiveOptions]="{ exact: true }"
+         routerLinkActive="active">All</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/bookings/processing" 
+      routerLinkActive="active">Processing</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/bookings/completed" 
+      routerLinkActive="active">Completed</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/bookings/cancelled" 
+      routerLinkActive="active">Cancelled</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/bookings/awaiting-action" 
+      routerLinkActive="active">Awaiting Action</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/bookings/awaiting-parts" 
+      routerLinkActive="active">Awaiting Parts</a>
+    </li>
+  </ul>
 </li>
-<li class="nav-menu-item"><a href="#">Customers</a></li>
+<li class="nav-menu-item has-submenu"
+    [ngClass]="activeMenuItem=='customers' ? 'active' : ''">
+  <a (click)="activateMenuItem('customers')">Customers</a>
+  <ul class="submenu">
+    <li class="nav-menu-item">
+      <a routerLink="/customers"
+         [routerLinkActiveOptions]="{exact:true}"
+         routerLinkActive="active">All</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/customers/deleted"
+          routerLinkActive="active">Deleted</a>
+    </li>
+    <li class="nav-menu-item">
+      <a routerLink="/customers/outstanding-payments"
+          routerLinkActive="active">Outstanding Payments</a>
+    </li>
+  </ul>
+</li>
 <li class="nav-menu-item"><a href="#">Invoices</a></li>
 <li class="nav-menu-item"><a href="#">Reports</a></li>
 <li class="nav-menu-item"><a href="#">Payments</a></li>
@@ -49,7 +94,19 @@
               class="btn-shade">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1 class="page-title">Bookings</h1>
+
+      <!-- Seach Bar -->
+      <div class="navtop-search">
+        <div class="search-wrapper">
+          <div class="input-container no-borders">
+            <input type="text" />
+          </div>
+        </div>
+        <div class="advanced-search">
+          <span>Advanced</span>
+        </div>
+      </div>
+      <!-- <h1 class="page-title">{{}}</h1> -->
     </div>
 
     <!-- Right column on top nav -->
