@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -36,7 +37,10 @@ activateSubMenuItem(item: string){
 
 
 ngOnInit(): void {
-  
+  $('.has-submenu>a').click(function(){
+    $(this).siblings('.submenu').slideToggle();
+    $(this).parent().toggleClass("active");
+  });
 }
 
 
