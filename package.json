@@ -34,6 +34,7 @@
     "lodash": "^4.17.11",
     "material-design-icons": "^3.0.1",
     "rxjs": "^6.3.3",
+    "timespan": "^2.3.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
