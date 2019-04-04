@@ -1,0 +1,74 @@
+<!-- Nav Bar on left side -->
+<nav class="navbar navbar-collapse navbar-static-side">
+  <ul class="nav">
+  <li class="nav-header">
+    <div class="nav-logo">
+      RMS
+    </div>
+  </li>
+  <li class="nav-menu-item">
+    <a
+        routerLink="/" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="activateMenuItem('')">
+    Dashboard</a>
+  </li>
+  
+  <li class="nav-menu-item has-submenu" 
+      [ngClass]="activeMenuItem=='bookings' ? 'active' : ''">
+    <a (click)="activateMenuItem('bookings')">Bookings</a>
+    <ul class="submenu">
+      <li class="nav-menu-item">
+        <a routerLink="/bookings" 
+           [routerLinkActiveOptions]="{ exact: true }"
+           routerLinkActive="active">All</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/bookings/processing" 
+        routerLinkActive="active">Processing</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/bookings/completed" 
+        routerLinkActive="active">Completed</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/bookings/cancelled" 
+        routerLinkActive="active">Cancelled</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/bookings/awaiting-action" 
+        routerLinkActive="active">Awaiting Action</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/bookings/awaiting-parts" 
+        routerLinkActive="active">Awaiting Parts</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-menu-item has-submenu"
+      [ngClass]="activeMenuItem=='customers' ? 'active' : ''">
+    <a (click)="activateMenuItem('customers')">Customers</a>
+    <ul class="submenu">
+      <li class="nav-menu-item">
+        <a routerLink="/customers"
+           [routerLinkActiveOptions]="{exact:true}"
+           routerLinkActive="active">All</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/customers/deleted"
+            routerLinkActive="active">Deleted</a>
+      </li>
+      <li class="nav-menu-item">
+        <a routerLink="/customers/outstanding-payments"
+            routerLinkActive="active">Outstanding Payments</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-menu-item"><a href="#">Invoices</a></li>
+  <li class="nav-menu-item"><a href="#">Reports</a></li>
+  <li class="nav-menu-item"><a href="#">Payments</a></li>
+  </ul>
+  </nav>
+  <!-- End of Nav Bar on left side -->
+  

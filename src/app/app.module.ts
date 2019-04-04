@@ -37,6 +37,7 @@ import { DirectivesModule } from './_directives/directives.module';
 import { Dialog } from './_dialogs/dialog.component';
 import { CustomerEdit } from './_dialogs/customeredit.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
+import { SideMenuComponent } from './menu/side-menu/side-menu.component';
 
 
 
@@ -58,7 +59,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
   declarations: [
     AppComponent,
     DashboardComponent,
-    TableListComponent
+    TableListComponent,
+    SideMenuComponent
   ],
   providers: [
     ApiService,

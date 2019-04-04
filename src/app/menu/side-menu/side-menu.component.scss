@@ -1,0 +1,134 @@
+
+/* Nav - Left Menu and Top Menu*/
+
+/* Nav DIV container */
+.navbar{
+    border-color: #2f4050;
+}
+
+.navbar-top{
+    border: 1px solid transparent;
+    background-color: #fff;
+    position: relative;
+    min-height: 50px;
+    // margin-bottom: 20px;
+    padding: 10px;
+}
+
+.navbar, .navbar-top{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
+    0 3px 1px -2px rgba(0,0,0,.2), 
+    0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+/* Navbar with collapsable div */
+.navbar.navbar-static-collapse{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Background color and box shadow for collapsable div */
+.navbar-static-collapse{
+    background-color: #2f4050;
+}
+
+/* Media query for size and z-index */
+@media (min-width: 760px){
+    .navbar-static-side{
+        z-index: 2001;
+        position: absolute;
+        width: 220px;
+    }
+}
+
+/* Nav UL element */
+.nav{
+    background-color: #2f4050;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/* Header in Nav */
+.nav-header{
+    padding: 33px 25px;
+}
+
+.nav-logo{
+    color: #a7b1c2;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+/* Nav Menu Items */
+
+/* Nav LI element */
+.nav-menu-item{
+    position: relative;
+    display: block;
+    list-style: none;
+    outline: none;
+}
+
+/* Nav A element */
+.nav-menu-item a{
+    // color: #a7b1c2;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    padding: 14px 20px 14px 25px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+}
+
+.nav-menu-item a:hover{
+    background-color: #293846;
+    color: #fff;
+}
+
+.nav-menu-item.has-submenu>a:after{
+    font-family: 'Material Icons';
+    content: 'keyboard_arrow_down';
+    color: rgba(255,255,255,0.4);
+    font-size: 20px;
+    position: absolute;
+    padding: 0;
+    top: 10px;
+    right: 10px;
+}
+.nav-menu-item.active.has-submenu>a:after{
+    content: 'keyboard_arrow_up';
+}
+
+.nav-menu-item>a.active, .nav-menu-item.active>a{
+    color: #ffa000;
+}
+.nav-menu-item a.active, .nav-menu-item.active a{
+    border-left-color: #ffa000;
+}
+
+.nav-menu-item ul.submenu{
+    display: none;
+    height: 0px;
+    // display: block;
+    transition: height 0.5s linear;
+}
+
+.nav-menu-item.active ul.submenu{
+    // display: block;
+    height: 100%;
+    // overflow: hidden;
+    display: initial;
+}
+
+.submenu .nav-menu-item a{
+    padding: 14px 10px 14px 45px;
+}
