@@ -117,16 +117,17 @@
 
 .nav-menu-item ul.submenu{
     display: none;
-    height: 0px;
+    // visibility: hidden;
+    // height: 0px;
     // display: block;
-    transition: height 0.5s linear;
+    // transition: height 0.5s linear;
 }
 
 .nav-menu-item.active ul.submenu{
     // display: block;
-    height: 100%;
+    // height: 100%;
     // overflow: hidden;
-    display: initial;
+    // display: initial;
 }
 
 .submenu .nav-menu-item a{

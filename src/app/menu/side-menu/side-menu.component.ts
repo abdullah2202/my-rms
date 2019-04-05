@@ -14,6 +14,7 @@ export class SideMenuComponent implements OnInit {
     $('.has-submenu>a').click(function(){
       $(this).siblings('.submenu').slideToggle();
       $(this).parent().toggleClass("active");
+      console.log('TEST');
     });
   }
 

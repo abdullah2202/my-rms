@@ -11,13 +11,13 @@
         routerLink="/" 
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        (click)="activateMenuItem('')">
+        >
     Dashboard</a>
   </li>
   
   <li class="nav-menu-item has-submenu" 
       [ngClass]="activeMenuItem=='bookings' ? 'active' : ''">
-    <a (click)="activateMenuItem('bookings')">Bookings</a>
+    <a>Bookings</a>
     <ul class="submenu">
       <li class="nav-menu-item">
         <a routerLink="/bookings" 
