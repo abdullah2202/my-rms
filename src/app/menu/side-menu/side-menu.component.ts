@@ -10,22 +10,8 @@ export class SideMenuComponent implements OnInit {
 
   activatedMenuItem = "";
 
-  constructor() { }
-
-  ngOnInit() {
-
-    $('.has-submenu>a').click(function(){
-      // $(this).siblings('.submenu').slideToggle();
-      // $(this).parent().toggleClass("active");
-    });
-
-  }
-
-  test(item: object){
-    // console.log(item.target.attributes['data-test-data'].value);
-    // console.log();
-    $("a[data-type='parent-menu'").siblings('ul.submenu').slideDown();
-  }
+  constructor() {}
+  ngOnInit() {}
 
   activateMenuItem(item: any){
 

@@ -28,16 +28,24 @@
        data-name="bookings"
        data-type="parent-menu"
        >Bookings</a>
+
+    <!-- Sub Menu -->
     <ul class="submenu">
+
+      <!-- All Bookings -->
       <li class="nav-menu-item">
         <a routerLink="/bookings" 
            [routerLinkActiveOptions]="{ exact: true }"
            routerLinkActive="active">All</a>
       </li>
+
+      <!-- Processing -->
       <li class="nav-menu-item">
         <a routerLink="/bookings/processing" 
         routerLinkActive="active">Processing</a>
       </li>
+
+      <!-- Completed -->
       <li class="nav-menu-item">
         <a routerLink="/bookings/completed" 
         routerLinkActive="active">Completed</a>
@@ -56,6 +64,7 @@
       </li>
     </ul>
   </li>
+  
   <li class="nav-menu-item has-submenu"
       [ngClass]="activatedMenuItem=='customers' ? 'active' : ''">
     <a (click)="activateMenuItem($event)"
