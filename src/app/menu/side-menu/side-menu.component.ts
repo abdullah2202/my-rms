@@ -11,11 +11,13 @@ export class SideMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
     $('.has-submenu>a').click(function(){
       $(this).siblings('.submenu').slideToggle();
       $(this).parent().toggleClass("active");
       console.log('TEST');
     });
+    
   }
 
 }
