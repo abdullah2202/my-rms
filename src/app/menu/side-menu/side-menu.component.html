@@ -1,23 +1,33 @@
 <!-- Nav Bar on left side -->
 <nav class="navbar navbar-collapse navbar-static-side">
+
   <ul class="nav">
+
+  <!-- Header - to contain logo -->
   <li class="nav-header">
     <div class="nav-logo">
       RMS
     </div>
   </li>
+
+  <!-- Begin menu items -->
+
+  <!-- Dashboard -->
   <li class="nav-menu-item">
-    <a
-        routerLink="/" 
+    <a  routerLink="/" 
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        >
-    Dashboard</a>
+        >Dashboard</a>
   </li>
   
+  <!-- Bookings - Parent Menu Item -->
   <li class="nav-menu-item has-submenu" 
-      [ngClass]="activeMenuItem=='bookings' ? 'active' : ''">
-    <a>Bookings</a>
+      [ngClass]="activatedMenuItem=='bookings' ? 'active' : ''">
+    <a (click)="activateMenuItem($event)"
+       class=""
+       data-name="bookings"
+       data-type="parent-menu"
+       >Bookings</a>
     <ul class="submenu">
       <li class="nav-menu-item">
         <a routerLink="/bookings" 
@@ -47,8 +57,11 @@
     </ul>
   </li>
   <li class="nav-menu-item has-submenu"
-      [ngClass]="activeMenuItem=='customers' ? 'active' : ''">
-    <a (click)="activateMenuItem('customers')">Customers</a>
+      [ngClass]="activatedMenuItem=='customers' ? 'active' : ''">
+    <a (click)="activateMenuItem($event)"
+       data-name="customers"
+       data-type="parent-menu"
+    >Customers</a>
     <ul class="submenu">
       <li class="nav-menu-item">
         <a routerLink="/customers"

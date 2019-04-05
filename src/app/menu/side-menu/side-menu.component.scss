@@ -4,16 +4,18 @@
 /* Nav DIV container */
 .navbar{
     border-color: #2f4050;
+    padding: 0;
+    margin: 0;
 }
 
-.navbar-top{
-    border: 1px solid transparent;
-    background-color: #fff;
-    position: relative;
-    min-height: 50px;
-    // margin-bottom: 20px;
-    padding: 10px;
-}
+// .navbar-top{
+//     border: 1px solid transparent;
+//     background-color: #fff;
+//     position: relative;
+//     min-height: 50px;
+//     // margin-bottom: 20px;
+//     padding: 10px;
+// }
 
 .navbar, .navbar-top{
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
@@ -74,6 +76,7 @@
     display: block;
     list-style: none;
     outline: none;
+    width: 100%;
 }
 
 /* Nav A element */
@@ -84,6 +87,7 @@
     padding: 14px 20px 14px 25px;
     position: relative;
     display: block;
+    width: 100%;
     cursor: pointer;
     text-decoration: none;
     border-left: 3px solid transparent;
