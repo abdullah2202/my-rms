@@ -50,14 +50,18 @@
     justify-content: space-between;
 
     div{
-        display: block;
+        display: inline-block;
     }
-    span{
+    span, .mat-icon{
         padding: 10px;
         margin: 0;
         font-size: 14px;
         color: rgba(0,0,0,.56);
-        display: block;
+        display: inline-flex;
+    vertical-align: middle;
+    }
+    .mat-icon{
+        
     }
 }
 
