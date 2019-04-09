@@ -129,22 +129,25 @@
             contextmenu [contextMenuSubject]='contextMenuSubject'
             *ngFor="let d of pagedItems"
             [ngClass]="{ 'selected':d.selected }"
-            (click)="toggleCheckbox(d[primaryField])"
             (dblclick)="showDetails(d[primaryField])"
             >
 
         <!-- Check Box for selecting purposes -->
-        <div  class="data-cell data-checkbox">
+        <div  class="data-cell data-checkbox"
+              (click)="toggleCheckbox(d[primaryField])"
+        >
           <i  class="material-icons" 
-              *ngIf="d && !d.selected">check_box_outline_blank</i>
+              *ngIf="d && !d.checked">check_box_outline_blank</i>
           <i  class="material-icons icon-blue" 
-              *ngIf="d && d.selected">check_box</i>
+              *ngIf="d && d.checked">check_box</i>
         </div>
 
         <!-- Data Cell template, repeat for each header selected in headers -->
+        <!-- Add (click)="selectRow(d[primaryField])" if select row is required -->
         <div  class="data-cell" 
               *ngFor="let h of headers"
               [ngStyle]="{'width':h.width +'px'}"
+              
               >
               
               <!-- Pre Text/CSS, if set in data -->

@@ -257,31 +257,58 @@ export class TableListComponent implements OnInit {
   }
 
   /**
-   * Called when a row is click
+   * 
+   * Select row when clicked on - Limit to one row??
+   * 
+   * @param i ID of row
+   */
+  selectRow(i: string){
+    var key = this.checkForID(i);
+    var css = "selected";
+    if(key){
+      this.data[key][css] = !this.data[key][css];
+    }
+  }
+
+  /**
+   * Called when a row is clicked on
    * Toggle check box for each row
    * 
    * @param i ID of row
    */
   toggleCheckbox(i: string){
     var key = this.checkForID(i);
+    var css = "checked";
 
+    // If key exists in Data
     if(key){
-      if(this.data[key]['selected']){
+
+      // Increment/Decrement numSelected count
+      if(this.data[key][css]){
         this._numSelected--;
       }else{
         this._numSelected++;
       }
-      this.data[key]['selected'] = !this.data[key]['selected'];
+      this.data[key][css] = !this.data[key][css];
     }
 
+    // Set the header checkbox value depending on number selected
     if(this._numSelected<this._totalRows &&
        this._numSelected>0)this._isSelected = 'some';
     if(this._numSelected==this._totalRows) this._isSelected = 'all';
     if(this._numSelected==0) this._isSelected = 'none';
   }
 
+  /**
+   * 
+   * @param i Primary Key for record
+   */
   checkForID(i: string){
+
+    // Iterate Data
     for(var key in this.data){
+
+      // Check if key exists in data
       if(this.data[key][this.primaryField]==i) return key;
     }
     return false;
@@ -292,7 +319,7 @@ export class TableListComponent implements OnInit {
    */
   checkAll(){
     for(var key in this.data){
-      this.data[key]['selected']=true;
+      this.data[key]['checked']=true;
     }
     this._isSelected = 'all';
     this._numSelected=this._totalRows;
@@ -303,7 +330,7 @@ export class TableListComponent implements OnInit {
    */
   uncheckAll(){
     for(var key in this.data){
-      this.data[key]['selected']=false;
+      this.data[key]['checked']=false;
     }
     this._isSelected = 'none';
     this._numSelected=0;
