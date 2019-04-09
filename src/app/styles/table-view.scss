@@ -95,7 +95,7 @@
 .data-heading-row{
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
-    height: 60px;
+    height: 50px;
     overflow: hidden;
 }
 
@@ -114,7 +114,7 @@
         .heading-text{
             overflow: hidden;
             text-overflow: ellipsis;
-            max-height: 56px;
+            max-height: 50px;
         }
 
         .sort-icon{
@@ -127,7 +127,7 @@
     .resize-bar{
         flex: 0 0 auto;
         position: relative;
-        height: 56px;
+        height: 50px;
         width: 20px;
         top: 3px;
         right: 0;
@@ -172,9 +172,9 @@
 
 .data-heading, .data-footer-cell{
     font-size: sp(12);
-    font-weight: 700;
+    font-weight: 400;
     color: rgba(0,0,0,0.34);
-    line-height: 56px;
+    line-height: 50px;
     display: inline-flex;
     vertical-align: middle;
     padding: 0;
@@ -204,7 +204,7 @@
 }
 
 .data-footer{
-    height: 56px;
+    height: 50px;
     border-top: 1px solid #e0e0e0;
     flex: 0 0 auto;
     display: flex;
@@ -216,9 +216,9 @@
 
 .data-pagination-cell{
     font-size: sp(12);
-    font-weight: 700;
+    font-weight: 400;
     color: rgba(0,0,0,0.34);
-    line-height: 56px;
+    line-height: 50px;
     display: inline-flex;
     vertical-align: middle;
     padding: 0 5px;
@@ -260,6 +260,8 @@
 
 
 
+
+
 /* Row Styling */
 .data-row{
     width: 100%;
@@ -268,7 +270,7 @@
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid rgba(0,0,0,0.08);
-    height: 40px;
+    height: 38px;
     float: left;
     transition: background-color 0.1s;
     overflow: hidden;
@@ -291,7 +293,7 @@
 .data-cell{
     font-size: 13px;
     color: rgba(0,0,0,0.72);
-    font-weight: 500;
+    font-weight: 400;
     display: inline-flex;
     vertical-align: middle;
     transition: all 50ms cubic-bezier(.25,.8,.25,1); 
