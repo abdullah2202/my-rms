@@ -1,63 +1,74 @@
 <div class="main-content">
 
-<!-- Toolbar -->
-<div class="data-toolbar">
 
-  <!-- Toolbar Left Align -->
-  <div class="toolbar-left">
-    <div class="gst-input">
-      <input  placeholder="Filter" 
-              value="" 
-              type="search"
-              #filter
-              (keyup)="filterResults(filter.value)"
-              >
-    </div>
-
-  <!-- END Toolbar Left Align -->
-  </div>
-
-
-  <!-- Toolbar Right Align -->
-  <div class="button-row">
-      <button mat-icon-button 
-              matTooltip="Refresh" 
-              (click)="refreshData()"
-              [ngClass]="{'rotating':loadingData}">
-        <mat-icon>cached</mat-icon>
-      </button>
-
-      <span *ngIf="selectedRows && selectedRows.length==1">
-        <button mat-icon-button 
-                matTooltip="View Details"><mat-icon>pageview</mat-icon>
-        </button>
-      </span>
-
-      <span *ngIf="selectedRows && selectedRows.length>0">
-        <button mat-icon-button 
-                matTooltip="Delete Selected"><mat-icon>delete</mat-icon>
-        </button>
-        <button mat-icon-button  
-              matTooltip="Export Selected"><mat-icon>get_app</mat-icon>
-        </button>
-      </span>
-
-      <button mat-icon-button 
-              matTooltip="Select Columns"><mat-icon>view_column</mat-icon>
-      </button>
-      <button mat-icon-button  
-              matTooltip="View Settings"><mat-icon>settings</mat-icon>
-      </button>
-
-  <!-- End Button Row / Right Align -->
-  </div>
-
-<!-- End Toolbar -->
-</div>
 
 <!-- View / Content -->
 <div class="data-view">
-  <div class="data-table">
+
+
+
+
+
+
+<!-- Toolbar -->
+<div class="data-toolbar gs-shadow">
+
+    <!-- Toolbar Left Align -->
+    <div class="toolbar-left">
+      <div class="gst-input">
+        <input  placeholder="Filter" 
+                value="" 
+                type="search"
+                #filter
+                (keyup)="filterResults(filter.value)"
+                >
+      </div>
+  
+    <!-- END Toolbar Left Align -->
+    </div>
+  
+  
+    <!-- Toolbar Right Align -->
+    <div class="button-row">
+        <button mat-icon-button 
+                matTooltip="Refresh" 
+                (click)="refreshData()"
+                [ngClass]="{'rotating':loadingData}">
+          <mat-icon>cached</mat-icon>
+        </button>
+  
+        <span *ngIf="selectedRows && selectedRows.length==1">
+          <button mat-icon-button 
+                  matTooltip="View Details"><mat-icon>pageview</mat-icon>
+          </button>
+        </span>
+  
+        <span *ngIf="selectedRows && selectedRows.length>0">
+          <button mat-icon-button 
+                  matTooltip="Delete Selected"><mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button  
+                matTooltip="Export Selected"><mat-icon>get_app</mat-icon>
+          </button>
+        </span>
+  
+        <button mat-icon-button 
+                matTooltip="Select Columns"><mat-icon>view_column</mat-icon>
+        </button>
+        <button mat-icon-button  
+                matTooltip="View Settings"><mat-icon>settings</mat-icon>
+        </button>
+  
+    <!-- End Button Row / Right Align -->
+    </div>
+  
+  <!-- End Toolbar -->
+  </div>
+
+
+
+  <!-- Begin Table -->
+  <div class="data-table gs-shadow">
 
     <!-- Header -->
     <div class="data-header">
