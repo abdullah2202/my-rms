@@ -94,4 +94,7 @@ button{
     transition: box-shadow 300ms cubic-bezier(0.25, 0.8, 0.25, 1.0);
 }
 
-
+.mat-icon-button, .mat-button-focus-overlay{
+    outline: none;
+    border: none;
+}
