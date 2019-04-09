@@ -238,7 +238,15 @@ export class Table {
     if(this._numSelected==0) this._isSelected = 'none';
   }
 
+  /**
+   * 
+   * Check to see if selected key exists in data
+   * 
+   * @param i Primary Key
+   */
   checkForID(i: string){
+
+    // Iterate through Data
     for(var key in this.data){
       if(this.data[key][this.primaryField]==i) return key;
     }

@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
 
   // Split words into characters and assign to variable (Obfuscate) 
-  private baseUrl: string = "http://localhost/api/";
-  // private baseUrl: string = "https://www.rmbooker.com/apitest/";
+  //private baseUrl: string = "http://localhost/api/";
+   private baseUrl: string = "https://www.rmbooker.com/apitest/";
 
 
   constructor(

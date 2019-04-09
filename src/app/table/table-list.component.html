@@ -118,10 +118,13 @@
 
     <!-- Content -->
     <div class="data-content" *ngIf="!loadingData">
+
+      <!-- If no results -->
       <div class="data-row" *ngIf="pagedItems && pagedItems.length<1">
         <div class="no-results">No Results for <span class="filter-word">{{filter.value}}</span></div>
       </div>
 
+      <!-- Data Row -->
       <div  class="data-row"
             contextmenu [contextMenuSubject]='contextMenuSubject'
             *ngFor="let d of pagedItems"
@@ -130,6 +133,7 @@
             (dblclick)="showDetails(d[primaryField])"
             >
 
+        <!-- Check Box for selecting purposes -->
         <div  class="data-cell data-checkbox">
           <i  class="material-icons" 
               *ngIf="d && !d.selected">check_box_outline_blank</i>
@@ -137,11 +141,13 @@
               *ngIf="d && d.selected">check_box</i>
         </div>
 
+        <!-- Data Cell template, repeat for each header selected in headers -->
         <div  class="data-cell" 
               *ngFor="let h of headers"
               [ngStyle]="{'width':h.width +'px'}"
               >
               
+              <!-- Pre Text/CSS, if set in data -->
               <div  *ngIf="h.preText" 
                     [ngClass]="h.preText?d.PreTextCss:''"
                     [innerHTML]="h.preText"></div>
@@ -172,15 +178,17 @@
     <!-- End Content -->
 
 
+    <!-- Start Footer -->
     <div class="data-footer">
 
+      <!-- Left Align -->
       <div class="data-selected-row">
         <div class="data-footer-cell">
           {{_numSelected}} Rows Selected ({{_totalRows}} Total)
         </div>
       </div>
 
-
+      <!-- Center Align -->
       <div class="data-pagination">
         <div class="data-pagination-cell">
           <a (click)="setPage(1)">&lt;&lt;</a>
@@ -203,7 +211,7 @@
       </div>
 
 
-
+      <!-- Right Align -->
       <div class="data-page-info">
           <div class="data-footer-cell">
               Per Page
@@ -222,14 +230,18 @@
       </div>
 
     </div>
+    <!-- End Footer -->
+
   </div>
+  <!-- End Data-Table -->
 
 </div>
+<!-- End Data-View -->
 
 
 </div>
+<!-- End Main-Content -->
 
-<app-contextmenu>
-
-</app-contextmenu>
+<!-- Context Menu - Unused -->
+<app-contextmenu></app-contextmenu>
      

@@ -25,11 +25,17 @@ export class SideMenuComponent implements OnInit {
 
     // If closing the menu
     if(this.activatedMenuItem==name){
+
+      // Set var to empty - None selected
       this.activatedMenuItem="";
 
     // Opening Menu
     }else{
+
+      // Set var to selected menuItem name
       this.activatedMenuItem=name;
+
+      // Siblings of selected anchor to slideDown() - JQuery
       $("a[data-type='parent-menu'][data-name="+name+"]").siblings('ul.submenu').slideDown();
     }
   }
